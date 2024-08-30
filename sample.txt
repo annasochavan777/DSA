@@ -1,1 +1,6 @@
 
+Here's a revised version of your message:
+
+"I have confirmed that for item 69, we need to implement a similar logic as the COT document. Regarding item 75, I don't see any data available at the moment. Ram, could you please create this scenario in SIT so that we can verify the status?"
+
+Let me know if you need any further adjustments!
