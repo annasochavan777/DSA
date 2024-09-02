@@ -1,3 +1,1 @@
-Sure! Here's a rephrased version of your message:
-
-"I've placed the utility at the location below. You can start using it. I'll create a repository in Stash, push the code, and share the URL with you shortly."
+After a requirement is created, it transitions to the “Received” state once a document is uploaded. At that point, a document review task is generated, and the task owner’s ID is recorded in the table only after the task is actioned. I’ve noticed a pattern where, in some cases, the requirement is marked as “Satisfied” without any document being uploaded, resulting in a null task owner ID. This appears to be valid, and based on this observation, I don’t see any issues with the query. However, if you have a different perspective, please share it with me.
