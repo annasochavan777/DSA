@@ -1,1 +1,3 @@
-"There was an issue with the forms admin schema, as it wasn't generated correctly. We've regenerated the schema and will deploy the code by the end of the day today."
+Sure! Here's a rephrased version of your message:
+
+"I've placed the utility at the location below. You can start using it. I'll create a repository in Stash, push the code, and share the URL with you shortly."
