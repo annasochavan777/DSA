@@ -1,1 +1,1 @@
-For automated valuations, a status of 1 indicates ‘Acceptable,’ which is valid. Status 6 is applicable only for physical and desktop valuations, so changes are required in EP. Below are the available statuses for automated valuations.
+"We're using the upload document API to push the case requirement details, but I don't see this API call being made for this particular case."
