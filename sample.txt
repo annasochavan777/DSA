@@ -1,1 +1,1 @@
-The field will be visible and mandatory only when the following two conditions are met: “Can you tell us what’s in MAE?”
+Could you please explain the logic implemented in MAE that makes this field visible and mandatory?
