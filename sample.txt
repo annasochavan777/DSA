@@ -1,1 +1,1 @@
-"We're using the upload document API to push the case requirement details, but I don't see this API call being made for this particular case."
+The field will be visible and mandatory only when the following two conditions are met: “Can you tell us what’s in MAE?”
