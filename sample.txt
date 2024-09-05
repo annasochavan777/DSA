@@ -1,1 +1,1 @@
-You are currently sending the default value within the Year3 fields, which is not expected for MAE cases. On the MSO side, when we receive this value, the date difference logic is triggered, leading to the validation error displayed on the screen. Please resolve this issue on your end.
+I currently have only one defect pending, while all others have been resolved.
