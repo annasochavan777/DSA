@@ -1,1 +1,1 @@
-I currently have only one defect pending, while all others have been resolved.
+The timestamp is not being recorded in that field. In production, this scenario is not possible as the fund preparation date and the release date can never be the same.
