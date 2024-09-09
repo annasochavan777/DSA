@@ -1,1 +1,1 @@
-The timestamp is not being recorded in that field. In production, this scenario is not possible as the fund preparation date and the release date can never be the same.
+We are not receiving DP64 in the DIP call response, which is why the requirement has not been created.
