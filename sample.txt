@@ -1,7 +1,1 @@
-There are two scenarios where a COT (Change of Terms) can be rejected:
-
-1. **User-Initiated New COT Request:** When a user requests a new COT through the UI, the current COT is automatically rejected. This can be identified by checking if the status has changed from 4 (current status) to 2 (rejected).
-   
-2. **Underwriter Completes CDU:** In this scenario, the current COT, regardless of its status, will automatically be cancelled when the underwriter completes the CDU process.
-
-Given these scenarios, which event do we want to capture in the apptracking application?
+The attached request is for stage 30, but we are expecting a request for stage 40. Could you please attach the correct one?
