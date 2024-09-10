@@ -1,1 +1,1 @@
-Please attach a screenshot from MO to highlight where the mismatch is occurring, so we can better understand the issue.
+The field value is being rounded when saved to the database on the MSO side, and this is the default behavior for values stored in the database.
