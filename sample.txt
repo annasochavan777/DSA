@@ -1,5 +1,7 @@
-It seems like you're looking for a rephrased version of a technical message. Here's a revised version based on what you provided:
+There are two scenarios where a COT (Change of Terms) can be rejected:
 
-"The previous response corresponds to stage 60, but I'm unable to find the logsmon server for the stage 40 response. Could you please create a new case with similar data?"
+1. **User-Initiated New COT Request:** When a user requests a new COT through the UI, the current COT is automatically rejected. This can be identified by checking if the status has changed from 4 (current status) to 2 (rejected).
+   
+2. **Underwriter Completes CDU:** In this scenario, the current COT, regardless of its status, will automatically be cancelled when the underwriter completes the CDU process.
 
-Let me know if you need further adjustments!
+Given these scenarios, which event do we want to capture in the apptracking application?
