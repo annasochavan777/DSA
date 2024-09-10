@@ -1,1 +1,1 @@
-The field value is being rounded when saved to the database on the MSO side, and this is the default behavior for values stored in the database.
+There may have been a data issue, as the case hive was updated on September 5th, after which the case appeared in the MI database instance. This explains why the case was missing from the September 4th data feed.
