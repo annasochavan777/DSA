@@ -1,1 +1,1 @@
-The attached request is for stage 30, but we are expecting a request for stage 40. Could you please attach the correct one?
+Please attach a screenshot from MO to highlight where the mismatch is occurring, so we can better understand the issue.
