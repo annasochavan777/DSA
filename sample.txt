@@ -1,1 +1,1 @@
-There may have been a data issue, as the case hive was updated on September 5th, after which the case appeared in the MI database instance. This explains why the case was missing from the September 4th data feed.
+"I will be logging in late today as I need to take my daughter to the hospital because she isn't feeling well."
