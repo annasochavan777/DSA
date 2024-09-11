@@ -1,1 +1,5 @@
-"The code has been fixed and deployed in the SIT1 environment. Please proceed with re-testing the defect."
+Here’s a refined version of your message:
+
+"As discussed with Ram, we are now only expecting the latest valuation report. Previously, we were displaying older valuation reports as well, but the SQL query has been corrected to fetch only the latest record. Harshal, please refer to the attached updated query and make the necessary changes on your end."
+
+Let me know if this works for you!
