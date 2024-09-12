@@ -1,5 +1,1 @@
-Here’s a refined version of your message:
-
-"As discussed with Ram, we are now only expecting the latest valuation report. Previously, we were displaying older valuation reports as well, but the SQL query has been corrected to fetch only the latest record. Harshal, please refer to the attached updated query and make the necessary changes on your end."
-
-Let me know if this works for you!
+Currently, all the requirements are in the "received" state. To test the document rejection scenario, you need to update the specific case requirement back to the "requested" state. Once updated, the status will change from 4 (received) to 2 (requested).
