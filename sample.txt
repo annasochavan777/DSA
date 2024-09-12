@@ -1,1 +1,1 @@
-Currently, all the requirements are in the "received" state. To test the document rejection scenario, you need to update the specific case requirement back to the "requested" state. Once updated, the status will change from 4 (received) to 2 (requested).
+To determine if the previous address is applicable, we have a rule that relies on the **system.Now** data field in Case Hive. Since this field was initially missing, we manually updated it, and the rule is now working as expected. Could you ensure that this field is populated when creating a case in MSO?
