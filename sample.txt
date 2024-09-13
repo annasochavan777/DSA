@@ -1,3 +1,3 @@
-Here's a refined version of your message:
+Here’s a revised version of your request:
 
-"The issue of retrieving older records was caused by the unnecessary use of the `rowlastmodified` field filter in some queries. This filter has now been removed, which should resolve the problem. Please make the necessary changes on your end."
+"Mso is receiving a null response during the TIAA pickup for this reference ID. I’d like to confirm which TIAA URL is configured on the BDN API side, as Salesforce is sending the data to TIAA through this API. Do we have a point of contact from that team who can assist?"
