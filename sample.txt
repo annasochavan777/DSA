@@ -1,1 +1,5 @@
-The issue arises because the instruction type is RVA, which is not included in the MSO. As a result, it's not appearing in the query results. The same applies to MAX cases as well. Only the following types are allowed.
+Here's a rephrased version of your request:
+
+"I would like to inform you that my planned leave for this week has been canceled. However, I will need to take two days of leave next week, on the 26th and 27th of September. I kindly request your approval for this."
+
+Let me know if you'd like further adjustments!
