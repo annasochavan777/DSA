@@ -1,1 +1,1 @@
-The formula used to calculate the total borrowing amount is the sum of total indebtedness and the pending fee amount.
+I don't think a complete scenario testing is necessary again since we've only modified the query to exclude old records and retrieve the latest records based on the specified date and time.
