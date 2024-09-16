@@ -1,1 +1,1 @@
-I don't think a complete scenario testing is necessary again since we've only modified the query to exclude old records and retrieve the latest records based on the specified date and time.
+If you have a different perspective, feel free to speak up.
