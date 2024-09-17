@@ -1,1 +1,1 @@
-If you have a different perspective, feel free to speak up.
+The root cause of the issue was identified as a persistent 500 error code on one of the servers. Upon investigation, it was discovered that the application configuration was incorrect due to an improperly closed tag. We have now resolved the issue.
