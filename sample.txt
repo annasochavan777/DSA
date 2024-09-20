@@ -1,3 +1,1 @@
-Here's a rephrased version of your message:
-
-"Initially, the requirement was that this field would be mandatory and should have a value greater than 0. However, the requirement has now changed, and the field is no longer mandatory and can accept a value of zero."
+If this business rule is evaluated as true, these cases will not be permitted to proceed any further.
