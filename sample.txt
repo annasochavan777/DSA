@@ -1,1 +1,1 @@
-The error is occurring because the `Typeofbenefits` field is not being used anywhere. To resolve this issue, we need to remove the field from the forms and admin sections.
+Since we are using the `Typeofbenefits` field in the PCSM call, we need to set this field as hidden in the CDU.
