@@ -1,1 +1,1 @@
-If this business rule is evaluated as true, these cases will not be permitted to proceed any further.
+The error is occurring because the `Typeofbenefits` field is not being used anywhere. To resolve this issue, we need to remove the field from the forms and admin sections.
