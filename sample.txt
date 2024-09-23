@@ -1,1 +1,1 @@
-Since we are using the `Typeofbenefits` field in the PCSM call, we need to set this field as hidden in the CDU.
+The application is hosted on Echannel, so in order to access these servers, a Change Request (CR) needs to be raised. I will raise the CR today to review the logs on these servers.
