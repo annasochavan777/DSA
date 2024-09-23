@@ -1,1 +1,1 @@
-Before executing the Jenkins job, add the following endpoint to the execution API service agent's property file on each server.
+To investigate the 502 Bad Gateway error occurring while launching the IntAuth application, we need to access the servers to check the logs.
