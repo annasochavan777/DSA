@@ -1,1 +1,1 @@
-The application is hosted on Echannel, so in order to access these servers, a Change Request (CR) needs to be raised. I will raise the CR today to review the logs on these servers.
+Before executing the Jenkins job, add the following endpoint to the execution API service agent's property file on each server.
