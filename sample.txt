@@ -1,1 +1,1 @@
-To investigate the 502 Bad Gateway error occurring while launching the IntAuth application, we need to access the servers to check the logs.
+I'm currently finalizing the build for the mortgage portal component and need the MAE and app tracking application URLs to complete it. Could you please provide those URLs?
