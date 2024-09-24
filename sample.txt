@@ -1,1 +1,1 @@
-I'm currently finalizing the build for the mortgage portal component and need the MAE and app tracking application URLs to complete it. Could you please provide those URLs?
+The issue is occurring due to expired certificates on all servers. Aslam is currently looking into how to renew these certificates.
