@@ -1,1 +1,1 @@
-Aslam is already working on it and is checking if these certificates require an update at the Load Balancer level. If so, it will take three days as a new Change Request (CR) will need to be raised.
+Even after updating the certificate on the A4 server, the issue persists. We will need support from the network team to resolve this.
