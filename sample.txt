@@ -1,1 +1,1 @@
-The certificates have been renewed on the server, but they also need to be updated on the A4 server. If updates are required at the load balancer level, I'll need three days to raise another change request. However, if only the A4 server needs the updates, we can aim to complete that by tomorrow EOD.
+Aslam is already working on it and is checking if these certificates require an update at the Load Balancer level. If so, it will take three days as a new Change Request (CR) will need to be raised.
