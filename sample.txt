@@ -11,11 +11,16 @@ foreach ($file in $files) {
     # Read the content of the file
     $content = Get-Content -Path $file.FullName
     
-    # Replace the old text with the new text
-    $newContent = $content -replace $findText, $replaceText
-    
-    # Write the modified content back to the file
-    Set-Content -Path $file.FullName -Value $newContent
+   # Check if the find text is present in the file
+    if ($content -match $findText) {
+        # Replace the old text with the new text
+        $newContent = $content -replace $findText, $replaceText
+
+        # Write the modified content back to the file
+        Set-Content -Path $file.FullName -Value $newContent
+
+        Write-Host "Modified file: $($file.FullName)"
+    }
 }
 
 Write-Host "Find and replace operation completed."
