@@ -1,3 +1,21 @@
-Here's the revised version:
+# Parameters
+$directory = "C:\Path\To\Your\Directory"  # Path to the directory containing the files
+$fileFilter = "*.txt"                     # File filter, e.g., "*.txt", "*.log", "*.cs", etc.
+$findText = "oldText"                     # Text to find
+$replaceText = "newText"                  # Text to replace with
 
-"I am currently on leave and will be resuming office on 30th September. I will respond once I resume."
+# Get all files based on the filter in the specified directory and its subdirectories
+$files = Get-ChildItem -Path $directory -Filter $fileFilter -Recurse
+
+foreach ($file in $files) {
+    # Read the content of the file
+    $content = Get-Content -Path $file.FullName
+    
+    # Replace the old text with the new text
+    $newContent = $content -replace $findText, $replaceText
+    
+    # Write the modified content back to the file
+    Set-Content -Path $file.FullName -Value $newContent
+}
+
+Write-Host "Find and replace operation completed."
