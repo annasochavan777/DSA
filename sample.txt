@@ -1,2 +1,5 @@
-"Ensure that no build is provided without verifying that the fix works in the development environment. We recently deployed the MO component in dev and discovered that the fix was not functioning. Upon investigation, we found that the package had not been upgraded. In an effort to provide the build quickly, critical steps were missed. Please make sure all steps are followed carefully, even when working under tight deadlines."
-
+Flat No H-306, Majestique Manhattan, Wagholi
+Wagholi
+Pune, MAHARASHTRA 412207
+India
+Phone number: ‪9503208346
