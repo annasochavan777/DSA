@@ -1,1 +1,2 @@
-If the provided employment duration is less than 3 months, the underwriter performing a Credit Decision Underwriting (CDU) will request previous employment details. If you wish to modify this logic for Make Adequate Employment (MAE) cases, that is also possible.
+"Ensure that no build is provided without verifying that the fix works in the development environment. We recently deployed the MO component in dev and discovered that the fix was not functioning. Upon investigation, we found that the package had not been upgraded. In an effort to provide the build quickly, critical steps were missed. Please make sure all steps are followed carefully, even when working under tight deadlines."
+
