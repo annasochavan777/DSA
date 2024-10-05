@@ -1,5 +1,1 @@
-Flat No H-306, Majestique Manhattan, Wagholi
-Wagholi
-Pune, MAHARASHTRA 412207
-India
-Phone number: ‪9503208346
+The field mortgageloantype is mandatory but is missing in this case, which is why the IDAndVmortgage service is throwing an error stating that the mortgage account number is null or empty. On the MSO side, we have a logic that determines which account number to send based on the mortgageloantype value. If the value is “primary,” the account number is sent. If the value is “further advance,” the primaryaccountno is sent instead.
