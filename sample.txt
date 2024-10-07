@@ -1,1 +1,6 @@
-No logs are appearing on the server. The last time I attempted the deployment was around 13:59.
+Please ensure the following two scenarios are tested to confirm that the changes are working correctly:
+
+	1.	Test one case with valuation marked as “instructed.”
+	2.	Test another case with the valuation report marked as “received.”
+
+If you want to add any other scenarios, that’s fine, but at least these two must be tested. I don’t see these changes will have any other impact.
