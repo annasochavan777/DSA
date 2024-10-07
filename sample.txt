@@ -1,1 +1,1 @@
-During deployment, we are encountering an intermittent issue where certain execution API commands are unresponsive. No errors are thrown, and there is no response from the execution API. We need assistance in resolving this issue.
+While working on resolving the JIRA-3421 issue, we unintentionally caused this new issue. The current query only shows records when the valuation report is received, but it doesn’t display entries where valuation is instructed. I have made the necessary changes to fix this. Harshal, please make the required adjustments on your end.
