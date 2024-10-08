@@ -1,2 +1,2 @@
-The issue has been resolved, and we are now able to deploy our code successfully in the SIT1 environment. Therefore, we will plan for the NFT deployment today.
+We are experiencing slowness in the Jenkins code deployment pipeline. With 23 component deployments and post-deployment checks, it will take a minimum of 5 hours to complete, assuming no additional issues arise.
 
