@@ -1,6 +1,2 @@
-Please ensure the following two scenarios are tested to confirm that the changes are working correctly:
+The issue has been resolved, and we are now able to deploy our code successfully in the SIT1 environment. Therefore, we will plan for the NFT deployment today.
 
-	1.	Test one case with valuation marked as “instructed.”
-	2.	Test another case with the valuation report marked as “received.”
-
-If you want to add any other scenarios, that’s fine, but at least these two must be tested. I don’t see these changes will have any other impact.
