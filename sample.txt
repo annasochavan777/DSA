@@ -1,2 +1,2 @@
-We are experiencing slowness in the Jenkins code deployment pipeline. With 23 component deployments and post-deployment checks, it will take a minimum of 5 hours to complete, assuming no additional issues arise.
+We are encountering the same issue as yesterday with the execution API not responding, and we need Nitesh's assistance to resolve it.
 
