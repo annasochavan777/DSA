@@ -1,2 +1,28 @@
-Since testing for the MAE project is in progress, I need access to the NFT Echannel servers to monitor the logs. I am raising this incident to request CyberArk access.
+
+
+Subject: Need Slot for NFT Deployment for Defect Fix
+
+Hi Sumit,
+
+As part of the following defect: [link to defect], we have deployed the components listed below in the SIT 1 environment to resolve the issue. These components now need to be deployed in the NFT environment.
+
+Could you please provide a suitable deployment slot?
+
+1. Barclays MSO Gateway
+
+
+2. Buckley MSO
+
+
+3. N05 MSO Cortex Holdings
+
+
+4. N45 MSO ADC
+
+
+5. N45 MSO TIB
+
+
+6. Buckley MSO Cortex MAE
+
 
