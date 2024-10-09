@@ -1,2 +1,2 @@
-We are encountering the same issue as yesterday with the execution API not responding, and we need Nitesh's assistance to resolve it.
+Since testing for the MAE project is in progress, I need access to the NFT Echannel servers to monitor the logs. I am raising this incident to request CyberArk access.
 
