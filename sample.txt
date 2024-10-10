@@ -1,1 +1,3 @@
-te
+The old TIAA URL was configured, but we are now using the AWS TIAA URL. We're not sure who made the change, but it has been updated to point to AWS TIAA, and it's working now.
+
+
