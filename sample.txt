@@ -1,25 +1,2 @@
-using System;
-using System.IO;
+We had a call with the DBA, and after investigation, we discovered that the date-time conversion is failing in the production environment due to a difference in the account-level language settings. In the test environment, it is configured as English, while in production, it is set to British English. Instead of changing the language settings, we can resolve this issue within the SQL query itself by converting the date-time before executing the query.
 
-class Program
-{
-    static void Main()
-    {
-        // Define the file path and the content to append
-        string filePath = @"C:\example\output.txt";
-        string contentToAppend = "This is the appended text.";
-
-        // Append the content to the file
-        try
-        {
-            // Append text to the file
-            File.AppendAllText(filePath, contentToAppend + Environment.NewLine);
-
-            Console.WriteLine("Text appended successfully.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("An error occurred: " + ex.Message);
-        }
-    }
-}
