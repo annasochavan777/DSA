@@ -1,2 +1,1 @@
-"Is this version of MQ supported? Also, how are we ensuring that this issue will not occur again?"
-
+I have prepared the MAE production URL based on the provided information. Could you please confirm that the URLs below are correct?
