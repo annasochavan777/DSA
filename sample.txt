@@ -1,2 +1,5 @@
-Could you please provide your final confirmation on whether the MAE URLs listed below are correct?
+During the MAE project testing, we encountered challenges in troubleshooting issues because the team struggled to locate the necessary logs. As they were searching for logs manually, the investigation process was time-consuming, delaying issue resolution. Given the tight project deadlines, I proposed automating the process, leading to the following two improvements:
+
+	1.	I integrated an NLog tracer into the code, allowing us to pinpoint the exact line where the failure occurred.
+	2.	I developed a PowerShell script that extracts the relevant logs within seconds by simply providing the case ID as input. Additionally, I created a tool to convert API requests to MSO requests, making it easier to test them using Insomnia.
 
