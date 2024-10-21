@@ -1,5 +1,11 @@
-During the MAE project testing, we encountered challenges in troubleshooting issues because the team struggled to locate the necessary logs. As they were searching for logs manually, the investigation process was time-consuming, delaying issue resolution. Given the tight project deadlines, I proposed automating the process, leading to the following two improvements:
+I was managing three projects simultaneously, and for two of them, I handled everything entirely on my own.
 
-	1.	I integrated an NLog tracer into the code, allowing us to pinpoint the exact line where the failure occurred.
-	2.	I developed a PowerShell script that extracts the relevant logs within seconds by simply providing the case ID as input. Additionally, I created a tool to convert API requests to MSO requests, making it easier to test them using Insomnia.
+1. Launch MAE application via IntAuth application
+2. App-tracking
+3. MAE Journey-Related Changes in Originations
 
+Launch MAE application via IntAuth application - I developed a solution for launching the MAE application through the IntAuth application, designed in such a way that any new application can be easily integrated. All that’s needed is to add the target application’s URL in the configuration section—no further modifications are required. This provides a flexible and generic solution.I handled this entire project independently.
+
+App-Tracking: Using the app-tracking application, users can easily track the status of their case, including its current stage and any required actions, such as outstanding documents. Brokers can also view the case’s progress and identify if any actions are needed from their side. The app-tracking team relies on MSO to provide this information, so I wrote SQL scripts to extract detailed case data from the MI instance according to their requirements. This includes case stage, requirements, valuation details, whether an offer has been released, and any other events related to the case. I handled this entire project independently from MSO side.
+
+MAE Journey-Related Changes in Originations: Several new features were introduced specifically for the MAE journey in originations, including new UI fields, additional sections, and updated case requirements. These changes were challenging because we had to ensure that they did not negatively impact the existing MAX journey. Additionally, there was a requirement to automatically generate case requirements upon receiving specific DP codes in the PCSM response. Although the initial estimate for this task was three weeks, I completed it within just one week due to the urgency of the change.
