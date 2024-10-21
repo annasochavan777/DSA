@@ -1,2 +1,3 @@
-I am always striving to improve my skills by learning new technologies and best practices. Recently, I completed a course on Java Spring Boot and React 17 through Pluralsight, which has deepened my understanding of the new MAE mortgage application we are developing. This ensures that I am well-prepared to provide support whenever needed and can contribute more effectively to the project.
-
+challenge: I regularly challenge existing practices to drive improvement. 
+drive: I am committed to driving results and achieving success, often going above and beyond my immediate responsibilities. 
+Empower: I believe in empowering my colleagues by fostering a supportive and collaborative environment. 
