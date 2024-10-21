@@ -1,3 +1,1 @@
-challenge: I regularly challenge existing practices to drive improvement. 
-drive: I am committed to driving results and achieving success, often going above and beyond my immediate responsibilities. 
-Empower: I believe in empowering my colleagues by fostering a supportive and collaborative environment. 
+Strengthen Internal Controls: I contributed to strengthening internal controls by implementing logging and monitoring solutions in our application, ensuring that any unusual activity or system errors could be promptly detected and addressed. This enhanced the team’s ability to react quickly to any issues, reducing potential downtime or data breaches.
