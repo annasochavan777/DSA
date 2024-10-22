@@ -1,4 +1,3 @@
 As part of the Sales Journey Integration (SJI) project, I successfully completed the mapping of SJI request fields to the corresponding MSO data items. This was a critical task to ensure accurate field mapping. Additionally, for any data fields not captured by the SJI UI, I ensured valid default values were set to maintain the integrity of the existing origination functionality.
 
-
-In Origination, as part of the Case Data Update (CDU) requirement, the business requested that a revised offer be triggered if any changes were made to specific data items in newly added fields. To meet this requirement, I implemented the necessary changes in CDU.
+In SJI, around 120 new fields were introduced, and as part of the Case Data Update (CDU) requirement, the business requested that a revised offer be triggered if changes were made to specific data items within these newly added fields. Additionally, they wanted the package and access workflow to be triggered based on changes to certain data items. To fulfill this requirement, I implemented the necessary changes in CDU.
