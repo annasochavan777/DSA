@@ -3,3 +3,6 @@ As part of the Sales Journey Integration (SJI) project, I successfully completed
 In SJI, around 120 new fields were introduced, and as part of the Case Data Update (CDU) requirement, the business requested that a revised offer be triggered if changes were made to specific data items within these newly added fields. Additionally, they wanted the package and access workflow to be triggered based on changes to certain data items. To fulfill this requirement, I implemented the necessary changes in CDU.
 
 During SIT testing, I provided support by analyzing the root cause of defects raised and resolving them.
+
+As the MAE is being developed, there are times when the team needs to understand how the existing Max functionality works in specific scenarios. I assist by explaining the current Max logic to help them replicate it on their end. These discussions are held with the stakeholders.
+
