@@ -1,2 +1,1 @@
-1.	Collaboration with Stakeholders:
-	•	Facilitated discussions with stakeholders to explain existing Max functionality, encouraging open dialogue and diverse perspectives.
+During the production implementation, the team encountered issues with the InRule upgrade. I promptly joined a call to identify and resolve the problem within a 10-15 minute timeframe. This quick intervention enabled the team to proceed with the production implementation, avoiding the need to roll back the changes.
