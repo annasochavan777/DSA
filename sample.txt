@@ -6,3 +6,5 @@ During SIT testing, I provided support by analyzing the root cause of defects ra
 
 As the MAE is being developed, there are times when the team needs to understand how the existing Max functionality works in specific scenarios. I assist by explaining the current Max logic to help them replicate it on their end. These discussions are held with the stakeholders.
 
+The new MAE gateway service currently uses certificate-based authentication, but to enhance security, I have implemented token-based authentication. For this, I utilized TIAA authentication, which is the standard at Barclays.
+
