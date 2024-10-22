@@ -1,8 +1,2 @@
-1.	Implementation of Token-Based Authentication:
-	•	Enhanced the security of the new MAE gateway service by transitioning from certificate-based to token-based authentication using TIAA authentication. This improvement reduces the risk of unauthorized access, demonstrating a commitment to operational precision and robust risk management.
-	2.	Mapping of Request Fields in SJI:
-	•	Successfully mapped SJI request fields to the appropriate MSO data items, ensuring accurate data handling. This meticulous mapping minimizes potential errors and ensures the integrity of data processes.
-	3.	Case Data Update (CDU) Changes:
-	•	Implemented changes in CDU to trigger revised offers and workflows based on specific data item changes. This ensures operational accuracy and responsiveness to data modifications, contributing to effective risk management.
-	4.	Support During SIT Testing:
-	•	Provided support by analyzing the root causes of defects raised during SIT testing and resolving them. This proactive approach helps in identifying and mitigating potential issues, reinforcing precision in operations.
+1.	Collaboration with Stakeholders:
+	•	Facilitated discussions with stakeholders to explain existing Max functionality, encouraging open dialogue and diverse perspectives.
