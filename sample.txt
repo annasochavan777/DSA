@@ -10,4 +10,7 @@ The new MAE gateway service currently uses certificate-based authentication, but
 
 
 Drive continuous improvement: Regularly review project outcomes to identify lessons learned and areas for further enhancement.
+  • Implemented token-based authentication for the new MAE gateway service to enhance security, replacing the existing certificate-based authentication.
+	•	Leveraged TIAA authentication, the standard at Barclays, to ensure compliance with best practices, resulting in a more secure and resilient system.
+	•	This initiative reflects a commitment to improving security measures and aligning with industry standards, driving overall system improvement.
 
