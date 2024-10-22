@@ -8,3 +8,6 @@ As the MAE is being developed, there are times when the team needs to understand
 
 The new MAE gateway service currently uses certificate-based authentication, but to enhance security, I have implemented token-based authentication. For this, I utilized TIAA authentication, which is the standard at Barclays.
 
+
+Drive continuous improvement: Regularly review project outcomes to identify lessons learned and areas for further enhancement.
+
