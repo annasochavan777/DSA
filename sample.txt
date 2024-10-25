@@ -1,1 +1,38 @@
-"I've tried multiple zip files, thinking one of them might be causing the issue, but the problem persists. The same zip files unzip successfully when using PowerShell commands, so there doesn't appear to be any issue with the files themselves.
+import java.io.*;
+import java.nio.file.*;
+import java.util.regex.*;
+
+public class PDFCleaner {
+
+    public static void main(String[] args) throws IOException {
+        String filePath = "path/to/your/pdf/file.pdf";
+        byte[] pdfBytes = Files.readAllBytes(Paths.get(filePath));
+
+        // Clean the PDF by removing everything before "%PDF-1.x" header
+        byte[] cleanedPdfBytes = removeDataBeforePDFHeader(pdfBytes);
+
+        // Optionally, save the cleaned PDF to a new file
+        Files.write(Paths.get("path/to/cleaned/file.pdf"), cleanedPdfBytes);
+
+        System.out.println("PDF cleaned successfully.");
+    }
+
+    // Method to remove data before "%PDF-1.x" in byte array
+    private static byte[] removeDataBeforePDFHeader(byte[] pdfBytes) {
+        // Convert byte array to string for easy pattern matching
+        String pdfContent = new String(pdfBytes);
+        
+        // Regular expression for finding the PDF header "%PDF-1.x"
+        Pattern pattern = Pattern.compile("%PDF-1\\.[0-7]");
+        Matcher matcher = pattern.matcher(pdfContent);
+        
+        if (matcher.find()) {
+            // Get the starting index of the header
+            int headerStartIndex = matcher.start();
+
+            // Return the byte array from the header start to the end of the file
+            byte[] cleanedBytes = new byte[pdfBytes.length - headerStartIndex];
+            System.arraycopy(pdfBytes, headerStartIndex, cleanedBytes, 0, cleanedBytes.length);
+            
+            return cleanedBytes;
+        }
