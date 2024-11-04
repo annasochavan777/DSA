@@ -1,9 +1,2 @@
-<configuration>
-  <system.web>
-    <!-- Enable Windows Authentication -->
-    <authentication mode="Windows" />
+There are no errors on the validation server, so it appears that the request is not reaching it. We need to check the logs on the external presentation server, but accessing this server requires raising a Change Request (CR).
 
-    <!-- Enable Impersonation -->
-    <identity impersonate="true" />
-  </system.web>
-</configuration>
