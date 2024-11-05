@@ -1,3 +1,4 @@
+Here’s a rephrased version:
 
-Using the Correlation ID is faster for extraction, so if you have it available, always prioritize filtering by Correlation ID.
+"This is a temporary solution we're considering for the SIT environment only. Currently, we have configured the following applications in the target application list. If you want to use an application from this list, that’s fine. However, if you need to specify MAEENV as a parameter, a code change will be required. If this is intended as a temporary solution, I recommend using an application name from the list below."
 
