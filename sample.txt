@@ -1,4 +1,4 @@
-Here’s a rephrased version:
+Sure, here's a rephrased version:
 
-"This is a temporary solution we're considering for the SIT environment only. Currently, we have configured the following applications in the target application list. If you want to use an application from this list, that’s fine. However, if you need to specify MAEENV as a parameter, a code change will be required. If this is intended as a temporary solution, I recommend using an application name from the list below."
+"Yes, Akshay, I reviewed the JIRA tickets, and these changes will not require any modifications on the MSO side."
 
