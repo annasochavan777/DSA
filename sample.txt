@@ -1,2 +1,6 @@
-She has checked the spam and junk folders as well, but no task has been assigned yet. Is there a way we can reassign it?
+After a thorough investigation, I identified the root cause of the issue in the case file query. The problem was due to incorrect filtering logic in the WHERE clause, which caused duplicate records to appear.
 
+I have fixed the query and completed testing in the test environment. The updated query is producing the expected results.
+
+@Harshal - Please find the attached updated query.
+@Ankita - We need to execute a few test case scenarios in SIT before moving this query to the production environment.
