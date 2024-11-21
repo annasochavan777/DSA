@@ -1,6 +1,1 @@
-After a thorough investigation, I identified the root cause of the issue in the case file query. The problem was due to incorrect filtering logic in the WHERE clause, which caused duplicate records to appear.
-
-I have fixed the query and completed testing in the test environment. The updated query is producing the expected results.
-
-@Harshal - Please find the attached updated query.
-@Ankita - We need to execute a few test case scenarios in SIT before moving this query to the production environment.
+Earlier, we were applying the rowlastmodifieddate filter at the end of the query using an OR condition. Now, we have moved this date-checking condition into the JOIN clause using an AND condition. No other changes have been made. We now just need to ensure that no duplicate records are being returned.
