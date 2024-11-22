@@ -1,1 +1,111 @@
-Earlier, we were applying the rowlastmodifieddate filter at the end of the query using an OR condition. Now, we have moved this date-checking condition into the JOIN clause using an AND condition. No other changes have been made. We now just need to ensure that no duplicate records are being returned.
+To handle changes in any of the related tables (Orders, Customers, or Products) and retrieve all associated records, you can structure the query to detect changes in any table and include related records in the output.
+
+Query
+
+WITH ChangedRecords AS (
+    SELECT 
+        o.OrderID,
+        'Orders' AS ChangedTable
+    FROM 
+        Orders o
+    WHERE 
+        o.LastUpdated > @LastCheckedTimestamp
+
+    UNION
+
+    SELECT 
+        o.OrderID,
+        'Customers' AS ChangedTable
+    FROM 
+        Orders o
+    INNER JOIN 
+        Customers c ON o.CustomerID = c.CustomerID
+    WHERE 
+        c.LastUpdated > @LastCheckedTimestamp
+
+    UNION
+
+    SELECT 
+        o.OrderID,
+        'Products' AS ChangedTable
+    FROM 
+        Orders o
+    INNER JOIN 
+        Products p ON o.ProductID = p.ProductID
+    WHERE 
+        p.LastUpdated > @LastCheckedTimestamp
+)
+SELECT 
+    o.OrderID,
+    o.OrderDate,
+    c.CustomerID,
+    c.CustomerName,
+    p.ProductID,
+    p.ProductName,
+    o.Quantity,
+    o.LastUpdated AS OrderLastUpdated,
+    c.LastUpdated AS CustomerLastUpdated,
+    p.LastUpdated AS ProductLastUpdated,
+    cr.ChangedTable AS TableWithChange
+FROM 
+    ChangedRecords cr
+INNER JOIN 
+    Orders o ON cr.OrderID = o.OrderID
+INNER JOIN 
+    Customers c ON o.CustomerID = c.CustomerID
+INNER JOIN 
+    Products p ON o.ProductID = p.ProductID;
+
+
+---
+
+Explanation
+
+1. Detect Changes:
+
+The ChangedRecords Common Table Expression (CTE) identifies all OrderIDs where:
+
+The Orders table has changed.
+
+The Customers table has changed (via join with Orders).
+
+The Products table has changed (via join with Orders).
+
+
+
+
+2. Union to Combine Changes:
+
+A UNION consolidates changes from all tables into a single list of OrderIDs and tracks the table where the change occurred using the ChangedTable column.
+
+
+
+3. Retrieve Related Data:
+
+The main query joins ChangedRecords with Orders, Customers, and Products to retrieve all related data for the changed OrderID.
+
+
+
+4. Identify Source of Change:
+
+The TableWithChange column shows which table caused the row to be included in the result (e.g., Orders, Customers, or Products).
+
+
+
+
+
+---
+
+Benefits
+
+Comprehensive Tracking: Includes changes from any table.
+
+Detailed Context: Shows which table was modified using the ChangedTable column.
+
+Dynamic Output: Always retrieves the full set of related data when any change occurs.
+
+
+
+---
+
+If you'd like further customization or optimization (e.g., indexing recommendations), let me know!
