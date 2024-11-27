@@ -1,1 +1,2 @@
-The MI Extractor service successfully processed this case on November 27th at 8:54 AM. The service’s primary function is to replicate cases from the main database instance to the MI database instance. However, we still don’t have a clear explanation for the delay in processing this case. I am currently investigating the issue to determine the cause.
+The case was initially progressed on 26th November at 16:23 but failed due to a data issue. After a data correction, it was successfully processed on 27th November at 08:54. However, we are unable to track the exact data correction that was made.
+
