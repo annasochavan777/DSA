@@ -1,18 +1,1 @@
-Requirement: Restrict MAE Cases from Opening in the Intermediary MAX Channel
-
-To prevent MAE cases from opening in the Intermediary MAX channel, we need to implement the following changes:
-
-Current Process
-The CaseSearch operation handler is responsible for loading cases in the Intermediary channel. To achieve the required restriction, we will filter the cases based on their source system and display only non-MAE cases to the user.
-
-Required Changes
-Update the Data Provider Component
-In the Data Provider component, we currently invoke multiple functions based on the case search filter criteria. However, before sending the response back to the CaseSearch operation handler, a common method is used to convert the response.
-
-In this common method, the source system field is not currently mapped.
-Update this method to include the source system field in the response.
-Filter Non-MAE Cases
-Once the source system field is included in the response, implement logic to filter out MAE cases.
-
-Only non-MAE cases should be included in the final response sent to the UI.
-These changes will ensure that MAE cases are restricted from being opened in the Intermediary MAX channel.
+The MI Extractor service successfully processed this case on November 27th at 8:54 AM. The service’s primary function is to replicate cases from the main database instance to the MI database instance. However, we still don’t have a clear explanation for the delay in processing this case. I am currently investigating the issue to determine the cause.
