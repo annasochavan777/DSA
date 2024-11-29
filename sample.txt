@@ -1,1 +1,1 @@
-Currently, we don’t have such a document available. We need to go through the code to understand the validations and prepare the document, which will take some time. Please check with Sachin to get a resource aligned for this.
+Do you have a user with elevated privileges who can access or open any case, even if they are not the owner of the case?
