@@ -1,1 +1,5 @@
-Do you have a user with elevated privileges who can access or open any case, even if they are not the owner of the case?
+There are two ways to resume cases: one through the MAX Case Search page and the other by directly amending the case ID in the Full Serve URL. Currently, we are restricting the ability to resume MAE cases via the MAX Case Search page.
+
+Would you like us to also block the ability to resume cases through the Full Serve route? How frequently are cases resumed through Full Serve? Implementing this restriction may require additional time.
+
+Please share your thoughts—do you want us to block both routes for resuming cases?
