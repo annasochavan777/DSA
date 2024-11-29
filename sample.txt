@@ -1,5 +1,3 @@
-There are two ways to resume cases: one through the MAX Case Search page and the other by directly amending the case ID in the Full Serve URL. Currently, we are restricting the ability to resume MAE cases via the MAX Case Search page.
+Please find the updated case query where we have fixed the issue of the Customer Number field appearing as null. This issue was introduced after the recent changes made to resolve the duplicate record issue.
 
-Would you like us to also block the ability to resume cases through the Full Serve route? How frequently are cases resumed through Full Serve? Implementing this restriction may require additional time.
-
-Please share your thoughts—do you want us to block both routes for resuming cases?
+Since the fix has no impact on the duplicate record issue, there is no need to retest it.
