@@ -1,5 +1,7 @@
-Ravindra and I also investigated this issue but were unable to identify why the case was not processed on the same day by the MI Extractor service. This service picks up data from Case Hive and inserts it into the MI instance tables. However, there is no record of any data correction made in Case Hive.
+In regard to the proposed change of modifying the data type of a field from Boolean to a type capable of holding multiple values, we need to emphasize that this represents a significant change from an MSO (Mortgage Servicing Organization) perspective. This field is passed to multiple downstream systems, internal services, and is also stored in the database.
 
-We also reviewed the flat file and event viewer logs, and no exceptions were logged for this case. It appears to be an intermittent issue, so we can ignore it for now. If a similar issue occurs in the future, we can investigate it further.
+During a previous discussion, we suggested an alternative approach:
 
-“Investigation Summary: Intermittent MI Extractor Service Delay”
+Introduce a new field specifically for MAE cases.
+Hide the existing Boolean field to minimize the impact on existing systems and processes.
+This approach significantly reduces the scope of changes required across downstream systems, internal services, and the database.
