@@ -1,9 +1,1 @@
-We would like to address the outstanding design questions related to restricting MAE cases:
-
-Broker Issues with MAE Environment:
-In the event that brokers face any issues with the MAE environment, the business has clarified that they do not want these cases to resume in the MAX journey. Since MAE and MAX are completely different journeys, we are restricting MAE cases from being opened in the intermediary MAX channel.
-
-Full-Serve Fix:
-Based on Tony's comment on JIRA, the business is not currently seeking a Full-Serve fix.
-
-We have received confirmation on both points. Could you please provide your approval to proceed with the proposed design?
+I have responded to the outstanding design questions. Could you please review them and provide your sign-off?
