@@ -1,7 +1,1 @@
-In regard to the proposed change of modifying the data type of a field from Boolean to a type capable of holding multiple values, we need to emphasize that this represents a significant change from an MSO (Mortgage Servicing Organization) perspective. This field is passed to multiple downstream systems, internal services, and is also stored in the database.
-
-During a previous discussion, we suggested an alternative approach:
-
-Introduce a new field specifically for MAE cases.
-Hide the existing Boolean field to minimize the impact on existing systems and processes.
-This approach significantly reduces the scope of changes required across downstream systems, internal services, and the database.
+Additionally, it’s important to note that, so far, we have not accepted any changes that would impact the MAX journey.
