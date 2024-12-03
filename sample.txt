@@ -1,1 +1,1 @@
-I have responded to the outstanding design questions. Could you please review them and provide your sign-off?
+This case appears to meet one of the trigger points for automation valuation.
