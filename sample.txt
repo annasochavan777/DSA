@@ -1,2 +1,1 @@
-Most of the servers are running low on storage, making it difficult to store the backups. Could we request the RTB team to clean up the D drive?
-
+As discussed during yesterday’s call, we are sending the correct data. The issue lies with the work event trigger logic, which needs to be corrected. Therefore, I am assigning it to Promod to update the logic accordingly.
