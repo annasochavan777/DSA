@@ -1,1 +1,2 @@
-Currently, we are capturing the solicitor allocation event for all applications, and it is possible to retrieve the solicitor’s name as well. Would you like us to modify the existing query to include this field?
+Most of the servers are running low on storage, making it difficult to store the backups. Could we request the RTB team to clean up the D drive?
+
