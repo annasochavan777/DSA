@@ -1,1 +1,7 @@
-As discussed during yesterday’s call, we are sending the correct data. The issue lies with the work event trigger logic, which needs to be corrected. Therefore, I am assigning it to Promod to update the logic accordingly.
+const sourceSystem = feDIV("System.SalesProcess.MortgageSeller.SourceSystem");
+if (!sourceSystem || isNaN(sourceSystem) || sourceSystem !== 'MAE') {
+    const schemeType = feDIV("FactFind.Property.SpecialPurchase.SpecialPurchaseType");
+    if (schemeType && schemeType.length > 0 && schemeType === 'DMS') {
+        alert('Discounted Market Sale is not applicable for non-MAE applications.');
+    }
+}
