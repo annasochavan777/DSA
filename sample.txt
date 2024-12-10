@@ -1,1 +1,2 @@
-The account is not onboarded to CyberArk, and onboarding seems unlikely at the moment since its password is hardcoded in the Jenkins pipeline and the BCMDB utility.
+To resolve this issue permanently, I am working on a query to eliminate the dependency on the MI Extractor service. Currently, we are using the MI-application table to filter out intermediary cases. However, there is another table, 'Channel,' which contains the exact same information, replicated through actual data synchronization. I will update you once the new query is ready.
+
