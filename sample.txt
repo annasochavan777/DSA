@@ -1,2 +1,2 @@
-Just one question: Is there any logic dependent on the applicationSource field? This field's value will be updated from Intremedon to Intermediary. Apart from this, nothing else will change. Please share your thoughts on this.
+This field was included in the SELECT statement, so I wanted to confirm whether it is being used elsewhere. If it is not in use, then we are good to proceed. This field is utilized on the MSO side to filter only intermediary cases. Therefore, we are good to implement this change. Thanks!
 
