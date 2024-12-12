@@ -1,2 +1,2 @@
-Yes, we can add a new field to capture the solicitor's name in the event file. This is a minor change requiring approximately one day of effort. The maximum allowed length for this field is 80 characters.
+I have updated the leave plan on the calendar below and confirmed with Koena that she will be available during my absence.
 
