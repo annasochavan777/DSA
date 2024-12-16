@@ -1,2 +1,2 @@
-I have made the necessary changes to fetch the solicitor's name. Please find the updated query below and make the required changes on your side.
+Over the weekend, I worked on reverting the DP76 changes in forms admin and prepared the build, including updates for fixed-term, foster carers, and previous employment history changes.
 
