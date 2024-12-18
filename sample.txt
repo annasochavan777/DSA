@@ -1,2 +1,47 @@
-Over the weekend, I worked on reverting the DP76 changes in forms admin and prepared the build, including updates for fixed-term, foster carers, and previous employment history changes.
+# Parameters
+$projectPath = "C:\Path\To\Your\Project" # Set your project directory
+$packageName = "Newtonsoft.Json"         # Set the package name to update
+$newVersion = "13.0.3"                   # Set the new version
 
+# Function to update packages.config
+function Update-PackagesConfig {
+    $packagesConfigPath = Join-Path $projectPath "packages.config"
+    if (Test-Path $packagesConfigPath) {
+        Write-Output "Updating packages.config..."
+        (Get-Content $packagesConfigPath) -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`"" | Set-Content $packagesConfigPath
+        Write-Output "Updated packages.config successfully."
+    } else {
+        Write-Output "packages.config not found."
+    }
+}
+
+# Function to update .csproj file
+function Update-Csproj {
+    $csprojPath = Get-ChildItem -Path $projectPath -Filter *.csproj | Select-Object -First 1
+    if ($csprojPath) {
+        Write-Output "Updating $($csprojPath.FullName)..."
+        (Get-Content $csprojPath.FullName) -replace "<PackageReference Include=`"$packageName`".*?Version=`"[^`"]+`"", "<PackageReference Include=`"$packageName`" Version=`"$newVersion`"" | Set-Content $csprojPath.FullName
+        Write-Output "Updated .csproj successfully."
+    } else {
+        Write-Output "No .csproj file found in the project directory."
+    }
+}
+
+# Function to remove .refresh files
+function Remove-RefreshFiles {
+    $refreshFiles = Get-ChildItem -Path $projectPath -Recurse -Filter "$packageName*.refresh"
+    if ($refreshFiles) {
+        Write-Output "Removing .refresh files..."
+        $refreshFiles | Remove-Item -Force
+        Write-Output "Removed .refresh files successfully."
+    } else {
+        Write-Output "No .refresh files found for $packageName."
+    }
+}
+
+# Run the update functions
+Update-PackagesConfig
+Update-Csproj
+Remove-RefreshFiles
+
+Write-Output "NuGet package version update completed."
