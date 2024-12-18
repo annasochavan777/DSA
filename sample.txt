@@ -3,7 +3,7 @@ $projectPath = "C:\Path\To\Your\Project" # Set your project directory
 $packageName = "Newtonsoft.Json"         # Set the package name to update
 $newVersion = "13.0.3"                   # Set the new version
 
-
+"<HintPath>(.*?\\$packagePrefix[^\\]*\\.*)</HintPath>"
 # Function to update the <HintPath> content and write it back to the file
 function Update-HintPathPackageName {
     $csprojFiles = Get-ChildItem -Path $projectPath -Recurse -Filter *.csproj
