@@ -3,28 +3,40 @@ $projectPath = "C:\Path\To\Your\Project" # Set your project directory
 $packageName = "Newtonsoft.Json"         # Set the package name to update
 $newVersion = "13.0.3"                   # Set the new version
 
-# Function to update packages.config
-function Update-AllPackagesConfig {
-    # Get all packages.config files in the directory and its subdirectories
-    $packagesConfigFiles = Get-ChildItem -Path $projectPath -Recurse -Filter "packages.config"
-    if ($packagesConfigFiles) {
-        Write-Output "Found $($packagesConfigFiles.Count) packages.config file(s)."
-        foreach ($file in $packagesConfigFiles) {
-            # Check if the package exists in the current file
-            $content = Get-Content $file.FullName
-            if ($content -match "id=`"$packageName`"") {
-                Write-Output "Package '$packageName' found in $($file.FullName). Updating..."
-                $updatedContent = $content -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`""
+
+# Function to update the <HintPath> content and write it back to the file
+function Update-HintPathPackageName {
+    $csprojFiles = Get-ChildItem -Path $projectPath -Recurse -Filter *.csproj
+    if ($csprojFiles) {
+        Write-Output "Found $($csprojFiles.Count) .csproj file(s)."
+        foreach ($file in $csprojFiles) {
+            $content = Get-Content $file.FullName -Raw
+            
+            # Extract and update the HintPath for the specific package
+            if ($content -match "<HintPath>(.*?\\$packageName\\.*?\\.*?)</HintPath>") {
+                $originalHintPath = $matches[1]
+                Write-Output "Original HintPath found in $($file.FullName): $originalHintPath"
+
+                # Replace the package name in the HintPath
+                $updatedHintPath = $originalHintPath -replace "\\$packageName\\", "\\$newPackageName\\"
+                Write-Output "Updated HintPath: $updatedHintPath"
+
+                # Update the file content by replacing the old HintPath with the new one
+                $updatedContent = $content -replace [regex]::Escape($originalHintPath), [regex]::Escape($updatedHintPath)
                 $updatedContent | Set-Content $file.FullName
-                Write-Output "Updated $($file.FullName) successfully."
+
+                Write-Output "Updated HintPath in $($file.FullName) successfully."
             } else {
-                Write-Output "Package '$packageName' not found in $($file.FullName). Skipping."
+                Write-Output "No HintPath entry found for package '$packageName' in $($file.FullName)."
             }
         }
     } else {
-        Write-Output "No packages.config files found."
+        Write-Output "No .csproj files found."
     }
 }
+
+# Run the function
+Update-HintPathPackageName
 function Update-CsprojHintPath {
     $csprojFiles = Get-ChildItem -Path $projectPath -Recurse -Filter *.csproj
     if ($csprojFiles) {
