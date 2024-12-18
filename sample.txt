@@ -25,9 +25,6 @@ function Update-AllPackagesConfig {
         Write-Output "No packages.config files found."
     }
 }
-
-# Function to update .csproj file
-# Function to update <Reference> nodes in .csproj files
 function Update-CsprojHintPath {
     $csprojFiles = Get-ChildItem -Path $projectPath -Recurse -Filter *.csproj
     if ($csprojFiles) {
@@ -35,28 +32,21 @@ function Update-CsprojHintPath {
         foreach ($file in $csprojFiles) {
             $content = Get-Content $file.FullName -Raw
 
-            # Check if <Reference Include="PackageName, Version=..."> exists
-            if ($content -match "<Reference Include=`"$packageName, Version=.*?`">") {
-                Write-Output "Package '$packageName' found in $($file.FullName). Updating HintPath..."
-                
-                # Update the version in the <Reference Include="...">
-                $updatedContent = $content -replace "<Reference Include=`"$packageName, Version=[^`"]+`"", "<Reference Include=`"$packageName, Version=$newVersion`""
+            # Regex to find and update the HintPath for the specified package
+            $updatedContent = $content -replace "(<HintPath>.*\\$packageName\\)([^\\]+)(\\.*?</HintPath>)", "`$1$newVersion`$3"
 
-                # Update the <HintPath> to include the new version
-                $updatedContent = $updatedContent -replace "<HintPath>.*?\\$packageName\\[^\\]+\\", "<HintPath>packages\\$packageName\\$newVersion\\"
-
-                # Write the updated content back to the file
+            if ($updatedContent -ne $content) {
+                Write-Output "Updating HintPath in $($file.FullName)..."
                 $updatedContent | Set-Content $file.FullName
                 Write-Output "Updated HintPath in $($file.FullName) successfully."
             } else {
-                Write-Output "Package '$packageName' not found in $($file.FullName). Skipping."
+                Write-Output "No HintPath entry found for package '$packageName' in $($file.FullName). Skipping."
             }
         }
     } else {
         Write-Output "No .csproj files found."
     }
 }
-
 # Function to remove .refresh files
 function Remove-RefreshFiles {
     $refreshFiles = Get-ChildItem -Path $projectPath -Recurse -Filter "$packageName*.refresh"
