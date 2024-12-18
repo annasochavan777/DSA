@@ -10,9 +10,16 @@ function Update-AllPackagesConfig {
     if ($packagesConfigFiles) {
         Write-Output "Found $($packagesConfigFiles.Count) packages.config file(s)."
         foreach ($file in $packagesConfigFiles) {
-            Write-Output "Updating $($file.FullName)..."
-            (Get-Content $file.FullName) -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`"" | Set-Content $file.FullName
-            Write-Output "Updated $($file.FullName) successfully."
+            # Check if the package exists in the current file
+            $content = Get-Content $file.FullName
+            if ($content -match "id=`"$packageName`"") {
+                Write-Output "Package '$packageName' found in $($file.FullName). Updating..."
+                $updatedContent = $content -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`""
+                $updatedContent | Set-Content $file.FullName
+                Write-Output "Updated $($file.FullName) successfully."
+            } else {
+                Write-Output "Package '$packageName' not found in $($file.FullName). Skipping."
+            }
         }
     } else {
         Write-Output "No packages.config files found."
