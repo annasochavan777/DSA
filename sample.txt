@@ -27,14 +27,33 @@ function Update-AllPackagesConfig {
 }
 
 # Function to update .csproj file
-function Update-Csproj {
-    $csprojPath = Get-ChildItem -Path $projectPath -Filter *.csproj | Select-Object -First 1
-    if ($csprojPath) {
-        Write-Output "Updating $($csprojPath.FullName)..."
-        (Get-Content $csprojPath.FullName) -replace "<PackageReference Include=`"$packageName`".*?Version=`"[^`"]+`"", "<PackageReference Include=`"$packageName`" Version=`"$newVersion`"" | Set-Content $csprojPath.FullName
-        Write-Output "Updated .csproj successfully."
+# Function to update <Reference> nodes in .csproj files
+function Update-CsprojHintPath {
+    $csprojFiles = Get-ChildItem -Path $projectPath -Recurse -Filter *.csproj
+    if ($csprojFiles) {
+        Write-Output "Found $($csprojFiles.Count) .csproj file(s)."
+        foreach ($file in $csprojFiles) {
+            $content = Get-Content $file.FullName -Raw
+
+            # Check if <Reference Include="PackageName, Version=..."> exists
+            if ($content -match "<Reference Include=`"$packageName, Version=.*?`">") {
+                Write-Output "Package '$packageName' found in $($file.FullName). Updating HintPath..."
+                
+                # Update the version in the <Reference Include="...">
+                $updatedContent = $content -replace "<Reference Include=`"$packageName, Version=[^`"]+`"", "<Reference Include=`"$packageName, Version=$newVersion`""
+
+                # Update the <HintPath> to include the new version
+                $updatedContent = $updatedContent -replace "<HintPath>.*?\\$packageName\\[^\\]+\\", "<HintPath>packages\\$packageName\\$newVersion\\"
+
+                # Write the updated content back to the file
+                $updatedContent | Set-Content $file.FullName
+                Write-Output "Updated HintPath in $($file.FullName) successfully."
+            } else {
+                Write-Output "Package '$packageName' not found in $($file.FullName). Skipping."
+            }
+        }
     } else {
-        Write-Output "No .csproj file found in the project directory."
+        Write-Output "No .csproj files found."
     }
 }
 
