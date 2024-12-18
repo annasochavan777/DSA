@@ -4,14 +4,18 @@ $packageName = "Newtonsoft.Json"         # Set the package name to update
 $newVersion = "13.0.3"                   # Set the new version
 
 # Function to update packages.config
-function Update-PackagesConfig {
-    $packagesConfigPath = Join-Path $projectPath "packages.config"
-    if (Test-Path $packagesConfigPath) {
-        Write-Output "Updating packages.config..."
-        (Get-Content $packagesConfigPath) -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`"" | Set-Content $packagesConfigPath
-        Write-Output "Updated packages.config successfully."
+function Update-AllPackagesConfig {
+    # Get all packages.config files in the directory and its subdirectories
+    $packagesConfigFiles = Get-ChildItem -Path $projectPath -Recurse -Filter "packages.config"
+    if ($packagesConfigFiles) {
+        Write-Output "Found $($packagesConfigFiles.Count) packages.config file(s)."
+        foreach ($file in $packagesConfigFiles) {
+            Write-Output "Updating $($file.FullName)..."
+            (Get-Content $file.FullName) -replace "id=`"$packageName`".*?version=`"[^`"]+`"", "id=`"$packageName`" version=`"$newVersion`"" | Set-Content $file.FullName
+            Write-Output "Updated $($file.FullName) successfully."
+        }
     } else {
-        Write-Output "packages.config not found."
+        Write-Output "No packages.config files found."
     }
 }
 
