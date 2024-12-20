@@ -1,43 +1,25 @@
 # Parameters
-$baseUrl = "https://stash.example.com/rest/api/1.0"
-$projectKey = "PROJECT_KEY"
-$repoSlug = "REPO_SLUG"
-$filePath = "src/main/resources/config.json" # File path in the repo
-$branch = "main" # Branch name, tag, or commit hash
-$username = "your_username"
-$password = "your_password"
+$sshUrl = "ssh://git@stash.example.com:7999/PROJECT_KEY/REPO_SLUG.git"
+$branch = "main" # Branch, tag, or commit
+$filePath = "src/main/resources/config.json" # File path in the repository
+$outputFolder = "$PWD\DownloadedFiles" # Local folder to store the file
+$outputFile = Join-Path -Path $outputFolder -ChildPath ([System.IO.Path]::GetFileName($filePath))
 
-# Extract file name from the file path
-$fileName = [System.IO.Path]::GetFileName($filePath)
-
-# Create a folder based on the file name (without extension)
-$folderName = [System.IO.Path]::GetFileNameWithoutExtension($fileName)
-$outputFolder = Join-Path -Path $PWD -ChildPath $folderName
-
-# Ensure the folder exists
+# Ensure output folder exists
 if (-not (Test-Path -Path $outputFolder)) {
     New-Item -ItemType Directory -Path $outputFolder | Out-Null
 }
 
-# Define the output file path
-$outputFile = Join-Path -Path $outputFolder -ChildPath $fileName
+# Construct Git command
+$gitCommand = "git archive --remote=$sshUrl $branch $filePath | tar -x -O > `"$outputFile`""
 
-# Build the API URL
-$fileUrl = "$baseUrl/projects/$projectKey/repos/$repoSlug/raw/$filePath?at=$branch"
+# Execute Git command
+Write-Output "Downloading file via SSH..."
+Invoke-Expression $gitCommand
 
-# Set up authentication
-$credentials = "$username:$password"
-$encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($credentials))
-$headers = @{
-    Authorization = "Basic $encodedCredentials"
-}
-
-# Download the file
-Write-Output "Downloading file from $fileUrl..."
-$response = Invoke-WebRequest -Uri $fileUrl -Headers $headers -OutFile $outputFile -UseBasicParsing
-
-if ($response.StatusCode -eq 200) {
+# Check if file exists
+if (Test-Path -Path $outputFile) {
     Write-Output "File downloaded successfully: $outputFile"
 } else {
-    Write-Output "Failed to download file. Status Code: $($response.StatusCode)"
+    Write-Output "Failed to download file."
 }
