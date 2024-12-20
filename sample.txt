@@ -1,6 +1,4 @@
-Issue Background:
-We observed in production that the MI Extractor service processed two cases with a delay of around 12 hours. Currently, we rely on the MI-application table to filter intermediary cases, which creates a dependency on the MI Extractor service.
 
-Resolution:
-To eliminate this dependency, we plan to use the 'Channel' table, which contains the same information as the MI-application table through data replication. I am working on a query to implement this solution and will provide an update once it is ready.
+As part of a new requirement, the AppTracking team wants to display the Solicitor name on the UI. Previously, they relied on EV-112 to determine whether a Solicitor was allocated.
+
 
