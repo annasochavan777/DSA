@@ -1,4 +1,2 @@
-
-As part of a new requirement, the AppTracking team wants to display the Solicitor name on the UI. Previously, they relied on EV-112 to determine whether a Solicitor was allocated.
-
+The following amendments have been made to the events query to retrieve the Solicitor name:
 
