@@ -1,8 +1,8 @@
 # Parameters
-$sshUrl = "ssh://git@stash.example.com:7999/PROJECT_KEY/REPO_SLUG.git"
+$sshUrl = "ssh://git@stash.example.com:7999/PROJECT_KEY/REPO_SLUG.git" # Replace with your SSH URL
 $branch = "main" # Branch, tag, or commit
 $filePath = "src/main/resources/config.json" # File path in the repository
-$outputFolder = "$PWD\DownloadedFiles" # Local folder to store the file
+$outputFolder = "$PWD\DownloadedFiles" # Local folder to save the file
 $outputFile = Join-Path -Path $outputFolder -ChildPath ([System.IO.Path]::GetFileName($filePath))
 
 # Ensure output folder exists
@@ -11,11 +11,24 @@ if (-not (Test-Path -Path $outputFolder)) {
 }
 
 # Construct Git command
-$gitCommand = "git archive --remote=$sshUrl $branch $filePath | tar -x -O > `"$outputFile`""
+$gitCommand = "git archive --remote=$sshUrl $branch $filePath"
 
-# Execute Git command
+# Execute Git command and save the file content
 Write-Output "Downloading file via SSH..."
-Invoke-Expression $gitCommand
+$processInfo = New-Object System.Diagnostics.ProcessStartInfo
+$processInfo.FileName = "git"
+$processInfo.Arguments = "archive --remote=$sshUrl $branch $filePath"
+$processInfo.RedirectStandardOutput = $true
+$processInfo.UseShellExecute = $false
+$processInfo.CreateNoWindow = $true
+
+$process = New-Object System.Diagnostics.Process
+$process.StartInfo = $processInfo
+$process.Start() | Out-Null
+
+# Save the output to the file
+$process.StandardOutput.ReadToEnd() | Out-File -FilePath $outputFile -Encoding utf8
+$process.WaitForExit()
 
 # Check if file exists
 if (Test-Path -Path $outputFile) {
