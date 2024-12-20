@@ -1,2 +1,43 @@
-The following amendments have been made to the events query to retrieve the Solicitor name:
+# Parameters
+$baseUrl = "https://stash.example.com/rest/api/1.0"
+$projectKey = "PROJECT_KEY"
+$repoSlug = "REPO_SLUG"
+$filePath = "src/main/resources/config.json" # File path in the repo
+$branch = "main" # Branch name, tag, or commit hash
+$username = "your_username"
+$password = "your_password"
 
+# Extract file name from the file path
+$fileName = [System.IO.Path]::GetFileName($filePath)
+
+# Create a folder based on the file name (without extension)
+$folderName = [System.IO.Path]::GetFileNameWithoutExtension($fileName)
+$outputFolder = Join-Path -Path $PWD -ChildPath $folderName
+
+# Ensure the folder exists
+if (-not (Test-Path -Path $outputFolder)) {
+    New-Item -ItemType Directory -Path $outputFolder | Out-Null
+}
+
+# Define the output file path
+$outputFile = Join-Path -Path $outputFolder -ChildPath $fileName
+
+# Build the API URL
+$fileUrl = "$baseUrl/projects/$projectKey/repos/$repoSlug/raw/$filePath?at=$branch"
+
+# Set up authentication
+$credentials = "$username:$password"
+$encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($credentials))
+$headers = @{
+    Authorization = "Basic $encodedCredentials"
+}
+
+# Download the file
+Write-Output "Downloading file from $fileUrl..."
+$response = Invoke-WebRequest -Uri $fileUrl -Headers $headers -OutFile $outputFile -UseBasicParsing
+
+if ($response.StatusCode -eq 200) {
+    Write-Output "File downloaded successfully: $outputFile"
+} else {
+    Write-Output "Failed to download file. Status Code: $($response.StatusCode)"
+}
