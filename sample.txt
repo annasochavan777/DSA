@@ -1,2 +1,60 @@
-I will be logging off a bit early today, around 5 PM, due to some personal commitments.
+# Define file paths
+$file1Path = "C:\Path\To\File1.txt"
+$file2Path = "C:\Path\To\File2.txt"
+$outputHtmlPath = "C:\Path\To\DifferenceReport.html"
 
+# Read file contents
+$file1Lines = Get-Content -Path $file1Path
+$file2Lines = Get-Content -Path $file2Path
+
+# Compare files
+$differences = Compare-Object -ReferenceObject $file1Lines -DifferenceObject $file2Lines -IncludeEqual -PassThru
+
+# Create an HTML file
+$htmlContent = @"
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Differences Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .added { background-color: #c6efce; color: #006100; }
+        .removed { background-color: #ffc7ce; color: #9c0006; }
+        .equal { background-color: #ffffff; color: #000000; }
+    </style>
+</head>
+<body>
+    <h1>File Differences Report</h1>
+    <table>
+        <tr>
+            <th>Status</th>
+            <th>Content</th>
+        </tr>
+"@
+
+# Process differences and add them to the HTML content
+foreach ($diff in $differences) {
+    $statusClass = ""
+    switch ($diff.SideIndicator) {
+        "=>" { $statusClass = "added" }  # Added in File2
+        "<=" { $statusClass = "removed" } # Removed from File1
+        "==" { $statusClass = "equal" }  # Equal in both files
+    }
+
+    $htmlContent += "<tr class='$statusClass'><td>$($diff.SideIndicator)</td><td>$($diff)</td></tr>"
+}
+
+# Close the HTML content
+$htmlContent += @"
+    </table>
+</body>
+</html>
+"@
+
+# Write HTML to file
+$htmlContent | Out-File -FilePath $outputHtmlPath -Encoding UTF8
+
+Write-Host "Difference report generated at: $outputHtmlPath"
