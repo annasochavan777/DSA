@@ -3,52 +3,72 @@ $file1Path = "C:\Path\To\File1.txt"
 $file2Path = "C:\Path\To\File2.txt"
 $outputHtmlPath = "C:\Path\To\DifferenceReport.html"
 
+# Install DiffPlex if not available
+if (-not (Get-Module -Name DiffPlex -ListAvailable)) {
+    Install-Module -Name DiffPlex -Scope CurrentUser -Force
+}
+
+# Import DiffPlex module
+Import-Module DiffPlex
+
 # Read file contents
-$file1Lines = Get-Content -Path $file1Path
-$file2Lines = Get-Content -Path $file2Path
+$file1Content = Get-Content -Path $file1Path -Raw
+$file2Content = Get-Content -Path $file2Path -Raw
 
-# Compare files
-$differences = Compare-Object -ReferenceObject $file1Lines -DifferenceObject $file2Lines -IncludeEqual -PassThru
+# Generate a side-by-side diff using DiffPlex
+$diff = New-Diff -OldText $file1Content -NewText $file2Content -SideBySide -IgnoreWhitespace
 
-# Create an HTML file
+# Start building the HTML content
 $htmlContent = @"
 <!DOCTYPE html>
 <html>
 <head>
-    <title>File Differences Report</title>
+    <title>Beyond Compare-like Diff Report</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .added { background-color: #c6efce; color: #006100; }
-        .removed { background-color: #ffc7ce; color: #9c0006; }
-        .equal { background-color: #ffffff; color: #000000; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #f4f4f4; }
+        .old { background-color: #ffe6e6; color: #900; } /* Removed lines */
+        .new { background-color: #e6ffe6; color: #090; } /* Added lines */
+        .unchanged { background-color: #ffffff; color: #000; } /* Unchanged lines */
     </style>
 </head>
 <body>
-    <h1>File Differences Report</h1>
+    <h1>Beyond Compare-like Diff Report</h1>
     <table>
-        <tr>
-            <th>Status</th>
-            <th>Content</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>File 1</th>
+                <th>File 2</th>
+            </tr>
+        </thead>
+        <tbody>
 "@
 
-# Process differences and add them to the HTML content
-foreach ($diff in $differences) {
-    $statusClass = ""
-    switch ($diff.SideIndicator) {
-        "=>" { $statusClass = "added" }  # Added in File2
-        "<=" { $statusClass = "removed" } # Removed from File1
-        "==" { $statusClass = "equal" }  # Equal in both files
+# Process differences and generate rows
+foreach ($line in $diff) {
+    $leftClass = $rightClass = "unchanged"
+
+    # Determine line types
+    if ($line.ChangeType -eq "Deleted") {
+        $leftClass = "old"
+    } elseif ($line.ChangeType -eq "Added") {
+        $rightClass = "new"
     }
 
-    $htmlContent += "<tr class='$statusClass'><td>$($diff.SideIndicator)</td><td>$($diff)</td></tr>"
+    # Append to HTML
+    $htmlContent += @"
+        <tr>
+            <td class='$leftClass'>$($line.OldText -join "<br>")</td>
+            <td class='$rightClass'>$($line.NewText -join "<br>")</td>
+        </tr>
+"@
 }
 
 # Close the HTML content
 $htmlContent += @"
+        </tbody>
     </table>
 </body>
 </html>
@@ -57,4 +77,4 @@ $htmlContent += @"
 # Write HTML to file
 $htmlContent | Out-File -FilePath $outputHtmlPath -Encoding UTF8
 
-Write-Host "Difference report generated at: $outputHtmlPath"
+Write-Host "Beyond Compare-like report generated at: $outputHtmlPath"
