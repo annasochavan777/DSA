@@ -1,19 +1,2 @@
-import json
+I have extracted the current code coverage configuration from the pipeline. Attached are the details, along with the script used to retrieve this information from Stash.
 
-# Read the JSON file
-with open('data.json', 'r') as file:
-    data = json.load(file)  # Load the file into a Python dictionary
-
-# Function to traverse the JSON object recursively
-def traverse_json(obj, parent_key=''):
-    if isinstance(obj, dict):  # If the object is a dictionary
-        for key, value in obj.items():
-            traverse_json(value, parent_key + '.' + key if parent_key else key)
-    elif isinstance(obj, list):  # If the object is a list
-        for index, item in enumerate(obj):
-            traverse_json(item, f"{parent_key}[{index}]")
-    else:
-        print(f"{parent_key}: {obj}")  # Print the key-value pair
-
-# Traverse the JSON object
-traverse_json(data)
