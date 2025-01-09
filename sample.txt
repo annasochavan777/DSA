@@ -5,12 +5,20 @@ file1_path = r"C:\Path\To\web1.config"
 file2_path = r"C:\Path\To\web2.config"
 output_html_path = r"C:\Path\To\XMLComparisonReport.html"
 
-# Read file contents
-with open(file1_path, 'r', encoding='utf-8') as file1:
-    file1_lines = file1.readlines()
+# Read file contents with universal encoding handling
+try:
+    with open(file1_path, 'r', encoding='utf-8') as file1:
+        file1_lines = file1.readlines()
+except UnicodeDecodeError:
+    with open(file1_path, 'r', encoding='utf-16') as file1:  # Fallback to UTF-16 if UTF-8 fails
+        file1_lines = file1.readlines()
 
-with open(file2_path, 'r', encoding='utf-8') as file2:
-    file2_lines = file2.readlines()
+try:
+    with open(file2_path, 'r', encoding='utf-8') as file2:
+        file2_lines = file2.readlines()
+except UnicodeDecodeError:
+    with open(file2_path, 'r', encoding='utf-16') as file2:  # Fallback to UTF-16 if UTF-8 fails
+        file2_lines = file2.readlines()
 
 # Use HtmlDiff from difflib to generate the side-by-side HTML
 html_diff = difflib.HtmlDiff(tabsize=4, wrapcolumn=80)
