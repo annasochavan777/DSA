@@ -1,69 +1,23 @@
+import difflib
+
 # Define file paths
-$file1Path = "C:\Path\To\web1.config"
-$file2Path = "C:\Path\To\web2.config"
-$outputHtmlPath = "C:\Path\To\DifferenceReport.html"
+file1_path = r"C:\Path\To\web1.config"
+file2_path = r"C:\Path\To\web2.config"
+output_html_path = r"C:\Path\To\XMLComparisonReport.html"
 
-# Load the XML files
-[xml]$xml1 = Get-Content -Path $file1Path
-[xml]$xml2 = Get-Content -Path $file2Path
+# Read file contents
+with open(file1_path, 'r', encoding='utf-8') as file1:
+    file1_lines = file1.readlines()
 
-# Convert XML to string arrays for easier comparison
-$xml1String = $xml1.OuterXml.Split([Environment]::NewLine)
-$xml2String = $xml2.OuterXml.Split([Environment]::NewLine)
+with open(file2_path, 'r', encoding='utf-8') as file2:
+    file2_lines = file2.readlines()
 
-# Perform comparison
-$differences = Compare-Object -ReferenceObject $xml1String -DifferenceObject $xml2String -IncludeEqual -PassThru
+# Use HtmlDiff from difflib to generate the side-by-side HTML
+html_diff = difflib.HtmlDiff(tabsize=4, wrapcolumn=80)
+html_content = html_diff.make_file(file1_lines, file2_lines, fromdesc="web1.config", todesc="web2.config")
 
-# Start building the HTML content
-$htmlContent = @"
-<!DOCTYPE html>
-<html>
-<head>
-    <title>XML Comparison Report</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .added { background-color: #c6efce; color: #006100; } /* Added lines */
-        .removed { background-color: #ffc7ce; color: #9c0006; } /* Removed lines */
-        .unchanged { background-color: #ffffff; color: #000000; } /* Unchanged lines */
-    </style>
-</head>
-<body>
-    <h1>XML Comparison Report</h1>
-    <table>
-        <tr>
-            <th>Status</th>
-            <th>Content</th>
-        </tr>
-"@
+# Write the HTML content to the output file
+with open(output_html_path, 'w', encoding='utf-8') as output_file:
+    output_file.write(html_content)
 
-# Process differences and generate HTML rows
-foreach ($diff in $differences) {
-    $class = "unchanged"  # Default style
-    switch ($diff.SideIndicator) {
-        "=>" { $class = "added" }    # Added in second XML
-        "<=" { $class = "removed" } # Removed from first XML
-    }
-
-    # Add to HTML
-    $htmlContent += @"
-        <tr class='$class'>
-            <td>$($diff.SideIndicator)</td>
-            <td>$($diff)</td>
-        </tr>
-"@
-}
-
-# Close HTML content
-$htmlContent += @"
-    </table>
-</body>
-</html>
-"@
-
-# Write to output file
-$htmlContent | Out-File -FilePath $outputHtmlPath -Encoding UTF8
-
-Write-Host "XML comparison report generated at: $outputHtmlPath"
+print(f"Side-by-side comparison report generated at: {output_html_path}")
