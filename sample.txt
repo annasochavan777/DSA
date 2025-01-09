@@ -1,35 +1,19 @@
-import requests
-from requests.auth import HTTPBasicAuth
+import json
 
-# Replace these with your details
-base_url = "https://your-bitbucket-url/rest/api/latest/projects/{projectKey}/repos/{repositorySlug}/raw/{filePath}"
-username = "your-username"
-password = "your-password"  # Or access token
-branch = "main"  # Branch name
-file_path = "path/to/your/file.txt"
+# Read the JSON file
+with open('data.json', 'r') as file:
+    data = json.load(file)  # Load the file into a Python dictionary
 
-# Construct the URL
-url = base_url.format(
-    projectKey="your-project-key",
-    repositorySlug="your-repository-slug",
-    filePath=file_path,
-)
-
-# Add query parameters for branch
-params = {"at": branch}
-
-try:
-    # Make the request
-    response = requests.get(url, params=params, auth=HTTPBasicAuth(username, password))
-    
-    # Check if the request was successful
-    if response.status_code == 200:
-        content = response.text
-        print("File Content:")
-        print(content)
+# Function to traverse the JSON object recursively
+def traverse_json(obj, parent_key=''):
+    if isinstance(obj, dict):  # If the object is a dictionary
+        for key, value in obj.items():
+            traverse_json(value, parent_key + '.' + key if parent_key else key)
+    elif isinstance(obj, list):  # If the object is a list
+        for index, item in enumerate(obj):
+            traverse_json(item, f"{parent_key}[{index}]")
     else:
-        print(f"Failed to fetch file. Status Code: {response.status_code}")
-        print("Error:", response.json())
+        print(f"{parent_key}: {obj}")  # Print the key-value pair
 
-except Exception as e:
-    print("An error occurred:", str(e))
+# Traverse the JSON object
+traverse_json(data)
