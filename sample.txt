@@ -3,20 +3,12 @@ $file1Path = "C:\Path\To\File1.txt"
 $file2Path = "C:\Path\To\File2.txt"
 $outputHtmlPath = "C:\Path\To\DifferenceReport.html"
 
-# Install DiffPlex if not available
-if (-not (Get-Module -Name DiffPlex -ListAvailable)) {
-    Install-Module -Name DiffPlex -Scope CurrentUser -Force
-}
-
-# Import DiffPlex module
-Import-Module DiffPlex
-
 # Read file contents
-$file1Content = Get-Content -Path $file1Path -Raw
-$file2Content = Get-Content -Path $file2Path -Raw
+$file1Lines = Get-Content -Path $file1Path
+$file2Lines = Get-Content -Path $file2Path
 
-# Generate a side-by-side diff using DiffPlex
-$diff = New-Diff -OldText $file1Content -NewText $file2Content -SideBySide -IgnoreWhitespace
+# Perform line-by-line comparison
+$maxLines = [Math]::Max($file1Lines.Count, $file2Lines.Count)
 
 # Start building the HTML content
 $htmlContent = @"
@@ -25,50 +17,48 @@ $htmlContent = @"
 <head>
     <title>Beyond Compare-like Diff Report</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
-        th { background-color: #f4f4f4; }
-        .old { background-color: #ffe6e6; color: #900; } /* Removed lines */
-        .new { background-color: #e6ffe6; color: #090; } /* Added lines */
-        .unchanged { background-color: #ffffff; color: #000; } /* Unchanged lines */
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .removed { background-color: #ffc7ce; color: #9c0006; } /* Removed lines */
+        .added { background-color: #c6efce; color: #006100; } /* Added lines */
+        .unchanged { background-color: #ffffff; color: #000000; } /* Unchanged lines */
     </style>
 </head>
 <body>
-    <h1>Beyond Compare-like Diff Report</h1>
+    <h1>File Comparison Report</h1>
     <table>
-        <thead>
-            <tr>
-                <th>File 1</th>
-                <th>File 2</th>
-            </tr>
-        </thead>
-        <tbody>
+        <tr>
+            <th>File 1</th>
+            <th>File 2</th>
+        </tr>
 "@
 
-# Process differences and generate rows
-foreach ($line in $diff) {
-    $leftClass = $rightClass = "unchanged"
+# Compare lines and generate rows
+for ($i = 0; $i -lt $maxLines; $i++) {
+    $line1 = if ($i -lt $file1Lines.Count) { $file1Lines[$i] } else { "" }
+    $line2 = if ($i -lt $file2Lines.Count) { $file2Lines[$i] } else { "" }
 
-    # Determine line types
-    if ($line.ChangeType -eq "Deleted") {
-        $leftClass = "old"
-    } elseif ($line.ChangeType -eq "Added") {
-        $rightClass = "new"
+    # Determine the style class
+    $class1 = $class2 = "unchanged"
+    if ($line1 -ne $line2) {
+        if ($line1 -and -not $line2) { $class1 = "removed" }
+        elseif ($line2 -and -not $line1) { $class2 = "added" }
+        else { $class1 = "removed"; $class2 = "added" }
     }
 
-    # Append to HTML
+    # Add rows to HTML
     $htmlContent += @"
         <tr>
-            <td class='$leftClass'>$($line.OldText -join "<br>")</td>
-            <td class='$rightClass'>$($line.NewText -join "<br>")</td>
+            <td class='$class1'>$line1</td>
+            <td class='$class2'>$line2</td>
         </tr>
 "@
 }
 
 # Close the HTML content
 $htmlContent += @"
-        </tbody>
     </table>
 </body>
 </html>
