@@ -1,70 +1,23 @@
+import difflib
+
 # Define file paths
-$file1Path = "C:\Path\To\File1.txt"
-$file2Path = "C:\Path\To\File2.txt"
-$outputHtmlPath = "C:\Path\To\DifferenceReport.html"
+file1_path = r"C:\Path\To\File1.txt"
+file2_path = r"C:\Path\To\File2.txt"
+output_html_path = r"C:\Path\To\DifferenceReport.html"
 
 # Read file contents
-$file1Lines = Get-Content -Path $file1Path
-$file2Lines = Get-Content -Path $file2Path
+with open(file1_path, 'r') as file1:
+    file1_lines = file1.readlines()
 
-# Perform line-by-line comparison
-$maxLines = [Math]::Max($file1Lines.Count, $file2Lines.Count)
+with open(file2_path, 'r') as file2:
+    file2_lines = file2.readlines()
 
-# Start building the HTML content
-$htmlContent = @"
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Beyond Compare-like Diff Report</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .removed { background-color: #ffc7ce; color: #9c0006; } /* Removed lines */
-        .added { background-color: #c6efce; color: #006100; } /* Added lines */
-        .unchanged { background-color: #ffffff; color: #000000; } /* Unchanged lines */
-    </style>
-</head>
-<body>
-    <h1>File Comparison Report</h1>
-    <table>
-        <tr>
-            <th>File 1</th>
-            <th>File 2</th>
-        </tr>
-"@
-
-# Compare lines and generate rows
-for ($i = 0; $i -lt $maxLines; $i++) {
-    $line1 = if ($i -lt $file1Lines.Count) { $file1Lines[$i] } else { "" }
-    $line2 = if ($i -lt $file2Lines.Count) { $file2Lines[$i] } else { "" }
-
-    # Determine the style class
-    $class1 = $class2 = "unchanged"
-    if ($line1 -ne $line2) {
-        if ($line1 -and -not $line2) { $class1 = "removed" }
-        elseif ($line2 -and -not $line1) { $class2 = "added" }
-        else { $class1 = "removed"; $class2 = "added" }
-    }
-
-    # Add rows to HTML
-    $htmlContent += @"
-        <tr>
-            <td class='$class1'>$line1</td>
-            <td class='$class2'>$line2</td>
-        </tr>
-"@
-}
-
-# Close the HTML content
-$htmlContent += @"
-    </table>
-</body>
-</html>
-"@
+# Generate HTML diff
+html_diff = difflib.HtmlDiff()
+html_content = html_diff.make_file(file1_lines, file2_lines, fromdesc='File1', todesc='File2')
 
 # Write HTML to file
-$htmlContent | Out-File -FilePath $outputHtmlPath -Encoding UTF8
+with open(output_html_path, 'w') as output_file:
+    output_file.write(html_content)
 
-Write-Host "Beyond Compare-like report generated at: $outputHtmlPath"
+print(f"Beyond Compare-like report generated at: {output_html_path}")
