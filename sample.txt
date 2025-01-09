@@ -1,31 +1,35 @@
-import difflib
+import requests
+from requests.auth import HTTPBasicAuth
 
-# Define file paths
-file1_path = r"C:\Path\To\web1.config"
-file2_path = r"C:\Path\To\web2.config"
-output_html_path = r"C:\Path\To\XMLComparisonReport.html"
+# Replace these with your details
+base_url = "https://your-bitbucket-url/rest/api/latest/projects/{projectKey}/repos/{repositorySlug}/raw/{filePath}"
+username = "your-username"
+password = "your-password"  # Or access token
+branch = "main"  # Branch name
+file_path = "path/to/your/file.txt"
 
-# Read file contents with universal encoding handling
+# Construct the URL
+url = base_url.format(
+    projectKey="your-project-key",
+    repositorySlug="your-repository-slug",
+    filePath=file_path,
+)
+
+# Add query parameters for branch
+params = {"at": branch}
+
 try:
-    with open(file1_path, 'r', encoding='utf-8') as file1:
-        file1_lines = file1.readlines()
-except UnicodeDecodeError:
-    with open(file1_path, 'r', encoding='utf-16') as file1:  # Fallback to UTF-16 if UTF-8 fails
-        file1_lines = file1.readlines()
+    # Make the request
+    response = requests.get(url, params=params, auth=HTTPBasicAuth(username, password))
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        content = response.text
+        print("File Content:")
+        print(content)
+    else:
+        print(f"Failed to fetch file. Status Code: {response.status_code}")
+        print("Error:", response.json())
 
-try:
-    with open(file2_path, 'r', encoding='utf-8') as file2:
-        file2_lines = file2.readlines()
-except UnicodeDecodeError:
-    with open(file2_path, 'r', encoding='utf-16') as file2:  # Fallback to UTF-16 if UTF-8 fails
-        file2_lines = file2.readlines()
-
-# Use HtmlDiff from difflib to generate the side-by-side HTML
-html_diff = difflib.HtmlDiff(tabsize=4, wrapcolumn=80)
-html_content = html_diff.make_file(file1_lines, file2_lines, fromdesc="web1.config", todesc="web2.config")
-
-# Write the HTML content to the output file
-with open(output_html_path, 'w', encoding='utf-8') as output_file:
-    output_file.write(html_content)
-
-print(f"Side-by-side comparison report generated at: {output_html_path}")
+except Exception as e:
+    print("An error occurred:", str(e))
