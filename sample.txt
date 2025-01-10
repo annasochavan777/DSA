@@ -1,2 +1,1 @@
-I have extracted the current code coverage configuration from the pipeline. Attached are the details, along with the script used to retrieve this information from Stash.
-
+The error occurred because the data for customers.1.existingcustomer is missing in this case. Refer to the snapshot below. Try to answer the question, “Are you an existing customer? Yes/No.” This will resolve the issue.
