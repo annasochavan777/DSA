@@ -1,2 +1,2 @@
-This is the existing code behavior, and ideally, this data should come via SJI. Please check with them to understand why this data is not being received.
+It appears that the SIT1 servers are down, as we are unable to establish a connection. Could you please assist on priority? Our testing is completely blocked due to this issue.
 
