@@ -1,1 +1,2 @@
-The error occurred because the data for customers.1.existingcustomer is missing in this case. Refer to the snapshot below. Try to answer the question, “Are you an existing customer? Yes/No.” This will resolve the issue.
+This is the existing code behavior, and ideally, this data should come via SJI. Please check with them to understand why this data is not being received.
+
