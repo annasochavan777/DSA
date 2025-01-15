@@ -1,2 +1,7 @@
-It appears that the SIT1 servers are down, as we are unable to establish a connection. Could you please assist on priority? Our testing is completely blocked due to this issue.
+The issue reported in JIRA #4322 highlights that records deleted from the MAE UI are not being removed on the MSO side. To address this, code changes are required on both sides. Moving forward, if a structure does not contain any elements, please send the rowId field of that structure as null. This will allow us to remove the corresponding record on our end, if present.
 
+Below is a sample for reference:
+
+[Include sample here]
+
+If you have any concerns or need further clarification, feel free to connect with us over a call.
