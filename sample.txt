@@ -1,1 +1,1 @@
-This is a known issue that has never worked in the SIT environment due to the same certificate being used for both the TIAA pick-up and the mortgage account enquiry server, which are shared. To resolve this issue permanently, we can whitelist this certificate on the MTS side.
+We recommend updating the rowLastModified field in the offer table to the current datetime, ensuring that the ETL process picks it up and proceeds accordingly.
