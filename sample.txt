@@ -1,7 +1,1 @@
-The issue reported in JIRA #4322 highlights that records deleted from the MAE UI are not being removed on the MSO side. To address this, code changes are required on both sides. Moving forward, if a structure does not contain any elements, please send the rowId field of that structure as null. This will allow us to remove the corresponding record on our end, if present.
-
-Below is a sample for reference:
-
-[Include sample here]
-
-If you have any concerns or need further clarification, feel free to connect with us over a call.
+This is a known issue that has never worked in the SIT environment due to the same certificate being used for both the TIAA pick-up and the mortgage account enquiry server, which are shared. To resolve this issue permanently, we can whitelist this certificate on the MTS side.
