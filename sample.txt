@@ -1,1 +1,5 @@
-We recommend updating the rowLastModified field in the offer table to the current datetime, ensuring that the ETL process picks it up and proceeds accordingly.
+Hi all,
+
+The deployment has been successfully completed.
+
+@Jeet - Could you please assign someone from the test team to perform the post-deployment checks? Once they confirm completion, kindly let me know, and I will proceed with starting the services and enabling the workflow flag.
