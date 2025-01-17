@@ -1,5 +1,3 @@
-Hi all,
+When we received the new requirement for the self-employment type for the MAE case, Jordan informed us about an existing production issue related to the calculation in the self-employment section. He also requested us to address this issue. According to the new calculation, the value should be computed as: (netprofit1 + netprofit2 + netprofit3) / 3. Based on this formula, I can confirm that the value displayed in CDU is correct. However, I believe the same fix needs to be applied on the MAX side to ensure both systems are in sync.
 
-The deployment has been successfully completed.
-
-@Jeet - Could you please assign someone from the test team to perform the post-deployment checks? Once they confirm completion, kindly let me know, and I will proceed with starting the services and enabling the workflow flag.
+@Jordan - Could you please confirm if my understanding is correct?
