@@ -1,1 +1,1 @@
-Since this fix is required in both the MAX and Origination journeys, but we had not previously applied the fix in the MAX component, we have decided to revert the code for now. In a future release, we plan to deliver the fix for both MAX and Origination together to ensure consistency across the systems.
+We are planning to configure the AIP URL as part of the MSO release scheduled for the 26th. Could you please share the production AIP URL?
