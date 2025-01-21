@@ -1,2 +1,1 @@
-The workflow has been configured to automatically create this case requirement if the application type is "Transfer of Equity," "Restructure Loan," or "Rate Switch." Below is a snapshot of the corresponding rule.
-
+I went through the requirements and have a few points I'd like to discuss with you before proceeding with the design. Let me know whenever you're free so we can connect and discuss.
