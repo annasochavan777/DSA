@@ -1,21 +1,42 @@
 # Import the IIS module
 Import-Module WebAdministration
 
-# Function to retrieve all applications under a website
-function Get-WebApplications {
-    # Iterate through each website in IIS
+# Function to retrieve application trust levels and display in a table
+function Get-WebApplicationTrustLevelFromIIS {
+    # Create an array to store results
+    $results = @()
+
+    # Iterate through all websites
     Get-ChildItem IIS:\Sites | ForEach-Object {
         $siteName = $_.Name
-        Write-Host "Website: $siteName" -ForegroundColor Cyan
 
-        # Get all web applications (exclude root '/' application)
-        Get-WebApplication -Site $siteName | ForEach-Object {
-            Write-Host "  Application Path: $_.Path"
-            Write-Host "  Physical Path: $_.PhysicalPath"
+        # Get all web applications under the website
+        Get-ChildItem "IIS:\Sites\$siteName" | Where-Object {
+            $_.Schema.ClassName -eq "Application"
+        } | ForEach-Object {
+            $appPath = $_.PhysicalPath
+            $appName = $_.PSChildName
+
+            # Get the application pool associated with the application
+            $appPoolName = $_.ApplicationPool
+
+            # Read the trust level from the application pool
+            $trustLevel = Get-ItemProperty "IIS:\AppPools\$appPoolName" -Name managedPipelineMode | Select-Object -ExpandProperty managedPipelineMode
+
+            # Add the data to the results array
+            $results += [PSCustomObject]@{
+                Website        = $siteName
+                Application    = $appName
+                PhysicalPath   = $appPath
+                AppPool        = $appPoolName
+                TrustLevel     = $trustLevel
+            }
         }
-        Write-Host ""
     }
+
+    # Output the results in a table
+    $results | Format-Table -AutoSize
 }
 
-# Run the function to list all applications under all websites
-Get-WebApplications
+# Run the function
+Get-WebApplicationTrustLevelFromIIS
