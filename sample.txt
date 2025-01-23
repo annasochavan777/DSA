@@ -1,25 +1,16 @@
 # Import the WebAdministration module
 Import-Module WebAdministration
 
-# Get all websites
-Write-Host "Websites:" -ForegroundColor Green
-Get-ChildItem IIS:\Sites | ForEach-Object {
-    Write-Host "Site Name: $_.Name"
-    Write-Host "  State: $_.State"
-    Write-Host "  Physical Path: $_.PhysicalPath"
-    Write-Host "  Binding Information: " 
-    $_.Bindings.Collection | ForEach-Object {
-        Write-Host "    Protocol: $($_.protocol), Address: $($_.bindingInformation)"
-    }
-    Write-Host ""
-}
-
-# Get all web applications under each website
-Write-Host "Web Applications:" -ForegroundColor Green
+# Get all websites and their web applications
+Write-Host "Web Applications under Websites:" -ForegroundColor Green
 Get-ChildItem IIS:\Sites | ForEach-Object {
     $siteName = $_.Name
-    Write-Host "Site Name: $siteName"
-    Get-ChildItem "IIS:\Sites\$siteName" | Where-Object { $_.PSIsContainer } | ForEach-Object {
+    Write-Host "Website: $siteName" -ForegroundColor Cyan
+
+    # Retrieve all child items under the website
+    Get-ChildItem "IIS:\Sites\$siteName" | Where-Object { 
+        $_.Schema.ClassName -eq "Application" -and $_.PSChildName -ne "/" 
+    } | ForEach-Object {
         Write-Host "  Application Path: $_.PSChildName"
         Write-Host "  Physical Path: $_.PhysicalPath"
     }
