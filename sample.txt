@@ -1,21 +1,27 @@
+# Import the WebAdministration module
 Import-Module WebAdministration
 
-param (
-    [string]$SiteName = "Default Web Site"  # Replace with the name of your IIS site
-)
-
-try {
-    # Get the application pool associated with the site
-    $appPoolName = (Get-Item "IIS:\Sites\$SiteName").applicationPool
-
-    if ($appPoolName) {
-        # Fetch the trust level configuration for the application pool
-        $trustLevel = Get-WebConfigurationProperty -Filter "system.web/trust" -PSPath "IIS:\Sites\$SiteName" -Name "level"
-
-        Write-Output "Trust Level for '$SiteName': $($trustLevel.Value)"
-    } else {
-        Write-Host "Application pool for site '$SiteName' not found." -ForegroundColor Yellow
+# Get all websites
+Write-Host "Websites:" -ForegroundColor Green
+Get-ChildItem IIS:\Sites | ForEach-Object {
+    Write-Host "Site Name: $_.Name"
+    Write-Host "  State: $_.State"
+    Write-Host "  Physical Path: $_.PhysicalPath"
+    Write-Host "  Binding Information: " 
+    $_.Bindings.Collection | ForEach-Object {
+        Write-Host "    Protocol: $($_.protocol), Address: $($_.bindingInformation)"
     }
-} catch {
-    Write-Host "Error: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host ""
+}
+
+# Get all web applications under each website
+Write-Host "Web Applications:" -ForegroundColor Green
+Get-ChildItem IIS:\Sites | ForEach-Object {
+    $siteName = $_.Name
+    Write-Host "Site Name: $siteName"
+    Get-ChildItem "IIS:\Sites\$siteName" | Where-Object { $_.PSIsContainer } | ForEach-Object {
+        Write-Host "  Application Path: $_.PSChildName"
+        Write-Host "  Physical Path: $_.PhysicalPath"
+    }
+    Write-Host ""
 }
