@@ -1,18 +1,21 @@
-# Import the WebAdministration module
+# Import the IIS module
 Import-Module WebAdministration
 
-# Get all websites and their web applications
-Write-Host "Web Applications under Websites:" -ForegroundColor Green
-Get-ChildItem IIS:\Sites | ForEach-Object {
-    $siteName = $_.Name
-    Write-Host "Website: $siteName" -ForegroundColor Cyan
+# Function to retrieve all applications under a website
+function Get-WebApplications {
+    # Iterate through each website in IIS
+    Get-ChildItem IIS:\Sites | ForEach-Object {
+        $siteName = $_.Name
+        Write-Host "Website: $siteName" -ForegroundColor Cyan
 
-    # Retrieve all child items under the website
-    Get-ChildItem "IIS:\Sites\$siteName" | Where-Object { 
-        $_.Schema.ClassName -eq "Application" -and $_.PSChildName -ne "/" 
-    } | ForEach-Object {
-        Write-Host "  Application Path: $_.PSChildName"
-        Write-Host "  Physical Path: $_.PhysicalPath"
+        # Get all web applications (exclude root '/' application)
+        Get-WebApplication -Site $siteName | ForEach-Object {
+            Write-Host "  Application Path: $_.Path"
+            Write-Host "  Physical Path: $_.PhysicalPath"
+        }
+        Write-Host ""
     }
-    Write-Host ""
 }
+
+# Run the function to list all applications under all websites
+Get-WebApplications
