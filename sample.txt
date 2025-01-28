@@ -1,42 +1,30 @@
-# Import the IIS module
-Import-Module WebAdministration
+using System;
+using System.Text;
+using System.Text.Json;
 
-# Function to retrieve application trust levels and display in a table
-function Get-WebApplicationTrustLevelFromIIS {
-    # Create an array to store results
-    $results = @()
+class Program
+{
+    static void Main()
+    {
+        // Example Base64 string
+        string base64String = "eyJrZXkxIjoiVmFsdWUxIiwia2V5MiI6IlZhbHVlMiJ9"; // Base64 for {"key1":"Value1","key2":"Value2"}
+        
+        // Decode Base64 to JSON string
+        string jsonString = Encoding.UTF8.GetString(Convert.FromBase64String(base64String));
+        
+        // Deserialize JSON to a Dictionary object
+        var jsonObject = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonString);
 
-    # Iterate through all websites
-    Get-ChildItem IIS:\Sites | ForEach-Object {
-        $siteName = $_.Name
+        // Add a new key-value pair
+        jsonObject["key3"] = "Value3";
 
-        # Get all web applications under the website
-        Get-ChildItem "IIS:\Sites\$siteName" | Where-Object {
-            $_.Schema.ClassName -eq "Application"
-        } | ForEach-Object {
-            $appPath = $_.PhysicalPath
-            $appName = $_.PSChildName
+        // Serialize back to JSON string
+        string updatedJsonString = JsonSerializer.Serialize(jsonObject);
 
-            # Get the application pool associated with the application
-            $appPoolName = $_.ApplicationPool
-
-            # Read the trust level from the application pool
-            $trustLevel = Get-ItemProperty "IIS:\AppPools\$appPoolName" -Name managedPipelineMode | Select-Object -ExpandProperty managedPipelineMode
-
-            # Add the data to the results array
-            $results += [PSCustomObject]@{
-                Website        = $siteName
-                Application    = $appName
-                PhysicalPath   = $appPath
-                AppPool        = $appPoolName
-                TrustLevel     = $trustLevel
-            }
-        }
+        // Encode the updated JSON string back to Base64
+        string updatedBase64String = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedJsonString));
+        
+        // Output the updated Base64 string
+        Console.WriteLine($"Updated Base64 String: {updatedBase64String}");
     }
-
-    # Output the results in a table
-    $results | Format-Table -AutoSize
 }
-
-# Run the function
-Get-WebApplicationTrustLevelFromIIS
