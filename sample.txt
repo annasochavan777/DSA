@@ -1,1 +1,1 @@
-Through SJI, we are receiving the same case requirement ID in the Upload Document API, causing all documents to be attached to a single case requirement.
+Could you please move the PD checks automation meeting to Tuesday? The Jenkins integration is still pending, while the script and other components are ready. We need one more day to complete everything.
