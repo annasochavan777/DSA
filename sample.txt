@@ -1,1 +1,1 @@
-The production issue occurred due to the implementation of logic to restrict MAE cases for intermediary channel changes. Specifically, in the case search operation handler, we introduced a filter to exclude non-MAE cases based on the sourceSystem field. However, during implementation, we did not account for scenarios where the sourceSystem field could be null. As a result, cases with a null sourceSystem were not handled properly, leading to this issue.
+| Export-Csv -Path "IISApplications.csv" -NoTypeInformation
