@@ -1,21 +1,2 @@
-Import-Module WebAdministration
+The Valuation EPD API is configured to return a virtual response, which is why the MAC task is being generated. There's no need for concern.
 
-# Specify the parent website name in IIS
-$siteName = "Default Web Site"
-
-# Get all applications under the website
-$webApps = Get-WebApplication -Site $siteName
-
-foreach ($app in $webApps) {
-    $appPath = $app.path.TrimStart("/")  # Remove leading '/'
-    
-    # Handle the root application separately
-    $configPath = if ($appPath -eq "") { "IIS:\Sites\$siteName" } else { "IIS:\Sites\$siteName\$appPath" }
-
-    # Get the trust level for each web application
-    $trustLevel = (Get-WebConfigurationProperty -pspath $configPath -filter "system.web/trust" -name "level").Value
-    
-    Write-Output "Application: $($app.path)"
-    Write-Output "Trust Level: $trustLevel"
-    Write-Output "-----------------------------------"
-}
