@@ -1,9 +1,21 @@
 Import-Module WebAdministration
 
-# Specify the website name in IIS
+# Specify the parent website name in IIS
 $siteName = "Default Web Site"
 
-# Get the trust level from web.config
-$trustLevel = (Get-WebConfigurationProperty -pspath "IIS:\Sites\$siteName" -filter "system.web/trust" -name "level").Value
+# Get all applications under the website
+$webApps = Get-WebApplication -Site $siteName
 
-Write-Output "Trust Level: $trustLevel"
+foreach ($app in $webApps) {
+    $appPath = $app.path.TrimStart("/")  # Remove leading '/'
+    
+    # Handle the root application separately
+    $configPath = if ($appPath -eq "") { "IIS:\Sites\$siteName" } else { "IIS:\Sites\$siteName\$appPath" }
+
+    # Get the trust level for each web application
+    $trustLevel = (Get-WebConfigurationProperty -pspath $configPath -filter "system.web/trust" -name "level").Value
+    
+    Write-Output "Application: $($app.path)"
+    Write-Output "Trust Level: $trustLevel"
+    Write-Output "-----------------------------------"
+}
