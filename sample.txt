@@ -1,1 +1,2 @@
-| Export-Csv -Path "IISApplications.csv" -NoTypeInformation
+The "Submit Case" call did not occurred on mso server in either of these cases.
+
