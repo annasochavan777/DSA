@@ -1,2 +1,9 @@
-The "Submit Case" call did not occurred on mso server in either of these cases.
+Import-Module WebAdministration
 
+# Specify the website name in IIS
+$siteName = "Default Web Site"
+
+# Get the trust level from web.config
+$trustLevel = (Get-WebConfigurationProperty -pspath "IIS:\Sites\$siteName" -filter "system.web/trust" -name "level").Value
+
+Write-Output "Trust Level: $trustLevel"
