@@ -1,2 +1,11 @@
-The Valuation EPD API is configured to return a virtual response, which is why the MAC task is being generated. There's no need for concern.
+$csvFile = "C:\path\to\file.csv"
 
+# Create a new row as a PowerShell object
+$newData = [PSCustomObject]@{
+    Column1 = "Value1"
+    Column2 = "Value2"
+    Column3 = "Value3"
+}
+
+# Append the new row while keeping the CSV format
+$newData | Export-Csv -Path $csvFile -Append -NoTypeInformation
