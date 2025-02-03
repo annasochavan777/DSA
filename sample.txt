@@ -1,1 +1,1 @@
-Once a document is uploaded against a case requirement, the case requirement status in MSO will be updated to “Received.” However, it should remain in the “Requested” status since the document has already been uploaded.
+Once a document is uploaded against a case requirement, the case requirement status in MSO will be updated to “Received.” It should not remain in the “Requested” status since the document has already been uploaded.
