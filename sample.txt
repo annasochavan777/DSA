@@ -1,11 +1,1 @@
-$csvFile = "C:\path\to\file.csv"
-
-# Create a new row as a PowerShell object
-$newData = [PSCustomObject]@{
-    Column1 = "Value1"
-    Column2 = "Value2"
-    Column3 = "Value3"
-}
-
-# Append the new row while keeping the CSV format
-$newData | Export-Csv -Path $csvFile -Append -NoTypeInformation
+Once a document is uploaded against a case requirement, the case requirement status in MSO will be updated to “Received.” However, it should remain in the “Requested” status since the document has already been uploaded.
