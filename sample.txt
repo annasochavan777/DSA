@@ -1,1 +1,2 @@
-Once a document is uploaded against a case requirement, the case requirement status in MSO will be updated to “Received.” It should not remain in the “Requested” status since the document has already been uploaded.
+In all three cases, the "Manually Assess Case" task is still outstanding, causing the workflow to stop at this point. Once you complete this task, the workflow will proceed further.
+
