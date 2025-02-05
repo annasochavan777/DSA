@@ -1,2 +1,8 @@
-In all three cases, the "Manually Assess Case" task is still outstanding, causing the workflow to stop at this point. Once you complete this task, the workflow will proceed further.
+Hi Team,
 
+Thank you all for joining the call.
+
+As discussed, please start using the PD Checks Automation job. If you have any suggestions or encounter any issues while triggering the job, feel free to reach out—I’ll be happy to assist you.
+
+Below are the job details:
+[Provide Job Details Here]
