@@ -1,1 +1,38 @@
-I have analyzed this issue from my end. Apart from the XO channel case, I have assessed the other cases. Essentially, the source system value is stored in two places: the caseMeta table in the database and case hive. For these cases, the source system value is present in case hive, but at the same time, the caseMeta table holds a null value. This suggests that something might be happening while storing this value in the caseMeta table. Further investigation is needed to determine the root cause.
+# Import the IIS module
+Import-Module WebAdministration
+
+# Define the site name and application path
+$siteName = "Default Web Site"  # Replace with your site name
+$appPath = "/MyWebApp"          # Replace with your application path (use "/" for the root site)
+
+# Function to recursively get the trust level
+function Get-TrustLevel {
+    param (
+        [string]$configPath
+    )
+
+    # Get the trust level from the current configuration
+    $trustLevel = Get-WebConfiguration -Filter "system.web/trust" -PSPath $configPath | Select-Object -ExpandProperty Level
+
+    if ($trustLevel) {
+        return $trustLevel
+    } else {
+        # If no trust level is found, check the parent configuration
+        $parentPath = Split-Path $configPath -Parent
+        if ($parentPath -eq "IIS:") {
+            # Reached the root configuration, return the default trust level (usually "Full")
+            return "Full"
+        } else {
+            return Get-TrustLevel -configPath $parentPath
+        }
+    }
+}
+
+# Construct the full configuration path
+$configPath = "IIS:\Sites\$siteName$appPath"
+
+# Get the trust level
+$trustLevel = Get-TrustLevel -configPath $configPath
+
+# Output the trust level
+Write-Host "The trust level for '$siteName$appPath' is: $trustLevel"
