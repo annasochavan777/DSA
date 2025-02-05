@@ -1,38 +1,23 @@
-# Import the IIS module
-Import-Module WebAdministration
+# Define variables
+$SourceFile = "C:\path\to\your\file.txt"  # Local file to copy
+$TargetPath = "\\RemoteMachine\C$\target\path\file.txt"  # Remote location (use UNC path)
+$RemoteComputer = "RemoteMachine"  # Remote computer name
+$ServiceName = "YourServiceName"  # Name of the Windows service to restart
+$Username = "domain\username"  # If needed, specify a domain user
+$Password = "YourPassword"  # Secure handling recommended
 
-# Define the site name and application path
-$siteName = "Default Web Site"  # Replace with your site name
-$appPath = "/MyWebApp"          # Replace with your application path (use "/" for the root site)
+# Copy the file to the remote machine
+Copy-Item -Path $SourceFile -Destination $TargetPath -Force -ErrorAction Stop
+Write-Output "File copied successfully to $TargetPath"
 
-# Function to recursively get the trust level
-function Get-TrustLevel {
-    param (
-        [string]$configPath
-    )
+# Restart the Windows service remotely
+$SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential ($Username, $SecurePassword)
 
-    # Get the trust level from the current configuration
-    $trustLevel = Get-WebConfiguration -Filter "system.web/trust" -PSPath $configPath | Select-Object -ExpandProperty Level
+Invoke-Command -ComputerName $RemoteComputer -Credential $Credential -ScriptBlock {
+    param($ServiceName)
+    Restart-Service -Name $ServiceName -Force
+    Write-Output "Service $ServiceName restarted successfully on $env:COMPUTERNAME"
+} -ArgumentList $ServiceName
 
-    if ($trustLevel) {
-        return $trustLevel
-    } else {
-        # If no trust level is found, check the parent configuration
-        $parentPath = Split-Path $configPath -Parent
-        if ($parentPath -eq "IIS:") {
-            # Reached the root configuration, return the default trust level (usually "Full")
-            return "Full"
-        } else {
-            return Get-TrustLevel -configPath $parentPath
-        }
-    }
-}
-
-# Construct the full configuration path
-$configPath = "IIS:\Sites\$siteName$appPath"
-
-# Get the trust level
-$trustLevel = Get-TrustLevel -configPath $configPath
-
-# Output the trust level
-Write-Host "The trust level for '$siteName$appPath' is: $trustLevel"
+Write-Output "Operation completed successfully."
