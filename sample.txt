@@ -1,3 +1,1 @@
-Currently, we rely on the mi_application table to filter out intermediary channel cases. This table is replicated via the MI Extractor Service, and in some scenarios, we have observed delays in its replication. However, the same information is available in the casechannel table, which is replicated using an actual SQL replication job.
-
-To address this issue, we will switch to using the casechannel table instead. After this change, we will no longer depend on the MI Extractor Service, eliminating the replication delay issue.
+If the MI Extractor Service causes delays in case processing, manual intervention will be required to update the rowlastmodified date with the current timestamp for certain tables. Therefore, DBA support is needed.
