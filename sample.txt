@@ -1,3 +1,2 @@
-$string = "apple,,banana,,cherry,,"
-$splitString = $string -split ',' | Where-Object { $_ -ne '' }
-$splitString
+Yesterday's changes do not impact regression testing, so there is no need to execute those scenarios again.
+
