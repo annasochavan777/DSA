@@ -1,1 +1,88 @@
-If the MI Extractor Service causes delays in case processing, manual intervention will be required to update the rowlastmodified date with the current timestamp for certain tables. Therefore, DBA support is needed.
+using System;
+using System.Configuration;
+using System.IO;
+using System.Threading.Tasks;
+
+namespace FileWatcherConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("File Watcher is starting...");
+            StartFileWatcher();
+            Console.WriteLine("Press 'q' to quit the application.");
+            while (Console.Read() != 'q') ;
+        }
+
+        static void StartFileWatcher()
+        {
+            string path = ConfigurationManager.AppSettings["FileWatcherPath"] ?? @"C:\WatchFolder";
+            if (!Directory.Exists(path))
+            {
+                Console.WriteLine($"The directory '{path}' does not exist. Exiting...");
+                return;
+            }
+
+            FileSystemWatcher fileWatcher = new FileSystemWatcher
+            {
+                Path = path,
+                Filter = "*.xml", // Watch only XML files
+                IncludeSubdirectories = true,
+                NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite,
+                EnableRaisingEvents = true,
+                InternalBufferSize = 64 * 1024 // Increase buffer size to handle more events
+            };
+
+            fileWatcher.Created += OnFileCreated;
+            fileWatcher.Changed += OnFileChanged;
+            fileWatcher.Deleted += OnFileDeleted;
+
+            Console.WriteLine($"Watching directory: {path}");
+        }
+
+        private static void OnFileCreated(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine($"File Created: {e.FullPath}");
+            ProcessFile(e.FullPath);
+        }
+
+        private static void OnFileChanged(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine($"File Changed: {e.FullPath}");
+        }
+
+        private static void OnFileDeleted(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine($"File Deleted: {e.FullPath}");
+        }
+
+        private static void ProcessFile(string filePath)
+        {
+            if (IsFileReady(filePath))
+            {
+                Console.WriteLine($"Processing file: {filePath}");
+                // Add your file processing logic here
+            }
+            else
+            {
+                Console.WriteLine($"File is not ready: {filePath}");
+            }
+        }
+
+        private static bool IsFileReady(string filePath)
+        {
+            try
+            {
+                using (var file = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    return true;
+                }
+            }
+            catch (IOException)
+            {
+                return false;
+            }
+        }
+    }
+}
