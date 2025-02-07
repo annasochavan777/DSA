@@ -1,2 +1,1 @@
-Yesterday's changes do not impact regression testing, so there is no need to execute those scenarios again.
-
+If the case requirement falls under the application category, then send us a value of 0.
