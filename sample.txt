@@ -24,6 +24,10 @@ namespace FileWatcherConsoleApp
                 return;
             }
 
+            // Process all existing files in the folder
+            ProcessExistingFiles(path);
+
+            // Set up the FileSystemWatcher for new files
             FileSystemWatcher fileWatcher = new FileSystemWatcher
             {
                 Path = path,
@@ -39,6 +43,17 @@ namespace FileWatcherConsoleApp
             fileWatcher.Deleted += OnFileDeleted;
 
             Console.WriteLine($"Watching directory: {path}");
+        }
+
+        private static void ProcessExistingFiles(string path)
+        {
+            Console.WriteLine("Processing existing files in the folder...");
+
+            string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
+            foreach (var file in files)
+            {
+                ProcessFile(file);
+            }
         }
 
         private static void OnFileCreated(object sender, FileSystemEventArgs e)
