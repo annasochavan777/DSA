@@ -1,2 +1,6 @@
-After reviewing the logs, it appears that the API call for document upload is not reaching the MSO side.
+The PPR requirement was delayed in code review due to recent changes.
+
+Regarding the SOL email change, this update was added to the February release at the last moment.
+
+However, no defects have been raised for either of these requirements.
 
