@@ -1,6 +1,2 @@
-The PPR requirement was delayed in code review due to recent changes.
-
-Regarding the SOL email change, this update was added to the February release at the last moment.
-
-However, no defects have been raised for either of these requirements.
+I had an offline discussion with Utkarsh and Piyush regarding this. Please give us some time to think about the solution.
 
