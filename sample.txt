@@ -1,2 +1,36 @@
-I had an offline discussion with Utkarsh and Piyush regarding this. Please give us some time to think about the solution.
+using System;
+using System.Xml;
 
+class Program
+{
+    static void Main(string[] args)
+    {
+        string sourceFilePath = @"C:\Path\To\SourceFile.xml";
+        string destinationFilePath = @"C:\Path\To\DestinationFile.xml";
+
+        try
+        {
+            // Load the XML content from the source file
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(sourceFilePath);
+            Console.WriteLine("XML content loaded successfully.");
+
+            // Create XmlWriterSettings to format the XML nicely
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "    "; // Indentation with 4 spaces
+
+            // Use XmlWriter to write the content to the new file
+            using (XmlWriter writer = XmlWriter.Create(destinationFilePath, settings))
+            {
+                // Write the XML content to the new file
+                xmlDoc.WriteTo(writer);
+                Console.WriteLine("XML content written to the new file successfully.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+}
