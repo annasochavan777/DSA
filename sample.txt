@@ -1,1 +1,1 @@
-Here are the updated queries where we have removed the dependency on the mi_application table, as it is being replicated via the MI Extractor service.
+There is no impact on production. We are addressing the delay issue caused by the MI Extractor service.
