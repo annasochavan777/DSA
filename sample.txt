@@ -1,1 +1,1 @@
-The mi_application table is also used in the valuation query, so changes are required there as well. I will make the necessary modifications and provide you with the updated query.
+Here are the updated queries where we have removed the dependency on the mi_application table, as it is being replicated via the MI Extractor service.
