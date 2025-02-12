@@ -1,4 +1,4 @@
-Here’s a professional email you can send to your team explaining why you cannot use the null-conditional (?.) operator in your project due to .NET Framework 3.5 limitations.
+Here’s the updated email incorporating your request:
 
 
 ---
@@ -7,7 +7,7 @@ Subject: Compatibility Issue with Null-Conditional Operator (?.) in .NET 3.5
 
 Hi Team,
 
-I wanted to highlight an issue regarding the use of the null-conditional operator (?.) in our codebase. While this feature simplifies null checks and enhances readability, we cannot use it in our project due to compatibility restrictions with .NET Framework 3.5.
+As discussed in the code review call, we cannot implement null condition handling using the null-conditional (?.) operator due to compatibility restrictions with .NET Framework 3.5.
 
 Key Points:
 
