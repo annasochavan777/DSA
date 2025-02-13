@@ -1,19 +1,2 @@
-$remoteComputer = "RemoteComputerName"
-$serviceName = "YourServiceName"
-$domain = "YourDomain"
-$username = "YourUsername"
-$password = "YourNewPassword"
+This case was created on June 27, 2024, and the same case ID has been allocated again. We have observed this issue previously as well.
 
-# Combine domain and username to form the account name
-$accountName = "$domain\$username"
-
-# Use the sc.exe command to update the service credentials remotely
-$scCommand = "sc.exe \\$remoteComputer config $serviceName obj= `"$accountName`" password= `"$password`""
-
-# Execute the command using Invoke-Command
-Invoke-Command -ComputerName $remoteComputer -ScriptBlock {
-    param($scCommand)
-    Invoke-Expression -Command $scCommand
-} -ArgumentList $scCommand
-
-Write-Host "Password updated successfully for service: $serviceName on $remoteComputer"
