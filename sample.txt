@@ -8,12 +8,12 @@ $password = "YourNewPassword"
 $accountName = "$domain\$username"
 
 # Use the sc.exe command to update the service credentials remotely
-$scCommand = "sc \\$remoteComputer config $serviceName obj= `"$accountName`" password= `"$password`""
+$scCommand = "sc.exe \\$remoteComputer config $serviceName obj= `"$accountName`" password= `"$password`""
 
-# Execute the command
+# Execute the command using Invoke-Command
 Invoke-Command -ComputerName $remoteComputer -ScriptBlock {
     param($scCommand)
-    Invoke-Expression $scCommand
+    Invoke-Expression -Command $scCommand
 } -ArgumentList $scCommand
 
 Write-Host "Password updated successfully for service: $serviceName on $remoteComputer"
