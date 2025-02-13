@@ -4,26 +4,16 @@ $domain = "YourDomain"
 $username = "YourUsername"
 $password = "YourNewPassword"
 
-# Create the credentials object
-$securePassword = ConvertTo-SecureString $password -AsPlainText -Force
-$creds = New-Object System.Management.Automation.PSCredential ($domain + "\" + $username, $securePassword)
+# Combine domain and username to form the account name
+$accountName = "$domain\$username"
 
-# Get the service information from the remote machine
-$service = Get-WmiObject -Class Win32_Service -ComputerName $remoteComputer -Filter "Name = '$serviceName'"
+# Use the sc.exe command to update the service credentials remotely
+$scCommand = "sc \\$remoteComputer config $serviceName obj= `"$accountName`" password= `"$password`""
 
-# Prepare the arguments for the Change method
-$arguments = @(
-    $null,  # Caption (leave it null)
-    $null,  # Description (leave it null)
-    $null,  # StartMode (leave it null)
-    $null,  # ErrorControl (leave it null)
-    $creds.UserName,  # New username
-    $creds.GetNetworkCredential().Password,  # New password
-    $null,  # LoadOrderGroup (leave it null)
-    $null   # LoadOrderGroupDependencies (leave it null)
-)
-
-# Invoke the method to change the service credentials
-$service.InvokeMethod("Change", $arguments)
+# Execute the command
+Invoke-Command -ComputerName $remoteComputer -ScriptBlock {
+    param($scCommand)
+    Invoke-Expression $scCommand
+} -ArgumentList $scCommand
 
 Write-Host "Password updated successfully for service: $serviceName on $remoteComputer"
