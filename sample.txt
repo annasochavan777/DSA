@@ -1,50 +1,20 @@
-Here’s the updated email incorporating your request:
+$remoteComputer = "RemoteComputerName"
+$serviceName = "YourServiceName"
+$domain = "YourDomain"
+$username = "YourUsername"
+$password = "YourNewPassword"
 
+# Create the credentials object
+$creds = New-Object System.Management.Automation.PSCredential ($domain + "\" + $username, (ConvertTo-SecureString $password -AsPlainText -Force))
 
----
+# Get the service information from the remote machine
+$service = Get-WmiObject -Class Win32_Service -ComputerName $remoteComputer -Filter "Name = '$serviceName'"
 
-Subject: Compatibility Issue with Null-Conditional Operator (?.) in .NET 3.5
+# Update the service password
+$service.ChangeStartMode("Manual")
+$service.Change($null, $null, $null, $null, $creds.UserName, $creds.GetNetworkCredential().Password)
 
-Hi Team,
+# Optionally, you can set the service back to automatic start mode
+$service.ChangeStartMode("Automatic")
 
-As discussed in the code review call, we cannot implement null condition handling using the null-conditional (?.) operator due to compatibility restrictions with .NET Framework 3.5.
-
-Key Points:
-
-1. Null-conditional (?.) was introduced in C# 6.0, which requires at least .NET Framework 4.5 or later.
-
-
-2. Our project targets .NET Framework 3.5, which does not support C# 6.0 features.
-
-
-3. MSBuild 14.0 allows compiling C# 6.0 code, but the actual runtime (CLR 2.0 used in .NET 3.5) does not recognize these new language features, leading to potential runtime issues.
-
-
-
-Impact:
-
-If we introduce ?., developers using older compilers may face build issues.
-
-It may lead to unexpected runtime failures in environments that strictly require .NET 3.5.
-
-
-Alternative Approach:
-
-To maintain compatibility, we should use traditional null checks, like:
-
-// Instead of:
-int? length = person?.Name?.Length;
-
-// Use:
-int? length = (person != null && person.Name != null) ? person.Name.Length : (int?)null;
-
-This ensures our code runs correctly across all supported environments.
-
-If there is a plan to upgrade to a newer .NET Framework version (4.5 or later), we can revisit this improvement in the future.
-
-Let me know if you have any questions.
-
-Best regards,
-[Your Name]
-[Your Position]
-
+Write-Host "Password updated successfully for service: $serviceName on $remoteComputer"
