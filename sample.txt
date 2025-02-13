@@ -5,16 +5,13 @@ $username = "YourUsername"
 $password = "YourNewPassword"
 
 # Create the credentials object
-$creds = New-Object System.Management.Automation.PSCredential ($domain + "\" + $username, (ConvertTo-SecureString $password -AsPlainText -Force))
+$securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ($domain + "\" + $username, $securePassword)
 
 # Get the service information from the remote machine
 $service = Get-WmiObject -Class Win32_Service -ComputerName $remoteComputer -Filter "Name = '$serviceName'"
 
-# Update the service password
-$service.ChangeStartMode("Manual")
-$service.Change($null, $null, $null, $null, $creds.UserName, $creds.GetNetworkCredential().Password)
-
-# Optionally, you can set the service back to automatic start mode
-$service.ChangeStartMode("Automatic")
+# Use the Invoke-WmiMethod cmdlet to update service credentials
+$service.InvokeMethod("Change", $null, $null, $null, $creds.UserName, $creds.Password)
 
 Write-Host "Password updated successfully for service: $serviceName on $remoteComputer"
