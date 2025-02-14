@@ -1,41 +1,40 @@
 using System;
 using System.IO;
 using System.Text;
-using System.Xml.Linq;
+using System.Xml;
+using System.Xml.Serialization;
 
-class Program
+private bool SerializeEdoToXmlFile<T>(T tEdo, string filename)
 {
-    static void Main()
+    LogManager.Write("SerializeEdoToXmlFile", TraceEventType.Information, null, false);
+
+    try
     {
-        string sourceFilePath = "source.xml";  // Path of the source XML file
-        string destinationFilePath = "output.xml"; // Path of the output XML file
+        if (tEdo == null)
+            return false;
 
-        try
+        var serializer = new XmlSerializer(typeof(T));
+
+        // Write to MemoryStream first
+        using (MemoryStream memoryStream = new MemoryStream())
         {
-            // Load XML content into memory
-            XDocument xmlDocument;
-            using (FileStream fileStream = new FileStream(sourceFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (XmlWriter writer = XmlWriter.Create(memoryStream, new XmlWriterSettings { Encoding = Encoding.Unicode, Indent = true }))
             {
-                xmlDocument = XDocument.Load(fileStream);
+                serializer.Serialize(writer, tEdo);
             }
 
-            // Write to MemoryStream first
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using (StreamWriter writer = new StreamWriter(memoryStream, Encoding.UTF8))
-                {
-                    xmlDocument.Save(writer);
-                }
-
-                // Ensure the memory stream is fully written before saving to file
-                File.WriteAllBytes(destinationFilePath, memoryStream.ToArray());
-            }
-
-            Console.WriteLine("XML file processed and saved successfully.");
+            // Ensure the file is fully written in one go
+            File.WriteAllBytes(filename, memoryStream.ToArray());
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-        }
+
+        return true;
+    }
+    catch (UnauthorizedAccessException ex)
+    {
+        ExceptionManager.Handle(ex, "LogOnMyPolicy");
+        LogManager.Write("Access exception, User: " + Thread.CurrentPrincipal.Identity.Name,
+            ex.InnerException != null ? ex.InnerException.ToString() : ex.ToString());
+
+        return false;
     }
 }
