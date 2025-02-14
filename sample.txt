@@ -1,13 +1,1 @@
-// Get all XML files in the directory
-            string[] xmlFiles = Directory.GetFiles(folderPath, "*.xml");
-
-            foreach (string file in xmlFiles)
-            {
-                Console.WriteLine($"Reading file: {file}");
-
-                // Load XML content into memory
-                XDocument xmlDocument = XDocument.Load(file);
-
-                // Print the XML content (optional)
-                Console.WriteLine(xmlDocument.ToString());
-            }
+The Saratoga service on the MSO side is responsible for processing data from ILP and inserting it into the respective tables. However, it appears that this utility has not been triggered for a long time, as there are no logs or files in the source folder. Further investigation is required, and support from the ILP team will be needed.
