@@ -1,40 +1,13 @@
-using System;
-using System.IO;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
+// Get all XML files in the directory
+            string[] xmlFiles = Directory.GetFiles(folderPath, "*.xml");
 
-private bool SerializeEdoToXmlFile<T>(T tEdo, string filename)
-{
-    LogManager.Write("SerializeEdoToXmlFile", TraceEventType.Information, null, false);
-
-    try
-    {
-        if (tEdo == null)
-            return false;
-
-        var serializer = new XmlSerializer(typeof(T));
-
-        // Write to MemoryStream first
-        using (MemoryStream memoryStream = new MemoryStream())
-        {
-            using (XmlWriter writer = XmlWriter.Create(memoryStream, new XmlWriterSettings { Encoding = Encoding.Unicode, Indent = true }))
+            foreach (string file in xmlFiles)
             {
-                serializer.Serialize(writer, tEdo);
+                Console.WriteLine($"Reading file: {file}");
+
+                // Load XML content into memory
+                XDocument xmlDocument = XDocument.Load(file);
+
+                // Print the XML content (optional)
+                Console.WriteLine(xmlDocument.ToString());
             }
-
-            // Ensure the file is fully written in one go
-            File.WriteAllBytes(filename, memoryStream.ToArray());
-        }
-
-        return true;
-    }
-    catch (UnauthorizedAccessException ex)
-    {
-        ExceptionManager.Handle(ex, "LogOnMyPolicy");
-        LogManager.Write("Access exception, User: " + Thread.CurrentPrincipal.Identity.Name,
-            ex.InnerException != null ? ex.InnerException.ToString() : ex.ToString());
-
-        return false;
-    }
-}
