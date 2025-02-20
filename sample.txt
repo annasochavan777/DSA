@@ -1,1 +1,39 @@
-“For pipeline cases, if any amendments are required, this question must be answered; otherwise, a validation error will occur. As part of the DP76 changes, a new case-related question has been introduced. For pipeline cases where CDU is not completed, the data sent via MAE will be passed to the downstream PCSM system as-is.”
+# Define old and new database instance names
+$oldDBInstance = "OLD_DB_INSTANCE"
+$newDBInstance = "NEW_DB_INSTANCE"
+
+# Define working directory for JIL files backup
+$backupDir = "C:\AutoSys_Backup"
+$modifiedDir = "C:\AutoSys_Modified"
+
+# Create directories if they don’t exist
+if (!(Test-Path $backupDir)) {
+    New-Item -ItemType Directory -Path $backupDir
+}
+if (!(Test-Path $modifiedDir)) {
+    New-Item -ItemType Directory -Path $modifiedDir
+}
+
+# Get all AutoSys jobs
+$jobList = & autorep -J ALL -q | Select-String "insert_job" | ForEach-Object { ($_ -split " ")[1] }
+
+# Loop through each job and update DB instance
+foreach ($job in $jobList) {
+    Write-Host "Processing job: $job"
+
+    # Export current job definition
+    $jilFile = "$backupDir\$job.jil"
+    $modifiedJilFile = "$modifiedDir\$job.jil"
+
+    & autorep -J $job -q > $jilFile
+
+    # Read content and replace old DB instance with the new one
+    (Get-Content $jilFile) -replace $oldDBInstance, $newDBInstance | Set-Content $modifiedJilFile
+
+    # Load the modified JIL file back to AutoSys
+    & jil < $modifiedJilFile
+
+    Write-Host "Updated job: $job"
+}
+
+Write-Host "All jobs have been updated successfully!"
