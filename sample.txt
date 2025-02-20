@@ -2,22 +2,18 @@
 $oldDBInstance = "OLD_DB_INSTANCE"
 $newDBInstance = "NEW_DB_INSTANCE"
 
-# Define working directory for JIL files backup
+# Define working directories
 $backupDir = "C:\AutoSys_Backup"
 $modifiedDir = "C:\AutoSys_Modified"
 
 # Create directories if they don’t exist
-if (!(Test-Path $backupDir)) {
-    New-Item -ItemType Directory -Path $backupDir
-}
-if (!(Test-Path $modifiedDir)) {
-    New-Item -ItemType Directory -Path $modifiedDir
-}
+if (!(Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir }
+if (!(Test-Path $modifiedDir)) { New-Item -ItemType Directory -Path $modifiedDir }
 
 # Get all AutoSys jobs
-$jobList = & autorep -J ALL -q | Select-String "insert_job" | ForEach-Object { ($_ -split " ")[1] }
+$jobList = & autojob -L  # Fetch all job names
 
-# Loop through each job and update DB instance
+# Process each job
 foreach ($job in $jobList) {
     Write-Host "Processing job: $job"
 
@@ -25,7 +21,7 @@ foreach ($job in $jobList) {
     $jilFile = "$backupDir\$job.jil"
     $modifiedJilFile = "$modifiedDir\$job.jil"
 
-    & autorep -J $job -q > $jilFile
+    & autojob -q $job > $jilFile
 
     # Read content and replace old DB instance with the new one
     (Get-Content $jilFile) -replace $oldDBInstance, $newDBInstance | Set-Content $modifiedJilFile
