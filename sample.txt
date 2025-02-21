@@ -1,35 +1,42 @@
-# Define old and new database instance names
-$oldDBInstance = "OLD_DB_INSTANCE"
-$newDBInstance = "NEW_DB_INSTANCE"
+# Define directories
+$backupDir = "C:\AutoSys_Backup"       # Folder containing original JIL files
+$modifiedDir = "C:\AutoSys_Modified"   # Folder to store modified JIL files
+$dbMappingFile = "C:\AutoSys_Backup\db_mapping.csv"  # CSV file with old-new DB instance pairs
 
-# Define working directories
-$backupDir = "C:\AutoSys_Backup"
-$modifiedDir = "C:\AutoSys_Modified"
-
-# Create directories if they don’t exist
-if (!(Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir }
-if (!(Test-Path $modifiedDir)) { New-Item -ItemType Directory -Path $modifiedDir }
-
-# Get all AutoSys jobs
-$jobList = & autojob -L  # Fetch all job names
-
-# Process each job
-foreach ($job in $jobList) {
-    Write-Host "Processing job: $job"
-
-    # Export current job definition
-    $jilFile = "$backupDir\$job.jil"
-    $modifiedJilFile = "$modifiedDir\$job.jil"
-
-    & autojob -q $job > $jilFile
-
-    # Read content and replace old DB instance with the new one
-    (Get-Content $jilFile) -replace $oldDBInstance, $newDBInstance | Set-Content $modifiedJilFile
-
-    # Load the modified JIL file back to AutoSys
-    & jil < $modifiedJilFile
-
-    Write-Host "Updated job: $job"
+# Ensure modified directory exists
+if (!(Test-Path $modifiedDir)) {
+    New-Item -ItemType Directory -Path $modifiedDir
 }
 
-Write-Host "All jobs have been updated successfully!"
+# Read the old-new DB mapping from CSV
+$dbMappings = Import-Csv $dbMappingFile
+
+# Process each JIL file
+Get-ChildItem -Path $backupDir -Filter "*.jil" | ForEach-Object {
+    $filePath = $_.FullName
+    $newFilePath = "$modifiedDir\$_"
+
+    Write-Host "Processing file: $filePath"
+
+    # Read file content
+    $content = Get-Content $filePath
+
+    # Loop through each DB mapping and replace instances
+    foreach ($mapping in $dbMappings) {
+        $oldDB = $mapping.OldDBInstance
+        $newDB = $mapping.NewDBInstance
+        $content = $content -replace $oldDB, $newDB
+    }
+
+    # Save modified content to a new file
+    $content | Set-Content $newFilePath
+
+    Write-Host "Modified file saved as: $newFilePath"
+}
+
+Write-Host "All JIL files have been updated successfully!"
+
+OldDBInstance,NewDBInstance
+OLD_DB_1,NEW_DB_1
+OLD_DB_2,NEW_DB_2
+OLD_DB_3,NEW_DB_3
