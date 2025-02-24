@@ -1,40 +1,25 @@
 <#
 .SYNOPSIS
-    This script performs a sample task.
+    Processes a list of job names.
 
 .DESCRIPTION
-    This PowerShell script takes input parameters and performs an operation.
+    This script accepts a list of job names as an input parameter and processes them.
 
-.AUTHOR
-    Your Name
-
-.VERSION
-    1.0
-
-.DATE
-    2025-02-24
-
-.LASTMODIFIED
-    2025-02-24
-
-.PARAMETER Name
-    The name of the user.
-
-.PARAMETER Age
-    The age of the user.
+.PARAMETER JobNames
+    A list of job names to be processed.
 
 .EXAMPLE
-    .\SampleScript.ps1 -Name "John Doe" -Age 30
+    .\JobsScript.ps1 -JobNames "Job1","Job2","Job3"
 
 .NOTES
-    This script is a demonstration of how to document and use parameters in PowerShell.
+    Ensure job names are passed as an array.
 #>
 
-# Define input parameters
 param (
-    [string]$Name,
-    [int]$Age
+    [string[]]$JobNames
 )
 
-# Main script logic
-Write-Output "Hello, $Name! You are $Age years old."
+# Process each job name
+foreach ($job in $JobNames) {
+    Write-Output "Processing job: $job"
+}
