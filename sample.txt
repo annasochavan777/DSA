@@ -1,1 +1,24 @@
-Get-ChildItem -Path "C:\Your\Directory\Path" -File -Recurse | ForEach-Object { $_.Name }
+Define the JIL content
+
+$jilContent = @" insert_job: My_AutoSys_Job job_type: c command: C:\Scripts\MyJobScript.bat machine: myserver owner: myuser permission: gx,wx condition: s(Dependency_Job) description: "Updated job" "@
+
+Define the JIL file path
+
+$jilFilePath = "C:\Temp\update_job.jil"
+
+Write JIL content to the file
+
+$jilContent | Set-Content -Path $jilFilePath -Encoding UTF8
+
+Define the AutoSys command
+
+$autosysCommand = "autojob -f $jilFilePath"
+
+Run the command
+
+Invoke-Expression -Command $autosysCommand
+
+Cleanup: Remove the JIL file after execution
+
+Remove-Item -Path $jilFilePath -Force
+
