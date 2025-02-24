@@ -1,24 +1,31 @@
-Define the JIL content
+<#
+.SYNOPSIS
+    Short description of the script.
 
-$jilContent = @" insert_job: My_AutoSys_Job job_type: c command: C:\Scripts\MyJobScript.bat machine: myserver owner: myuser permission: gx,wx condition: s(Dependency_Job) description: "Updated job" "@
+.DESCRIPTION
+    Detailed explanation of what the script does.
 
-Define the JIL file path
+.AUTHOR
+    Your Name
 
-$jilFilePath = "C:\Temp\update_job.jil"
+.VERSION
+    1.0
 
-Write JIL content to the file
+.DATE
+    YYYY-MM-DD
 
-$jilContent | Set-Content -Path $jilFilePath -Encoding UTF8
+.LASTMODIFIED
+    YYYY-MM-DD
 
-Define the AutoSys command
+.PARAMETER <ParameterName>
+    Description of a parameter (repeat as needed for multiple parameters).
 
-$autosysCommand = "autojob -f $jilFilePath"
+.EXAMPLE
+    Example usage of the script.
 
-Run the command
+.NOTES
+    Additional information, such as dependencies or special instructions.
+#>
 
-Invoke-Expression -Command $autosysCommand
-
-Cleanup: Remove the JIL file after execution
-
-Remove-Item -Path $jilFilePath -Force
-
+# Start of the script
+Write-Output "Hello, PowerShell!"
