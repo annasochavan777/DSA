@@ -1,1 +1,1 @@
-The “SubmitCase” operation call did not reach the MSO server. Kindly engage with the SJI team for further investigation.
+The case has not landed in the package and assess stage because the submit case call has not been triggered for these cases.
