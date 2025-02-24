@@ -1,1 +1,1 @@
-The case has not landed in the package and assess stage because the submit case call has not been triggered for these cases.
+The "Create Case" call was successful, which is why you can see the case in MO. However, as shown in the screenshot, there is no current state displayed because the "Submit Case" call has not been triggered for these cases.
