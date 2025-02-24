@@ -1,25 +1,36 @@
 <#
 .SYNOPSIS
-    Processes a list of job names.
+    Downloads AutoSys jobs and updates FB connection details.
 
 .DESCRIPTION
-    This script accepts a list of job names as an input parameter and processes them.
+    This PowerShell script:
+    1. Downloads the specified AutoSys jobs.
+    2. Updates the FB connection details with the new ones.
+    3. Accepts the AutoSys executable path and a list of job names to process.
+
+.AUTHOR
+    Your Name
+
+.VERSION
+    1.0
+
+.DATE
+    2025-02-24
+
+.LASTMODIFIED
+    2025-02-24
+
+.PARAMETER AutoSysPath
+    The full path to the AutoSys executable.
 
 .PARAMETER JobNames
-    A list of job names to be processed.
+    A list of AutoSys job names that need to be updated.
 
 .EXAMPLE
-    .\JobsScript.ps1 -JobNames "Job1","Job2","Job3"
+    .\UpdateFBConnection.ps1 -AutoSysPath "C:\AutoSys\autosys.exe" -JobNames "Job1","Job2","Job3"
 
 .NOTES
-    Ensure job names are passed as an array.
+    - Ensure the AutoSys executable path is correct.
+    - Job names should be passed as an array.
+    - Run the script with the necessary permissions.
 #>
-
-param (
-    [string[]]$JobNames
-)
-
-# Process each job name
-foreach ($job in $JobNames) {
-    Write-Output "Processing job: $job"
-}
