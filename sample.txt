@@ -1,3 +1,8 @@
+Here’s the updated script information block with proper phrasing:
+
+
+---
+
 <#
 .SYNOPSIS
     Downloads AutoSys jobs and updates FB connection details.
@@ -7,6 +12,7 @@
     1. Downloads the specified AutoSys jobs.
     2. Updates the FB connection details with the new ones.
     3. Accepts the AutoSys executable path and a list of job names to process.
+    4. Ensures that the updated jobs are pushed back to AutoSys.
 
 .AUTHOR
     Your Name
@@ -30,7 +36,14 @@
     .\UpdateFBConnection.ps1 -AutoSysPath "C:\AutoSys\autosys.exe" -JobNames "Job1","Job2","Job3"
 
 .NOTES
-    - Ensure the AutoSys executable path is correct.
+    - Ensure that the AutoSys executable path is correct.
+    - The user executing this script must have the necessary permissions to push jobs to AutoSys.
     - Job names should be passed as an array.
-    - Run the script with the necessary permissions.
+    - Run the script with the required privileges.
 #>
+
+
+---
+
+This ensures clarity and explicitly states that the user must have the required permissions to push jobs to AutoSys. Let me know if you'd like any further refinements!
+
