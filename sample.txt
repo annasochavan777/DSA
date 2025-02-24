@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Short description of the script.
+    This script performs a sample task.
 
 .DESCRIPTION
-    Detailed explanation of what the script does.
+    This PowerShell script takes input parameters and performs an operation.
 
 .AUTHOR
     Your Name
@@ -12,20 +12,29 @@
     1.0
 
 .DATE
-    YYYY-MM-DD
+    2025-02-24
 
 .LASTMODIFIED
-    YYYY-MM-DD
+    2025-02-24
 
-.PARAMETER <ParameterName>
-    Description of a parameter (repeat as needed for multiple parameters).
+.PARAMETER Name
+    The name of the user.
+
+.PARAMETER Age
+    The age of the user.
 
 .EXAMPLE
-    Example usage of the script.
+    .\SampleScript.ps1 -Name "John Doe" -Age 30
 
 .NOTES
-    Additional information, such as dependencies or special instructions.
+    This script is a demonstration of how to document and use parameters in PowerShell.
 #>
 
-# Start of the script
-Write-Output "Hello, PowerShell!"
+# Define input parameters
+param (
+    [string]$Name,
+    [int]$Age
+)
+
+# Main script logic
+Write-Output "Hello, $Name! You are $Age years old."
