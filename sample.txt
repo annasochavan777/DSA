@@ -1,3 +1,1 @@
-After reviewing the code and analyzing the current architecture, we found that the existing structure does not support the integration of transformation logic. Implementing this functionality will require significant architectural changes.
-
-To ensure the feasibility of this solution, we propose conducting a Proof of Concept (POC) to validate its effectiveness. Given the extent of these changes, we estimate that the overall effort—including development, CIT, and testing—will take approximately five weeks to complete.
+Get-ChildItem -Path "C:\Your\Directory\Path" -File -Recurse | ForEach-Object { $_.Name }
