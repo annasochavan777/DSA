@@ -1,1 +1,6 @@
-The "Create Case" call was successful, which is why you can see the case in MO. However, as shown in the screenshot, there is no current state displayed because the "Submit Case" call has not been triggered for these cases.
+Here’s the updated version:
+
+"I have completed the POC, and the outcome is that we can achieve the required functionality without moving the Fixed-Term Contracting section into the Employment section. This can be done by making some configuration changes in the MI Extractor service. Specifically, I have mapped the Fixed-Term structure to the existing Employment Details table, allowing us to successfully insert the details. With this approach, we can easily meet the requirement with minimal changes. Please find the details below."
+
+Let me know if that works for you!
+
