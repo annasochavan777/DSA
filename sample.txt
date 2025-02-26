@@ -1,1 +1,64 @@
-Thank you all so much for your kind words and appreciation! I truly value your support, and it means a lot to know that my work is making a difference. Looking forward to contributing even more!
+PD Checks Automation Job - User Guide
+
+Prerequisites for PD Checks Automation Job
+
+Ensure a full backup is taken before triggering the deployment.
+
+Verify that the backup location is the same across all servers, e.g., D:\ManagedDropZone\Backup\B_21_02_2025. If the location differs, rename it accordingly.
+
+Steps to Execute the Job
+
+The PD Checks automation process consists of two main jobs:
+
+Transferring the report generation script to target servers
+
+Triggering the PD Checks automation job to generate reports
+
+Below is a detailed explanation of each job and how to execute them.
+
+1. Transfer Script to Target Server (Jenkins Job)
+
+Step 1: Run this job by selecting the target environment and specifying the deployment server details. If "All" is selected, the job will transfer the required script to all relevant servers.
+
+2. Generate Comparison Reports (Jenkins Job)
+
+Prerequisite: The transfer script job must be completed before triggering this job.
+
+Parameters: This job requires the following parameters:
+
+Components - Select the components for which you want to perform PD checks.
+
+BuildEnv - Select the target environment.
+
+BackupLocation - Specify the backup location where the backup is stored.
+
+DeploymentServer - If set to "All," reports will be generated for all servers where the selected component is deployed.
+
+After execution, the reports will be generated on each individual server at the following location:
+
+D:\ManagedDropZone\PDCheckReport\{JobExecutionDate}.{JobNumber}
+Example: D:\ManagedDropZone\PDCheckReport\25.02.25.87
+
+Report Types
+
+The generated reports are categorized as follows:
+
+1. Configuration and Folder Comparison Reports
+
+ConfigComparisonReport{ConfigFileName}.html: If a component has multiple configuration files, they will be differentiated by file name.
+
+(Example screenshot placeholder)
+
+FolderComparisonReport.html: Provides a folder structure comparison report.
+
+(Example screenshot placeholder)
+
+2. Deployed Version Report
+
+(Example screenshot placeholder)
+
+3. IIS Pointing Report (for all components)
+
+(Example screenshot placeholder)
+
+If you have any questions, feel free to reach out to me.
