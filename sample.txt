@@ -1,12 +1,11 @@
-Subject: Clarification on PD Checks Automation Job – Confluence Guide Available
+D2I Production Issue Summary
 
-Hi [Teammate's Name],
+We observed that some files were not being processed by the Desktop-to-Image Windows Service from the xml-to-action folder. During our investigation, we identified a workaround: manually cutting and pasting the affected files into a different folder and then moving them back to the xml-to-action folder. After applying this workaround, the service successfully processed the files.
 
-I’ve noticed that there have been several queries regarding the PD Checks automation job, and many people seem to be confused about how to use it effectively. To address this, I have documented all the details in a Confluence page.
+The Desktop-to-Image Windows Service is hosted on eight application servers, monitoring the xml-to-action folder. When a new file is created in this folder, one of the services picks it up for processing and deletes it after completion. Upon further investigation, we found error logs on all servers indicating that the files were being locked by another server. This led us to explore which process was acquiring the lock and failing to release it.
 
-You can find the complete guide here: [Insert Confluence Link]
+We discovered that the files are created by another component, which is hosted on the presentation layer. The issue stemmed from the way this component was writing files—it was first creating an empty file and then writing content into it. This caused other services to attempt processing the file immediately, resulting in a file lock error. Additionally, the component relied on the operating system to release the file lock instead of explicitly managing resource cleanup.
 
-This document provides step-by-step instructions on how to execute the job, including prerequisites, job parameters, and the expected reports. Please feel free to share this with the team, and let me know if any additional clarifications are needed.
+Fix Applied:
 
-Best regards,
-[Your Name]
+We modified the file creation process to prevent this issue. Now, the file is first created in memory using a memory stream, and only after the content is fully written, the file is saved in the destination folder. This ensures that the file appears as a fully written entity in one atomic operation, preventing premature access by other services. Additionally, we have explicitly released the resources once the process is complete to avoid any further locking issues.
