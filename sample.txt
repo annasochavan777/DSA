@@ -1,11 +1,1 @@
-D2I Production Issue Summary
-
-We observed that some files were not being processed by the Desktop-to-Image Windows Service from the xml-to-action folder. During our investigation, we identified a workaround: manually cutting and pasting the affected files into a different folder and then moving them back to the xml-to-action folder. After applying this workaround, the service successfully processed the files.
-
-The Desktop-to-Image Windows Service is hosted on eight application servers, monitoring the xml-to-action folder. When a new file is created in this folder, one of the services picks it up for processing and deletes it after completion. Upon further investigation, we found error logs on all servers indicating that the files were being locked by another server. This led us to explore which process was acquiring the lock and failing to release it.
-
-We discovered that the files are created by another component, which is hosted on the presentation layer. The issue stemmed from the way this component was writing files—it was first creating an empty file and then writing content into it. This caused other services to attempt processing the file immediately, resulting in a file lock error. Additionally, the component relied on the operating system to release the file lock instead of explicitly managing resource cleanup.
-
-Fix Applied:
-
-We modified the file creation process to prevent this issue. Now, the file is first created in memory using a memory stream, and only after the content is fully written, the file is saved in the destination folder. This ensures that the file appears as a fully written entity in one atomic operation, preventing premature access by other services. Additionally, we have explicitly released the resources once the process is complete to avoid any further locking issues.
+Since this change is a fix for an existing issue rather than a new feature, we have focused solely on regression testing to ensure that the fix does not introduce any unintended side effects.
