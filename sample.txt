@@ -1,1 +1,23 @@
-Since this change is a fix for an existing issue rather than a new feature, we have focused solely on regression testing to ensure that the fix does not introduce any unintended side effects.
+Here’s a rephrased version of your message:
+
+
+---
+
+We have the Barclays.MSO.RWEAutomationService running on the Support1 server, which uses the SVC_CLI_MSOAPPS_STN4 account. This account is managed by CA, and we encountered the following error on CA:
+
+Error:
+Automatic management for this account was disabled by CPM.
+Failed to open the Barclays.MSO.RWEAutomationService on GWDKBC04WEB0048.o.client.barclayscorp.com using the user SVC_CLI_CARECON4 at the domain CLIENT.BARCLAYSCORP.COM.
+Error 183: Cannot create a file when that file already exists.
+
+It appears that the password for this account was not updated, leading to a failure when attempting to start services, including RWEAutomationService, which resulted in the service account being locked.
+
+Resolution:
+
+We updated the RWEAutomationService with the correct password and restarted all services. However, CPM was not enabled on CA, and we will review the RWEAutomationService configuration on CA as well.
+
+
+---
+
+Let me know if you need any further refinements!
+
