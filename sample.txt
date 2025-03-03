@@ -1,1 +1,1 @@
-It seems that this issue is occurring on the MAE screen. Please involve someone from the MAE team to investigate.
+This is a standard template used by CyberArk. Whenever a password is changed, the CyberArk agent pushes the latest password to the AutoSys instance. Based on the success or failure of this process, an email is triggered. Therefore, amending the password in this template is not possible.
