@@ -1,1 +1,19 @@
-L&C brokers are facing issues while logging in for the first time each day, encountering 401 or 400 errors. I need to check the logs of the Mortgage Portal to investigate further. Does anyone have access to those servers? If so, I would like to seek their help in analyzing the issue.
+Here’s a rephrased version of the email:
+
+
+---
+
+Subject: Mortgage Application Status in MSO Database
+
+Hi Utkarsh,
+
+I am not sure how the data is being sent to Salesforce, but I can see in the MSO database that the application is either canceled or the policy has been declined.
+
+Best regards,
+[Your Name]
+
+
+---
+
+Let me know if you’d like any further refinements!
+
