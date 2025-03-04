@@ -1,13 +1,2 @@
-Subject: Request for Annual Leave Approval (April 15 - April 30)
-
-Dear [Manager's Name],
-
-I hope you are doing well. I would like to request annual leave from April 15 to April 30. During my absence, Koena will be available to provide support as needed.
-
-Please let me know if you need any further information or if there are any concerns regarding my leave request. I appreciate your approval in advance.
-
-Looking forward to your confirmation.
-
-Best regards,
-[Your Name]
+In the Case Update API call, we expect the Dip.Reference Identifier Key Value field to be part of the CaseData dictionary. However, it is now being sent as part of the DecisionData dictionary. What recent changes on the SJI side led to this shift? Why is this field now included in the DecisionData dictionary?
 
