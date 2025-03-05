@@ -1,2 +1,4 @@
-In the Case Update API call, we expect the Dip.Reference Identifier Key Value field to be part of the CaseData dictionary. However, it is now being sent as part of the DecisionData dictionary. What recent changes on the SJI side led to this shift? Why is this field now included in the DecisionData dictionary?
+The RTB team is not providing support in retrieving the logs from the server, and I do not have access to those servers.
+
+
 
