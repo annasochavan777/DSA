@@ -1,3 +1,1 @@
-I have reviewed all the logs, but due to security concerns, we are not logging any TIAA token-related information, as it is considered sensitive data. As a result, we are unable to determine the exact reason for the 401 and 400 errors occurring on the first attempt each day, while subsequent attempts work fine.
-
-To investigate this issue further, I suggest getting a broker on a call and monitoring the backend logs in real time while they attempt the request. Would this be possible?
+My daughter is still unwell, as she had vomiting and diarrhea throughout the night. I will be away from 10 to 12 for a doctor's appointment.
