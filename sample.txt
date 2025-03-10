@@ -1,1 +1,1 @@
-My daughter is still unwell, as she had vomiting and diarrhea throughout the night. I will be away from 10 to 12 for a doctor's appointment.
+We discovered that the D2I presentation layer was locking the file and not releasing it after it was completely written. We have now added logic to ensure the lock is released. However, despite this fix, we are still unable to process the file and continue to see an error indicating that the file is locked by another service. Further investigation is needed to identify where the file is still being locked.
