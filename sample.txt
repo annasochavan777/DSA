@@ -1,8 +1,24 @@
-I interviewed Rajendra for the .NET Developer position. Unfortunately, his technical knowledge did not meet our expectations for this role.
+using System;
+using System.Collections;
+using System.Linq;
 
-Here are my observations:
+class Program
+{
+    static void Main()
+    {
+        // Create an ArrayList with mixed types
+        ArrayList arrayList = new ArrayList();
+        arrayList.Add("Apple");
+        arrayList.Add(123.45m); // Decimal value
+        arrayList.Add("Cherry");
 
-Technical Skills: Lacked a strong understanding of OOP, C#, SQL, and ASP.NET concepts.
-Problem-Solving: Struggled to explain or implement solutions effectively.
-Coding Ability: Faced difficulty in solving the given coding tasks and was unable to come up with a solution.
-Overall Fit: Based on the technical evaluation, I do not recommend proceeding with this candidate.
+        // Convert ArrayList to string[]
+        string[] stringArray = arrayList.Cast<object>().Select(x => x.ToString()).ToArray();
+
+        // Display the contents of string[]
+        foreach (var item in stringArray)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
