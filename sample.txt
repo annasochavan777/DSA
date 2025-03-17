@@ -1,24 +1,9 @@
-using System;
-using System.Collections;
-using System.Linq;
-
-class Program
-{
-    static void Main()
+static string[] GetStringValues(Dictionary<string, object[]> dict, string key)
     {
-        // Create an ArrayList with mixed types
-        ArrayList arrayList = new ArrayList();
-        arrayList.Add("Apple");
-        arrayList.Add(123.45m); // Decimal value
-        arrayList.Add("Cherry");
-
-        // Convert ArrayList to string[]
-        string[] stringArray = arrayList.Cast<object>().Select(x => x.ToString()).ToArray();
-
-        // Display the contents of string[]
-        foreach (var item in stringArray)
+        if (dict.TryGetValue(key, out object[] values))
         {
-            Console.WriteLine(item);
+            // Convert all elements to strings
+            return values.Select(v => v?.ToString()).ToArray();
         }
+        return Array.Empty<string>(); // Return an empty array if key not found
     }
-}
