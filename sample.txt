@@ -1,9 +1,20 @@
-static string[] GetStringValues(Dictionary<string, object[]> dict, string key)
+public static string GetSessionConnectionString()
     {
-        if (dict.TryGetValue(key, out object[] values))
+        // Get the session state configuration
+        SessionStateSection sessionStateSection = (SessionStateSection)ConfigurationManager.GetSection("system.web/sessionState");
+        
+        // Get the sqlConnectionString attribute value (the name of the connection string)
+        string connectionStringName = sessionStateSection.SqlConnectionString;
+
+        // Retrieve the actual connection string from the <connectionStrings> section
+        ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings[connectionStringName];
+        
+        if (connectionStringSettings != null)
         {
-            // Convert all elements to strings
-            return values.Select(v => v?.ToString()).ToArray();
+            return connectionStringSettings.ConnectionString;
         }
-        return Array.Empty<string>(); // Return an empty array if key not found
+        else
+        {
+            throw new Exception($"Connection string '{connectionStringName}' not found in <connectionStrings>.");
+        }
     }
