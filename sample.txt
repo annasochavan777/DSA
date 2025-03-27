@@ -6,12 +6,13 @@ function Get-AllIISApplicationTrustLevels {
 
     foreach ($site in $sites) {
         $siteName = $site.Name
-        
-        # Get trust level for the website
-        $trustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath "IIS:\Sites\$siteName"
-        
-        if ($trustLevel) {
-            Write-Host "Trust Level for Website '$siteName': $trustLevel"
+        Write-Host "Checking Website: $siteName"
+
+        # Get trust level from applicationHost.config
+        $trustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath "MACHINE/WEBROOT/APPHOST/$siteName"
+
+        if ($trustLevel -and $trustLevel.Value) {
+            Write-Host "Trust Level for Website '$siteName': $($trustLevel.Value)"
         } else {
             Write-Host "Trust Level not explicitly set for Website '$siteName'. (Default: Full trust)"
         }
@@ -21,10 +22,13 @@ function Get-AllIISApplicationTrustLevels {
 
         foreach ($app in $apps) {
             $appPath = $app.Path.Trim('/')
-            $appTrustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath "IIS:\Sites\$siteName\$appPath"
+            $appConfigPath = "MACHINE/WEBROOT/APPHOST/$siteName/$appPath"
 
-            if ($appTrustLevel) {
-                Write-Host "  -> Trust Level for Web Application '$appPath' in '$siteName': $appTrustLevel"
+            # Get trust level for the web application
+            $appTrustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath $appConfigPath
+
+            if ($appTrustLevel -and $appTrustLevel.Value) {
+                Write-Host "  -> Trust Level for Web Application '$appPath' in '$siteName': $($appTrustLevel.Value)"
             } else {
                 Write-Host "  -> Trust Level not explicitly set for Web Application '$appPath'. (Default: Full trust)"
             }
