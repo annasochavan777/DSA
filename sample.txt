@@ -1,40 +1,179 @@
-Import-Module WebAdministration
+Here’s a comprehensive list of possible interview questions based on the job description:
 
-function Get-AllIISApplicationTrustLevels {
-    # Get all websites
-    $sites = Get-ChildItem "IIS:\Sites"
 
-    foreach ($site in $sites) {
-        $siteName = $site.Name
-        Write-Host "Checking Website: $siteName"
+---
 
-        # Get trust level from applicationHost.config
-        $trustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath "MACHINE/WEBROOT/APPHOST/$siteName"
+1. .NET Technologies
 
-        if ($trustLevel -and $trustLevel.Value) {
-            Write-Host "Trust Level for Website '$siteName': $($trustLevel.Value)"
-        } else {
-            Write-Host "Trust Level not explicitly set for Website '$siteName'. (Default: Full trust)"
-        }
+What are the main features of .NET 6/.NET Core compared to .NET Framework?
 
-        # Get all web applications under this site
-        $apps = Get-WebApplication -Site $siteName
+How does garbage collection work in .NET, and how can you optimize it?
 
-        foreach ($app in $apps) {
-            $appPath = $app.Path.Trim('/')
-            $appConfigPath = "MACHINE/WEBROOT/APPHOST/$siteName/$appPath"
+Explain the difference between asynchronous and synchronous programming in .NET.
 
-            # Get trust level for the web application
-            $appTrustLevel = Get-WebConfigurationProperty -Filter "/system.web/trust" -Name "level" -PSPath $appConfigPath
+What are the different types of dependency injection in .NET?
 
-            if ($appTrustLevel -and $appTrustLevel.Value) {
-                Write-Host "  -> Trust Level for Web Application '$appPath' in '$siteName': $($appTrustLevel.Value)"
-            } else {
-                Write-Host "  -> Trust Level not explicitly set for Web Application '$appPath'. (Default: Full trust)"
-            }
-        }
-    }
-}
+How do you handle exceptions in .NET applications?
 
-# Run the function
-Get-AllIISApplicationTrustLevels
+What is the difference between Task, Thread, and Parallel in .NET?
+
+Explain the use of the async and await keywords in .NET.
+
+What are extension methods in C#, and how are they useful?
+
+How do you implement logging in .NET applications?
+
+How would you design a scalable REST API using ASP.NET Core?
+
+
+
+---
+
+2. SQL Server (Database Design, Optimization, Performance Tuning)
+
+What are clustered and non-clustered indexes in SQL Server?
+
+How do you optimize a slow-performing query?
+
+What is the difference between normalization and denormalization?
+
+Explain the different isolation levels in SQL Server.
+
+How do you handle deadlocks in SQL Server?
+
+What is the difference between a primary key and a unique key?
+
+What are common ways to improve database performance?
+
+How do you monitor database performance in SQL Server?
+
+What is a stored procedure, and how is it different from a function?
+
+How do you implement transactions in SQL Server?
+
+
+
+---
+
+3. Multi-threaded Applications
+
+What is multi-threading, and how is it implemented in C#?
+
+How do you handle race conditions in a multi-threaded application?
+
+What are lock, Monitor, and Mutex in C#?
+
+Explain the difference between concurrent and parallel execution.
+
+How would you implement a thread-safe collection in C#?
+
+What are the advantages and disadvantages of using Task.Run vs. Thread?
+
+How do you prevent deadlocks in multi-threaded applications?
+
+
+
+---
+
+4. Modern Development Techniques (Automated Testing, Agile, CI/CD)
+
+What is the difference between unit testing, integration testing, and system testing?
+
+How do you write unit tests in .NET using xUnit or NUnit?
+
+What is test-driven development (TDD)?
+
+What are some best practices for writing testable code?
+
+What is the difference between Scrum and Kanban in Agile development?
+
+What CI/CD tools have you worked with?
+
+How do you automate deployments in a .NET project?
+
+
+
+---
+
+5. Object-Oriented Programming, Design Patterns & System Integration
+
+Explain SOLID principles and how they apply to .NET development.
+
+What are some common design patterns you have used in your projects?
+
+What is dependency inversion, and how does it relate to dependency injection?
+
+What is the difference between factory and abstract factory patterns?
+
+How do you implement microservices architecture in .NET?
+
+What are different integration patterns, and when should you use them?
+
+What are webhooks and APIs, and how do they facilitate system integration?
+
+
+
+---
+
+6. DevOps Practices and Tools
+
+What is Infrastructure as Code (IaC), and how have you used it?
+
+What is Docker, and how do you containerize a .NET application?
+
+How do you set up CI/CD pipelines for a .NET application?
+
+What is Kubernetes, and have you worked with it?
+
+How do you implement monitoring and logging in a .NET application?
+
+
+
+---
+
+7. Problem-Solving Questions
+
+How would you debug a performance issue in a .NET application?
+
+You receive a report that a web service is slow—how do you troubleshoot it?
+
+A database query is taking too long to execute—what steps would you take to optimize it?
+
+How do you handle a memory leak in a .NET application?
+
+A production application is crashing intermittently—how would you approach debugging?
+
+
+
+---
+
+8. Communication and Interpersonal Skills
+
+Can you describe a time when you had to explain a technical concept to a non-technical stakeholder?
+
+How do you handle conflicts in a team environment?
+
+Have you worked with geographically distributed teams? How do you ensure smooth collaboration?
+
+Can you describe a time when you had to mentor a junior developer?
+
+
+
+---
+
+9. Custody/Financial Services Domain
+
+Have you worked with trade settlement systems?
+
+Can you explain the basics of securities lending?
+
+What is the role of SWIFT messages in financial transactions?
+
+How do you ensure security and compliance in financial applications?
+
+
+
+---
+
+This list covers technical, behavioral, and domain-specific aspects based on the job description. Let me know if you want me to focus on specific areas!
+
