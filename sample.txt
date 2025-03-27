@@ -1,20 +1,56 @@
-public static string GetSessionConnectionString()
-    {
-        // Get the session state configuration
-        SessionStateSection sessionStateSection = (SessionStateSection)ConfigurationManager.GetSection("system.web/sessionState");
-        
-        // Get the sqlConnectionString attribute value (the name of the connection string)
-        string connectionStringName = sessionStateSection.SqlConnectionString;
+Import-Module WebAdministration
 
-        // Retrieve the actual connection string from the <connectionStrings> section
-        ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings[connectionStringName];
-        
-        if (connectionStringSettings != null)
-        {
-            return connectionStringSettings.ConnectionString;
+function Get-IISWebConfigTrustLevel {
+    param (
+        [string]$siteName
+    )
+
+    # Get the physical path of the site's root application
+    $site = Get-Item "IIS:\Sites\$siteName"
+    if ($site -eq $null) {
+        Write-Host "Site '$siteName' not found."
+        return
+    }
+
+    $physicalPath = $site.physicalPath
+
+    # Check if web.config exists
+    $webConfigPath = Join-Path $physicalPath "web.config"
+    if (Test-Path $webConfigPath) {
+        # Read the web.config file
+        [xml]$config = Get-Content $webConfigPath
+
+        # Get trust level
+        $trustLevel = $config.configuration.system.web.trust.level
+        if ($trustLevel) {
+            Write-Host "Trust Level for '$siteName': $trustLevel"
+        } else {
+            Write-Host "Trust Level not set explicitly in '$siteName'. (Default: Full)"
         }
-        else
-        {
-            throw new Exception($"Connection string '{connectionStringName}' not found in <connectionStrings>.");
+    } else {
+        Write-Host "No web.config found for '$siteName'. (Default: Full trust)"
+    }
+
+    # Check for web applications under the site
+    $apps = Get-WebApplication -Site $siteName
+    foreach ($app in $apps) {
+        $appPath = $app.physicalPath
+        $appConfigPath = Join-Path $appPath "web.config"
+
+        if (Test-Path $appConfigPath) {
+            [xml]$appConfig = Get-Content $appConfigPath
+            $appTrustLevel = $appConfig.configuration.system.web.trust.level
+
+            if ($appTrustLevel) {
+                Write-Host "Trust Level for Web Application '$($app.Path)' in '$siteName': $appTrustLevel"
+            } else {
+                Write-Host "Trust Level not set explicitly for Web Application '$($app.Path)'. (Default: Full)"
+            }
+        } else {
+            Write-Host "No web.config found for Web Application '$($app.Path)' in '$siteName'. (Default: Full trust)"
         }
     }
+}
+
+# Example usage
+Get-IISWebConfigTrustLevel -siteName "Default Web Site"
