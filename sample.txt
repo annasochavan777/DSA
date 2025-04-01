@@ -1,1 +1,15 @@
-If we leave that field empty, the PCSM call should work fine. However, we are unsure about other implications of this change. Are you okay with trying it out?
+I reviewed the formula you shared and noticed that the logic aligns with what @Jordan previously provided.
+
+However, the document shared by Jordan contains additional details, such as:
+
+If "When is this mortgage to be repaid?" is selected as "Yes", then only the outstanding loan amount should be considered.
+
+If "Is this commitment to be repaid?" is "Yes", and "Will the new mortgage be used to repay this debt?" is also "Yes", then only the outstanding commitment amount from "How much of this commitment would you like to consolidate?" should be included.
+
+Additionally, the following fields should reflect the same amount:
+
+FurtherBorrowing.amount
+
+FurtherEd.howMuch
+
+@Jordan / @Tony – Could you please review the calculations once again?
