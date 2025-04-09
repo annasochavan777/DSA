@@ -1,12 +1,1 @@
-Sure! Here's a rephrased version of your message:
-
-
----
-
-It seems there was an issue with the ILP account, as we were not receiving the mortgage loan additional details for it. To address this, we created another case using a different account, and it's working fine now. Please find the evidence below.
-
-
----
-
-Let me know if you'd like it more formal or concise.
-
+In the "Other Lender" scenario, we are currently sending the value "Other" to MSO within the lender data item. However, there is an additional UI field that captures the actual name of the other lender, which also needs to be mapped and sent to MSO within the same field.
