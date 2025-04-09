@@ -1,14 +1,12 @@
-As part of the Upload Document API enhancement, we now support uploading multiple documents against a single case requirement. During the document upload process, if the requirement is in the "Received" state, we are first updating it to "Requested" and then reverting it back to "Received" after the upload completes.
-
-Due to this new flow, our earlier logic—where a status change from "Received" to "Requested" indicated that the document was rejected by the underwriter—is no longer valid. This change has impacted the existing functionality, and we need to revisit this logic to identify an alternative approach that aligns with the multiple document upload feature.
-
-Could you please schedule a call to discuss this further? Kindly include Nilesh in the invite, as the requirement for multiple document uploads came from him.
+Sure! Here's a rephrased version of your message:
 
 
-’ve completed the assessment for the case outlined below.
+---
 
-As part of the Upload Document API enhancement, we now support uploading multiple documents against a single case requirement. During this process, if the requirement is in the "Received" state, we temporarily update it to "Requested" before reverting it back to "Received" once the document upload is complete.
+It seems there was an issue with the ILP account, as we were not receiving the mortgage loan additional details for it. To address this, we created another case using a different account, and it's working fine now. Please find the evidence below.
 
-However, this change impacts our existing logic, where a transition from "Received" to "Requested" was previously used to indicate that a document had been rejected by the underwriter. With the new multiple document upload functionality, this assumption is no longer valid. Therefore, we need to revisit this logic and identify a more suitable approach.
 
-Could you please schedule a call to discuss this further? Kindly include Nilesh in the invite as this enhancement was introduced based on his requirement.
+---
+
+Let me know if you'd like it more formal or concise.
+
