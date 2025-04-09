@@ -1,1 +1,5 @@
-I've completed the assessment for the case mentioned below. Could you please schedule a call to discuss it? Kindly include Nilesh in the invitation as well.
+As part of the Upload Document API enhancement, we now support uploading multiple documents against a single case requirement. During the document upload process, if the requirement is in the "Received" state, we are first updating it to "Requested" and then reverting it back to "Received" after the upload completes.
+
+Due to this new flow, our earlier logic—where a status change from "Received" to "Requested" indicated that the document was rejected by the underwriter—is no longer valid. This change has impacted the existing functionality, and we need to revisit this logic to identify an alternative approach that aligns with the multiple document upload feature.
+
+Could you please schedule a call to discuss this further? Kindly include Nilesh in the invite, as the requirement for multiple document uploads came from him.
