@@ -1,1 +1,11 @@
-In the "Other Lender" scenario, we are currently sending the value "Other" to MSO within the lender data item. However, there's an additional UI field that captures the actual name of the other lender. We need confirmation on which field this lender name should be mapped to when sending data to MSO within the same field.
+# Set your AutoSys command (example using autorep)
+$autosysCommand = "autorep -J ALL -q"
+
+# Run the command and get output
+$jobsOutput = & cmd /c $autosysCommand
+
+# Define output file path
+$outputFilePath = "C:\Path\To\autosys_jobs.txt"
+
+# Save the content as ANSI (Windows-1252)
+[System.IO.File]::WriteAllLines($outputFilePath, $jobsOutput, [System.Text.Encoding]::GetEncoding("Windows-1252"))
