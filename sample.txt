@@ -1,11 +1,1 @@
-# Set your AutoSys command (example using autorep)
-$autosysCommand = "autorep -J ALL -q"
-
-# Run the command and get output
-$jobsOutput = & cmd /c $autosysCommand
-
-# Define output file path
-$outputFilePath = "C:\Path\To\autosys_jobs.txt"
-
-# Save the content as ANSI (Windows-1252)
-[System.IO.File]::WriteAllLines($outputFilePath, $jobsOutput, [System.Text.Encoding]::GetEncoding("Windows-1252"))
+We have understood the requirement, and this will require a code fix on the MSO side. The Design, Build, and CIT phases will take approximately one week to complete. This timeline excludes the presentation to the Guild Design Review Forum, which will be scheduled based on the available slot we receive.
