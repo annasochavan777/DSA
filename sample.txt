@@ -1,1 +1,1 @@
-I won't be able to support on this date. Could you please arrange for someone else to cover it?
+Previously, due to incorrect details being sent to PCSM, an incorrect lending decision was returned. With this fix in place, the correct details will be sent in the request, ensuring that we receive the appropriate lending decision from PCSM. This will deliver a significant business benefit.
