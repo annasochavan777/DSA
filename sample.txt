@@ -1,1 +1,11 @@
-Previously, due to incorrect details being sent to PCSM, an incorrect lending decision was returned. With this fix in place, the correct details will be sent in the request, ensuring that we receive the appropriate lending decision from PCSM. This will deliver a significant business benefit.
+If this change is not implemented:
+
+The system will continue to send incorrect details to PCSM.
+
+As a result, lending decisions will remain inaccurate, potentially leading to declined applications that should have been approved or approvals for ineligible applications.
+
+This could negatively impact customer experience and trust.
+
+It may lead to increased rework, operational overhead, and potential financial/regulatory implications for the business.
+
+Implementing this fix will ensure accurate data is sent in the request, resulting in correct lending decisions from PCSM, improving both operational efficiency and customer satisfaction.
