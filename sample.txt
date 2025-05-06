@@ -1,11 +1,9 @@
-If this change is not implemented:
+Resignation Notice – [Your Full Name]
 
-The system will continue to send incorrect details to PCSM.
+I wanted to have a word with you to let you know that I’ve decided to resign from my current role at [Company Name]. After careful consideration, I’ve accepted an offer that aligns better with my long-term career goals and offers me new opportunities for growth.
 
-As a result, lending decisions will remain inaccurate, potentially leading to declined applications that should have been approved or approvals for ineligible applications.
+I want to sincerely thank you and the entire team for the support, guidance, and opportunities I’ve received during my time here. It’s been a valuable experience, and I truly appreciate everything I’ve learned working under your leadership.
 
-This could negatively impact customer experience and trust.
+I will, of course, ensure a smooth transition of my responsibilities and will do my best to wrap up ongoing work and assist in handing over tasks over the notice period.
 
-It may lead to increased rework, operational overhead, and potential financial/regulatory implications for the business.
-
-Implementing this fix will ensure accurate data is sent in the request, resulting in correct lending decisions from PCSM, improving both operational efficiency and customer satisfaction.
+I hope to stay in touch, and I’m genuinely grateful for my time here.
