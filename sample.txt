@@ -1,3 +1,4 @@
-The originatingUnit field has the following three possible values, so we can set a default accordingly. Please refer to the values below.
+Code review and design review have been completed. However, we were unable to complete the CIT execution in the DEV environment due to environmental issues. Hence, we have decided to proceed with the CIT execution directly in the SIT environment.
 
-Also, I have verified that the hiddenCustomerGroup field is not required in MO.
+Please find the component details below.
+Could you kindly let us know when we can deploy this change to the SIT environment?
