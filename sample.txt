@@ -1,9 +1,3 @@
-Resignation Notice – [Your Full Name]
+The originatingUnit field has the following three possible values, so we can set a default accordingly. Please refer to the values below.
 
-I wanted to have a word with you to let you know that I’ve decided to resign from my current role at [Company Name]. After careful consideration, I’ve accepted an offer that aligns better with my long-term career goals and offers me new opportunities for growth.
-
-I want to sincerely thank you and the entire team for the support, guidance, and opportunities I’ve received during my time here. It’s been a valuable experience, and I truly appreciate everything I’ve learned working under your leadership.
-
-I will, of course, ensure a smooth transition of my responsibilities and will do my best to wrap up ongoing work and assist in handing over tasks over the notice period.
-
-I hope to stay in touch, and I’m genuinely grateful for my time here.
+Also, I have verified that the hiddenCustomerGroup field is not required in MO.
