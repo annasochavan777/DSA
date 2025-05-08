@@ -1,2 +1,178 @@
-The code review for the RFT changes is pending. I will complete it in the first half of the day, and in the second half, we will proceed with the deployment.
+Excellent — let’s round it off with ASP.NET MVC questions too, suitable for someone with 8+ years of experience. At this level, you’d want to cover core concepts, customization, lifecycle, routing, security, performance, and architecture patterns.
 
+Here’s a well-structured list for you:
+
+
+---
+
+ASP.NET MVC Interview Questions for 8+ Years Experience
+
+MVC Fundamentals
+
+1. What is ASP.NET MVC and how does it differ from ASP.NET Web Forms?
+
+
+2. Explain the MVC design pattern. How is it implemented in ASP.NET MVC?
+
+
+3. What is the role of Controller, View, and Model in ASP.NET MVC?
+
+
+4. Explain the request processing lifecycle in ASP.NET MVC.
+
+
+5. What is routing in MVC? How is it configured in ASP.NET MVC applications?
+
+
+
+
+---
+
+Routing & URL Patterns
+
+6. What is RouteConfig.cs and what happens inside it?
+
+
+7. What’s the difference between default routing and attribute routing?
+
+
+8. How can you implement custom routes in ASP.NET MVC?
+
+
+9. What happens if no route matches a request?
+
+
+10. How do you pass data between controllers and views in ASP.NET MVC?
+
+
+
+
+---
+
+Controller & Action Methods
+
+11. What is the difference between ActionResult and ViewResult?
+
+
+12. How do you overload action methods in a controller?
+
+
+13. What is TempData, ViewData, and ViewBag? When would you use each?
+
+
+14. What is PartialView and how is it different from a normal view?
+
+
+15. What is the difference between RedirectToAction() and Redirect()?
+
+
+
+
+---
+
+Model Binding & Validation
+
+16. How does model binding work in ASP.NET MVC?
+
+
+17. What is model validation? How do you implement both client-side and server-side validation?
+
+
+18. Explain Data Annotations used for validation.
+
+
+19. How would you implement custom model binders?
+
+
+20. How do you handle complex object binding in MVC?
+
+
+
+
+---
+
+Filters & Customization
+
+21. What are filters in ASP.NET MVC? List and explain different types.
+
+
+22. How do you implement a custom action filter?
+
+
+23. What is the difference between AuthorizeAttribute and AllowAnonymousAttribute?
+
+
+24. What is ExceptionFilter and how do you handle global exceptions?
+
+
+25. How do you create a custom error handling page in ASP.NET MVC?
+
+
+
+
+---
+
+Security
+
+26. How do you implement authentication and authorization in ASP.NET MVC?
+
+
+27. What is Cross-Site Request Forgery (CSRF)? How does MVC help prevent it?
+
+
+28. How do you secure sensitive data in an ASP.NET MVC application?
+
+
+29. What is the use of the AntiForgeryToken() method?
+
+
+30. How would you prevent SQL Injection and Cross-Site Scripting (XSS) attacks in MVC apps?
+
+
+
+
+---
+
+Performance & Optimization
+
+31. How do you implement caching in ASP.NET MVC?
+
+
+32. Explain Output Caching and how you configure it.
+
+
+33. What is bundling and minification in ASP.NET MVC?
+
+
+34. How can you improve the performance of an ASP.NET MVC application for high-traffic scenarios?
+
+
+35. What is asynchronous action method? How do you implement it in ASP.NET MVC?
+
+
+
+
+---
+
+Entity Framework & Data Access
+
+36. How do you integrate Entity Framework with ASP.NET MVC?
+
+
+37. What is Code First, Database First, and Model First approaches in EF?
+
+
+38. How do you handle database migrations in EF?
+
+
+39. What is lazy loading, eager loading, and explicit loading in EF?
+
+
+40. How do you implement a Repository Pattern in ASP.NET MVC?
+
+
+
+
+---
+
+Would you like me to follow this up with answers for these too? Or perhaps a real-time project case study question list based on ASP.NET MVC? I can put that together for you if you'd like. Would you like that?
