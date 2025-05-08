@@ -137,10 +137,151 @@ Testing & CI/CD
 
 
 34. How do you integrate automated tests in a CI/CD pipeline?
+Excellent — for someone with 8+ years of experience, you’ll want to assess their SQL skills across complex querying, performance tuning, indexing strategies, transactions, and database design concepts. Here’s a curated list of SQL Server interview questions appropriate for that level:
+
+
+---
+
+SQL Server Interview Questions for 8+ Years Experience
+
+SQL Querying & Joins
+
+1. What is the difference between INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN? Give examples.
+
+
+2. How would you retrieve the second highest salary from an Employee table?
+
+
+3. Explain the difference between WHERE and HAVING clauses.
+
+
+4. Can you explain Common Table Expressions (CTE)? When would you prefer CTE over subqueries?
+
+
+5. What’s the difference between a subquery and a derived table?
+
+
+6. How can you handle duplicate records in a SQL Server table?
+
+
+7. Write a query to fetch top N records per group from a table.
 
 
 
 
 ---
 
-Would you like me to compile answers for these too? Or maybe tailor a list for .NET Core, Web API, or microservices architecture as well? I can help with that too if you like.
+Indexes & Performance Tuning
+
+8. What is an index? What are the different types of indexes in SQL Server?
+
+
+9. What is the difference between a clustered index and a non-clustered index?
+
+
+10. How many clustered indexes can a table have?
+
+
+11. How do indexes improve query performance? Can indexes ever slow down performance?
+
+
+12. Explain index fragmentation. How do you detect and fix it?
+
+
+13. What is a covering index?
+
+
+14. How would you analyze and optimize a slow-running query?
+
+
+
+
+---
+
+Transactions & Locking
+
+15. Explain ACID properties in SQL Server.
+
+
+16. What is a transaction? How do you implement transactions in SQL Server?
+
+
+17. What is locking in SQL Server? What are the different types of locks?
+
+
+18. What is a deadlock? How do you detect and resolve deadlocks in SQL Server?
+
+
+19. What is isolation level in SQL Server? Explain different types.
+
+
+20. Which isolation level prevents dirty reads? What about phantom reads and non-repeatable reads?
+
+
+
+
+---
+
+Stored Procedures, Functions & Triggers
+
+21. What is the difference between a stored procedure and a function in SQL Server?
+
+
+22. Can you return a table from a function? How?
+
+
+23. What are triggers? What are the different types of triggers in SQL Server?
+
+
+24. What is the difference between AFTER Trigger and INSTEAD OF Trigger?
+
+
+25. What are dynamic SQL queries? When should you avoid them?
+
+
+
+
+---
+
+Advanced SQL Concepts
+
+26. Explain partitioning in SQL Server. When would you use it?
+
+
+27. What is a view? What are the advantages and limitations of views?
+
+
+28. What is normalization? What are different normal forms?
+
+
+29. What is a denormalized table? When would you denormalize data?
+
+
+30. Explain temporary tables vs table variables vs CTE. When should you use each?
+
+
+31. What is a WITH (NOLOCK) hint? What are its pros and cons?
+
+
+32. What is SQL Profiler? How do you use it for troubleshooting?
+
+
+33. Explain execution plan analysis. What are key components you look for in a query plan?
+
+
+
+
+---
+
+Data Migration, Backup & Restore
+
+34. How do you perform a backup and restore in SQL Server?
+
+
+35. What is a differential backup? How is it different from a transaction log backup?
+
+
+36. How would you migrate a database from one server to another with minimal downtime?
+
+
+37. What’s the difference between detaching/attaching a database and backup/restore
