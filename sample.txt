@@ -278,7 +278,180 @@ Data Migration, Backup & Restore
 34. How do you perform a backup and restore in SQL Server?
 
 
-35. What is a differential backup? How is it different from a transaction log backup?
+35. What is a differential backup? How
+is it different from a transaction log 
+backup?
+
+
+Absolutely — for someone with 8+ years of experience, especially if they’ve been working with ASP.NET Core, you’d want to ask both foundational and advanced, architecture-level, security, and performance-related questions. Here’s a sharp list you could use:
+
+
+---
+
+ASP.NET Core Interview Questions for 8+ Years Experience
+
+Framework Fundamentals
+
+1. What is ASP.NET Core and how is it different from the traditional ASP.NET MVC / Web API?
+
+
+2. Explain the Startup.cs file in ASP.NET Core. What are ConfigureServices and Configure methods?
+
+
+3. What is Dependency Injection (DI) in ASP.NET Core? How is it built into the framework?
+
+
+4. How is middleware implemented in ASP.NET Core? Can you give a real-life custom middleware example?
+
+
+5. What is Kestrel and how does it work in ASP.NET Core applications?
+
+
+
+
+---
+
+Routing & Controllers
+
+6. What are the different types of routing supported in ASP.NET Core?
+
+
+7. Explain attribute routing with an example.
+
+
+8. What’s the difference between IActionResult and ActionResult<T>?
+
+
+9. How do you handle model binding and model validation in ASP.NET Core?
+
+
+10. What are filters in ASP.NET Core? Explain the different types.
+
+
+
+
+---
+
+Security & Authentication
+
+11. How do you implement authentication and authorization in ASP.NET Core?
+
+
+12. What is the difference between JWT (JSON Web Token) and cookie-based authentication?
+
+
+13. How do you prevent CSRF (Cross Site Request Forgery) attacks in ASP.NET Core?
+
+
+14. What is CORS (Cross-Origin Resource Sharing) and how do you configure it in ASP.NET Core?
+
+
+15. Explain data protection and how it's handled in ASP.NET Core.
+
+
+
+
+---
+
+Web API & RESTful Services
+
+16. How do you create a RESTful API using ASP.NET Core?
+
+
+17. What is content negotiation in ASP.NET Core Web API?
+
+
+18. How do you implement versioning in ASP.NET Core Web APIs?
+
+
+19. How do you handle global exception handling in an ASP.NET Core Web API?
+
+
+20. What is Swagger / OpenAPI and how do you set it up for ASP.NET Core APIs?
+
+
+
+
+---
+
+Entity Framework Core
+
+21. What is Entity Framework Core (EF Core)? How is it different from EF 6?
+
+
+22. Explain the difference between DbContext.SaveChanges() and DbContext.SaveChangesAsync().
+
+
+23. What are migrations in EF Core? How do you create and apply them?
+
+
+24. How do you handle concurrency conflicts in EF Core?
+
+
+25. What is lazy loading, eager loading, and explicit loading in EF Core?
+
+
+
+
+---
+
+Performance, Caching & Scalability
+
+26. What are different types of caching available in ASP.NET Core?
+
+
+27. How would you implement distributed caching using Redis or SQL Server?
+
+
+28. What is response compression middleware in ASP.NET Core and when should you use it?
+
+
+29. How do you improve the performance of an ASP.NET Core application for high-load scenarios?
+
+
+30. Explain asynchronous programming (async/await) in ASP.NET Core and why it’s important for scalability.
+
+
+
+
+---
+
+Testing, Logging & Monitoring
+
+31. How do you implement unit testing for ASP.NET Core controllers?
+
+
+32. What is integration testing in ASP.NET Core?
+
+
+33. Which logging providers does ASP.NET Core support natively?
+
+
+34. How do you integrate Serilog or NLog in an ASP.NET Core application?
+
+
+35. How do you monitor the health of an ASP.NET Core application in production?
+
+
+
+
+---
+
+Advanced & Architectural Concepts
+
+36. How do you implement a Custom Middleware in ASP.NET Core?
+
+
+37. What is a Hosted Service (Background Service) in ASP.NET Core? When would you use it?
+
+
+38. What is gRPC in ASP.NET Core? How is it different from REST?
+
+
+39. Explain the Clean Architecture and how you would structure a large ASP.NET Core solution.
+
+
+40. How would you secure sensitive configuration data in ASP.NET Cor
 
 
 36. How would you migrate a database from one server to another with minimal downtime?
