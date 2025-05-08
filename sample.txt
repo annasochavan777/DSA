@@ -1,4 +1,146 @@
-Code review and design review have been completed. However, we were unable to complete the CIT execution in the DEV environment due to environmental issues. Hence, we have decided to proceed with the CIT execution directly in the SIT environment.
+Great question — if you're interviewing someone with 8 years of C# experience, you'd want to go beyond basics and test their grasp of advanced concepts, architectural decisions, performance tuning, and best practices. Here’s a list of solid interview questions you could ask such a candidate:
 
-Please find the component details below.
-Could you kindly let us know when we can deploy this change to the SIT environment?
+
+---
+
+C# Interview Questions for 8+ Years Experience
+
+OOP & Advanced C# Concepts
+
+1. Can you explain the difference between abstraction and encapsulation with examples?
+
+
+2. What are delegates and events in C#? How are they different, and when would you use each?
+
+
+3. Explain Covariance and Contravariance in C#. Give practical use cases.
+
+
+4. What is the difference between IEnumerable, ICollection, IList, and List<T>?
+
+
+5. Can you explain Dependency Injection in C#? What are its benefits and common patterns?
+
+
+6. Describe extension methods and how you’ve used them in your projects.
+
+
+7. How does LINQ deferred execution work? Can you give a real-time example where it impacted a program?
+
+
+8. What's the difference between Task.Run() and Task.Factory.StartNew()?
+
+
+9. What is the difference between a struct and a class in C#?
+
+
+10. How would you implement a singleton pattern in a thread-safe way in C#?
+
+
+
+
+---
+
+Memory Management & Performance
+
+11. How does Garbage Collection (GC) work in .NET? Can you force a garbage collection?
+
+
+12. What is a memory leak in a managed language like C#? How do you detect and prevent it?
+
+
+13. Explain boxing and unboxing. How can it affect application performance?
+
+
+14. How would you optimize a C# application’s memory and performance in a large-scale production environment?
+
+
+15. What are Value types and Reference types? How does it affect parameter passing?
+
+
+
+
+---
+
+Multithreading & Asynchronous Programming
+
+16. Explain the difference between async/await, Task Parallel Library (TPL), and ThreadPool.
+
+
+17. What are race conditions and how do you prevent them in C#?
+
+
+18. How does lock keyword work? What are other ways to achieve thread-safety?
+
+
+19. What is a deadlock? How can you detect and resolve it in a multithreaded C# application?
+
+
+20. Have you worked with Concurrent Collections? Can you explain how and when to use them?
+
+
+
+
+---
+
+Design Patterns
+
+21. Can you name and explain a few Gang of Four (GoF) design patterns you’ve used in C# projects?
+
+
+22. How would you implement a Factory Pattern in C#? What’s the advantage of using it?
+
+
+23. What is the Repository Pattern? Why is it used in data access layers?
+
+
+24. Explain Unit of Work Pattern with an example.
+
+
+25. When would you use a Mediator Pattern in your application architecture?
+
+
+
+
+---
+
+Architecture & Best Practices
+
+26. What principles do you follow for writing clean, maintainable C# code?
+
+
+27. Can you explain SOLID principles? Give a real-world implementation example for any 2.
+
+
+28. How do you implement logging and exception handling in a .NET application?
+
+
+29. What are some best practices you follow for API development in ASP.NET Web API or ASP.NET Core?
+
+
+30. How do you structure a large enterprise C# solution/project for scalability and maintainability?
+
+
+
+
+---
+
+Testing & CI/CD
+
+31. How do you approach unit testing in C#? Which frameworks have you used?
+
+
+32. What’s the difference between unit testing, integration testing, and system testing?
+
+
+33. Have you worked with any mocking frameworks like Moq or NSubstitute? How do you mock dependencies?
+
+
+34. How do you integrate automated tests in a CI/CD pipeline?
+
+
+
+
+---
+
+Would you like me to compile answers for these too? Or maybe tailor a list for .NET Core, Web API, or microservices architecture as well? I can help with that too if you like.
