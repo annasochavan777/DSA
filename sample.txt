@@ -1,22 +1,27 @@
-Sure — here’s a rephrased, polite and professional version you can use:
+Got it — here’s a refined, clear, and polite message you can send to HR to check if anything is pending from your side:
 
 
 ---
 
-Subject: Request for Job Descriptions for Java and UI Openings
+Subject: Resignation Submission and Confirmation of Pending Formalities
 
-Hi [Recipient's Name],
+Dear [HR's Name],
 
-I hope you’re doing well.
+I hope this message finds you well.
 
-Could you please share the job descriptions for the Java and UI openings in your team? I have a few profiles with me, and I would like to share them for your consideration.
+I would like to inform you that I have submitted my resignation through the system and have attached a screenshot of the submission for your reference.
 
-Looking forward to your response.
+I would like to check if there are any further steps or formalities pending from my end as part of the resignation process. Kindly review and let me know if any additional actions are required, so I can address them accordingly.
 
-Thanks & Regards,
-[Your Name]
+Looking forward to your confirmation.
+
+Thank you for your assistance.
+
+Warm regards,
+[Your Full Name]
+[Your Employee ID] (if applicable)
 
 
 ---
 
-Would you like a slightly casual version too?
+Would you like a slightly crisper version too?
