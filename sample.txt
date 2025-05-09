@@ -1,27 +1,20 @@
-Sure — let’s incorporate that part naturally into the message as well. Here’s an updated, polished version you can send to HR:
+Sure — here’s a clearer and professionally rephrased version of your note:
 
 
 ---
 
-Subject: Resignation Submission, Last Working Day Confirmation, and Pending Formalities
+Rephrased Version:
 
-Dear [HR's Name],
+The question "Please indicate how you would like to apply for this loan?" is mandatory, but it is currently only visible in MAX screens and not in Origination screens. Based on the value selected for this question, a set of additional questions appear under the Loan Requirements section.
 
-I hope this message finds you well.
+We identified that the value for this data item was missing, which caused the issue. As a temporary fix, we have patched the value of this data item to PRIVATE, and the functionality is now working as expected.
 
-I would like to inform you that I have submitted my resignation through the system and have attached a screenshot of the submission for your reference.
+Please note the possible values for this data item in the screenshots provided below. If this question is not available in MAE, we need to default the value of this data item accordingly to prevent similar issues.
 
-As per the system, my last working day is showing as 5th July 2025. I would like to confirm if this is correct and also check if there are any further steps or formalities pending from my side as part of the resignation process. Kindly review and let me know if any additional actions are required, so I can address them accordingly.
-
-Looking forward to your confirmation.
-
-Thank you for your assistance.
-
-Warm regards,
-[Your Full Name]
-[Your Employee ID] (if applicable)
+Kindly refer to the screenshots for additional context.
 
 
 ---
 
-Would you like a slightly shorter or more formal version too?
+Would you like a slightly more formal or more concise version as well?
+
