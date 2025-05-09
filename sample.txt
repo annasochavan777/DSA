@@ -1,9 +1,9 @@
-Got it — here’s a refined, clear, and polite message you can send to HR to check if anything is pending from your side:
+Sure — let’s incorporate that part naturally into the message as well. Here’s an updated, polished version you can send to HR:
 
 
 ---
 
-Subject: Resignation Submission and Confirmation of Pending Formalities
+Subject: Resignation Submission, Last Working Day Confirmation, and Pending Formalities
 
 Dear [HR's Name],
 
@@ -11,7 +11,7 @@ I hope this message finds you well.
 
 I would like to inform you that I have submitted my resignation through the system and have attached a screenshot of the submission for your reference.
 
-I would like to check if there are any further steps or formalities pending from my end as part of the resignation process. Kindly review and let me know if any additional actions are required, so I can address them accordingly.
+As per the system, my last working day is showing as 5th July 2025. I would like to confirm if this is correct and also check if there are any further steps or formalities pending from my side as part of the resignation process. Kindly review and let me know if any additional actions are required, so I can address them accordingly.
 
 Looking forward to your confirmation.
 
@@ -24,4 +24,4 @@ Warm regards,
 
 ---
 
-Would you like a slightly crisper version too?
+Would you like a slightly shorter or more formal version too?
