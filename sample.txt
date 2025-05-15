@@ -1,51 +1,5 @@
-Mortgage Portal Login Flow — Explained
-1. User Login: The user navigates to login.aspx and enters their credentials.
-2. Credential Validation:
-    * Once the credentials are successfully validated, the IntAuth web component sends the user’s details to TIAA.
-    * TIAA responds with a unique refID.
+Sure — here’s a clearer, rephrased version of your sentence:
 
-🔄 Post-Validation Scenarios:
-(All the following pages are part of the Mortgage Portal component.)
-1️⃣ Password Expiry Check:
-If the user's password has expired, they are redirected to the password reset page.
-2️⃣ Golden Answer Check:
-If the user hasn’t set their Golden Answer (security question), they are redirected to a page to set this answer.
-3️⃣ Proceed to Mortgage Portal:
-If neither of the above conditions applies:
-* The user is redirected to mortgageportal.aspx.
-* The application passes the refID to the Mortgage Portal.
-* On page load:
-    * The portal calls the TIAA service using the refID to fetch the user's profile and data.
-4️⃣ Session Creation:
-Once the user data is successfully retrieved from TIAA, the application creates a session and stores the user information.
-5️⃣ TIAA Dropoff (StartSSO Ping):
-After session creation:
-* A TIAA Dropoff call is made.
-* The system then redirects to the StartSSO URL by sending the refID in the request body.
-* Finally, the Salesforce dashboard is launched for the authenticated user.
+"I don't think this is the correct field for the reject reason. Could you please share a sample case from production where you’re seeing the correct reject reason populated?"
 
-
-Max, AIP Application Launch Flow (via Salesforce)
-
-
-📑 Step-by-Step Application Launch Process (via Salesforce)
-1. Salesforce Launch: When Salesforce is launched, and we need to open the Max or AIP application, the following sequence is triggered.
-2. Calling the Portal Redirect Page:
-    * Salesforce makes a request to portalRedirect.aspx.
-    * The request includes the target application name as a parameter.
-3. Session Validation:
-    * When the portalRedirect.aspx page loads:
-        * It first checks whether a user session is active.
-        * If a session exists:
-            * It performs a TIAA Dropoff, retrieving user details from the session.
-            * If the Dropoff is successful, a refId is generated and received.
-4. Posting to the Target Application:
-    * Once the refId is obtained:
-        * The system makes a POST call to the target application’s URL.
-        * The refId is included in the body of this POST request.
-5. Target Application — TIAA Data Pick-up:
-    * The target application reads the refId from the POST request.
-    * It then performs a TIAA data pick-up using this refId to retrieve the user’s details.
-6. Configuration Note:
-    * In this flow, the target application URL is maintained in the mortgage portal’s configuration file.
-    * This allows the portal to identify where to send the POST request for each target application.
+Would you like a slightly softer or more formal version too?
