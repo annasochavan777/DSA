@@ -4,3 +4,6 @@ There are two possible options to address this issue:
 
 1. Instead of relying on tables replicated by the MI Extractor service, switch to using tables replicated via SQL job replication, which ensures more timely data availability.
 2. Investigate the root cause of the delay in the MI Extractor service and implement a fix to ensure timely data extraction.
+
+As a temporary fix, updating the **RowLastModifiedDate** in the **Case** table to the current timestamp will resolve the issue for now.
+
