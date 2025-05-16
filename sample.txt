@@ -1,5 +1,6 @@
-Sure — here’s a clearer, rephrased version of your sentence:
+A case is missing from the ETL extract. This is a known issue, as we observed similar behavior when the MAE application initially went live. At that time, cases were not appearing on the App Tracking UI. Upon investigation, we found that the MI Extractor service was causing delays. By the time the ETL process ran, the case had not yet been inserted into the MI\_Application table, which resulted in it being missed by the ETL extract.
 
-"I don't think this is the correct field for the reject reason. Could you please share a sample case from production where you’re seeing the correct reject reason populated?"
+There are two possible options to address this issue:
 
-Would you like a slightly softer or more formal version too?
+1. Instead of relying on tables replicated by the MI Extractor service, switch to using tables replicated via SQL job replication, which ensures more timely data availability.
+2. Investigate the root cause of the delay in the MI Extractor service and implement a fix to ensure timely data extraction.
