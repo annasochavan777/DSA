@@ -1,7 +1,23 @@
-Sure — here’s a clearer, rephrased version of your sentence:
+The following conditions must be met to trigger the above error code:
 
-> "In this case, the data item value for Customers.1.ExistingCustomer is missing, which is why the CDU system is throwing an error during processing."
+CaseData.Customers.C1 is not null
 
+CaseData.System is not null
 
+CaseData.System.Security.Launcher.LaunchSalesChannel has a value of "INTRMEDON"
 
-Would you like a few other variations too?
+CaseData.Customers.C1.CustomerMatch is not null
+
+CaseData.System.MOS.CustomerMatch is false
+
+The count of items in CaseData.Customers.C1.CustomerMatch is greater than 0
+
+ErrorCode is not null or empty
+
+➝ If all these conditions are satisfied, the error code gets triggered.
+
+The field CustomerData.CustomerValidated is received from the Enquiry service call.
+If this field is set to false, it contributes to the triggering of the above error code.
+
+The field KycMarker is also received from the Enquiry service call.
+If the value of this field is false, it likewise causes the above error code to be triggered.
