@@ -1,8 +1,1 @@
-Sure — here’s a clear, rephrased version of your message:
-
-
----
-
-"This is not a valid reject reason, as I can see that the requirement has just been created and no document has been received yet. The note you are referring to was added at the time of creating the case requirement itself, so it cannot be considered as a reject reason."
-
-Would you like it to sound a bit more formal, casual, or neutral? I can tweak it for you.
+This is a known issue; we’ve come across a similar scenario before. In this case, Customer 2 already has an existing mortgage, but on the UI, the 'Are you an existing customer?' option is selected as 'No'. That’s why you’re seeing this business validation message.
