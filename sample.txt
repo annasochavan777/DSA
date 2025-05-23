@@ -1,1 +1,1 @@
-This is a known issue; we’ve come across a similar scenario before. In this case, Customer 2 already has an existing mortgage, but on the UI, the 'Are you an existing customer?' option is selected as 'No'. That’s why you’re seeing this business validation message.
+We need to understand why the value is being sent as 'No' even though Customer 2 is an existing customer.
