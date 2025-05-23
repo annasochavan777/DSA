@@ -1,1 +1,1 @@
-We need to understand why the value is being sent as 'No' even though Customer 2 is an existing customer.
+It’s not related to MSP008 — if SJI sends any value in the ErrorCode field, a customer repair task will be generated.
