@@ -1,5 +1,13 @@
-We tested a scenario in the test environment where we updated the mobile number field from Salesforce (refer to the screenshot below). After that, we created a case in MAX using the same broker, and the following was observed:
+Subject: Clarification on Last Working Day and Gratuity Amount Details
 
-In MAX, on the Introducer Details screen, the mobile number is populated from the Get Broker response.
+Hi [HR's Name],
 
-When clicking Next, a validation is triggered on this field. The system does not allow the user to proceed further until the mobile number is updated to a valid format.
+I hope you’re doing well.
+
+I have a couple of queries and would appreciate your guidance:
+
+As per my resignation, my last working date is showing as 5th July 2025, which falls on a Saturday. Could you please confirm whether my official last working day will be considered as Friday, 4th July 2025 or Monday, 7th July 2025?
+
+I need to declare the gratuity amount in the HGS portal for tax exemption purposes. Could you please let me know where I can check my total eligible gratuity amount for this?
+
+Looking forward to your response.
