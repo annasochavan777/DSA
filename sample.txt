@@ -1,7 +1,5 @@
-We have investigated this issue and our findings are as follows:
+We tested a scenario in the test environment where we updated the mobile number field from Salesforce (refer to the screenshot below). After that, we created a case in MAX using the same broker, and the following was observed:
 
-On the IntAuth registration page, validation is implemented for the mobile number field — only 11-digit numeric values are allowed, and no characters are permitted. Please refer to the screenshot below.
+In MAX, on the Introducer Details screen, the mobile number is populated from the Get Broker response.
 
-However, we observed that there’s no such validation on the Salesforce side, which allows characters to be entered in the mobile number field. This indicates that all the invalid updates originated from Salesforce. Please refer to the screenshot from the test environment below.
-
-In MAX, on the Introducer Details screen, the mobile number is populated from the Get Broker response. Upon clicking Next, validation is triggered on this field. The system won’t allow the user to proceed further until the mobile number is corrected to a valid format.
+When clicking Next, a validation is triggered on this field. The system does not allow the user to proceed further until the mobile number is updated to a valid format.
