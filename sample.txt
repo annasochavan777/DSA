@@ -1,1 +1,1 @@
-It’s not related to MSP008 — if SJI sends any value in the ErrorCode field, a customer repair task will be generated.
+This fix was deployed to live in March, but I can see the latest code is not available in SIT1. Please take the latest codebase, and it should resolve the issue.
