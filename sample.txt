@@ -1,7 +1,60 @@
-Sure — here’s a clearer, rephrased version of your message:
-
-> We have verified the cases in the database and observed that the case requirement has been created for other customers as well, such as customers 2, 3, and 4, in addition to customer 1. Please find the attached details in the Excel file.
+Sure — let’s rephrase the message to clearly describe the testing scenarios based on what’s in your screenshot. Here’s a clean, structured version:
 
 
+---
 
-Would you like it to sound more formal, casual, or neutral?
+📌 Testing Scenarios for Case Requirements Change (Applicant to Application)
+
+Scope:
+This testing covers the update where selected case requirements are moved from Applicant level to Application level.
+
+
+---
+
+✅ Testing Scenarios:
+
+1. Pipeline Cases Testing
+
+Validate all journeys for existing pipeline cases where these case requirements are already present.
+
+Confirm that for these cases, the requirements should continue to behave as they currently do (at Applicant level), even after the change is deployed.
+
+
+
+2. New Cases Testing
+
+Test all journeys for newly created cases after the deployment.
+
+Verify that the updated case requirements are now created at the Application level.
+
+Ensure the status behavior for these new requirements is as expected at the Application level.
+
+
+
+3. Regression Testing
+
+Perform a full regression to ensure no unintended impact on related functionalities or other journeys due to this change.
+
+
+
+
+
+---
+
+📌 In-Scope Case Requirements:
+
+Proof Code	Case Requirement
+
+DP04	Proof of deposit funds
+DP20	Shared ownership/Equity documents
+DP21	Council right to buy papers
+DP23	Repayment strategy documentation
+DP54	Consent to port rate
+DP40	Proof of Affordability Check
+
+
+
+---
+
+Would you like me to help draft a confluence page format or test scenarios in a table format too?
+
