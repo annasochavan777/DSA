@@ -1,60 +1,81 @@
-Sure — let’s rephrase the message to clearly describe the testing scenarios based on what’s in your screenshot. Here’s a clean, structured version:
+Sure — here’s a clean and rephrased version of your message:
 
 
 ---
 
-📌 Testing Scenarios for Case Requirements Change (Applicant to Application)
+Subject: RE: KT Plan from Annaso
 
-Scope:
-This testing covers the update where selected case requirements are moved from Applicant level to Application level.
+Hi Ravindra,
+
+I have listed the following points from a KT (Knowledge Transfer) perspective. Please review and suggest if there are any additional areas that should be included as part of the KT sessions:
+
+1. Utilities – Jenkins
+
+Config Transformation Utility
+
+Inrule Upgrade Utility
+
+
+
+2. PD Checks Automation – Walkthrough
+
+
+3. BCMDB – Walkthrough
+
+
+4. MSO Health Check Dashboard – Walkthrough (including how to add new servers/environments to the dashboard)
+
+
+5. Chef Recipe for IIS Configuration – Code Walkthrough
+
+
+6. Autosys Jobs – Overview (basic concepts, creating new jobs, updating, deleting, etc.)
+
+
+7. New SQL Queries for MAE – Demonstrating their use in the app-tracking UI
+
+
+8. Launching MAE Applications from Salesforce – Mortgage Portal Changes Walkthrough
+
+
+9. BCAG Key Migration Utility – Code Walkthrough
+
+
+10. Update/Replace Node in Case Hive – Code Walkthrough
+
+
+11. Process to Generate Schema
+
+
+12. Explanation of FD and SD XMLs
+
+
+13. How to Read FD/SD XMLs
+
+
+14. Generating Excel Files from XMLs
+
+
+15. Sales Journey Flow
+
+
+16. Originations Journey Flow
+
+
+17. MAE Gateway Service – Code Walkthrough
+
+
+18. SSL Changes Implemented in Load Balancer (LB) for MAE
+
+
+
+Please let me know if you would like to add or modify anything here.
+
+Thanks & Regards,
+Annaso
 
 
 ---
 
-✅ Testing Scenarios:
-
-1. Pipeline Cases Testing
-
-Validate all journeys for existing pipeline cases where these case requirements are already present.
-
-Confirm that for these cases, the requirements should continue to behave as they currently do (at Applicant level), even after the change is deployed.
-
-
-
-2. New Cases Testing
-
-Test all journeys for newly created cases after the deployment.
-
-Verify that the updated case requirements are now created at the Application level.
-
-Ensure the status behavior for these new requirements is as expected at the Application level.
-
-
-
-3. Regression Testing
-
-Perform a full regression to ensure no unintended impact on related functionalities or other journeys due to this change.
-
-
-
-
-
----
-
-📌 In-Scope Case Requirements:
-
-Proof Code	Case Requirement
-
-DP04	Proof of deposit funds
-DP20	Shared ownership/Equity documents
-DP21	Council right to buy papers
-DP23	Repayment strategy documentation
-DP54	Consent to port rate
-DP40	Proof of Affordability Check
-
-
-
----
-
-Would you like me to help draft a confluence page format or test scenarios in a table format too?
+Would you like me to turn this into a proper email template too?
 
