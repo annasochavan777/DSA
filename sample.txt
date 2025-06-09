@@ -1,15 +1,25 @@
-Sure — here’s a clear, rephrased version of your message:
+Sure — here’s a clean rephrased version along with a subject line:
 
 
 ---
 
-Hi Krishna,
+Subject: Request for New Owner Details to Initiate Asset Ownership Transfer
 
-For the past two weeks, I’ve been unable to see MAE-related items in Navigator. As a result, I’m not able to log my work in Navigator. Could you please let me know whom I should contact to get this issue resolved?
+Hi Ravindra,
 
-Thanks!
+I am the current owner of the below asset. Could you please confirm the new owner details so that I can proceed with raising the ownership transfer request accordingly?
+
+Asset Name	Asset Type	Application Name	Current Owner Name	Current Owner BRID	Leave Date	Move Date
+
+APPL018930_MORTGAGEPROJECTIONS.Calculator_DT	Request Groups	VERACODE SAST *PROD	Annaso Chavan	G01142986	05-JUL-25	NA
+
+
+Looking forward to your confirmation.
+
+Best Regards,
+Annaso Chavan
 
 
 ---
 
-Would you like a slightly more formal or casual version too?
+Would you like a shorter or a slightly casual version too?
