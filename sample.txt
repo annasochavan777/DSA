@@ -1,25 +1,15 @@
-Sure — here’s a clean rephrased version along with a subject line:
+Sure — here’s a clear and polished rephrased version of your message:
 
 
 ---
 
-Subject: Request for New Owner Details to Initiate Asset Ownership Transfer
+I have been facing frequent connectivity issues while working from my hometown. I'm unable to consistently join calls, and even when I manage to connect, the calls often get disconnected unexpectedly.
 
-Hi Ravindra,
+I will be back in the office from next week onwards, and I’ll schedule all the pending KT sessions accordingly.
 
-I am the current owner of the below asset. Could you please confirm the new owner details so that I can proceed with raising the ownership transfer request accordingly?
-
-Asset Name	Asset Type	Application Name	Current Owner Name	Current Owner BRID	Leave Date	Move Date
-
-APPL018930_MORTGAGEPROJECTIONS.Calculator_DT	Request Groups	VERACODE SAST *PROD	Annaso Chavan	G01142986	05-JUL-25	NA
-
-
-Looking forward to your confirmation.
-
-Best Regards,
-Annaso Chavan
+Thank you for your understanding.
 
 
 ---
 
-Would you like a shorter or a slightly casual version too?
+Would you like a slightly casual or more formal tone as well?
