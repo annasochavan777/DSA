@@ -1,93 +1,15 @@
-Great — here’s a nicely structured, professional email template you can send:
+Sure — here’s a clear, rephrased version of your message:
 
 
 ---
 
-Subject: RE: KT Plan from Annaso
+Hi Krishna,
 
-Hi Ravindra,
+For the past two weeks, I’ve been unable to see MAE-related items in Navigator. As a result, I’m not able to log my work in Navigator. Could you please let me know whom I should contact to get this issue resolved?
 
-I hope you’re doing well.
-
-I have drafted the following points from a KT (Knowledge Transfer) perspective. Request you to kindly review and let me know if there are any additional topics or areas that you feel should be included as part of the KT sessions:
+Thanks!
 
 
 ---
 
-KT Topics:
-
-1. Utilities – Jenkins
-
-Config Transformation Utility
-
-Inrule Upgrade Utility
-
-
-
-2. PD Checks Automation – Walkthrough
-
-
-3. BCMDB – Walkthrough
-
-
-4. MSO Health Check Dashboard – Walkthrough (including steps to add new servers or environments to the dashboard)
-
-
-5. Chef Recipe for IIS Configuration – Code Walkthrough
-
-
-6. Autosys Jobs – Overview (basic concepts, creating new jobs, updating, deleting, etc.)
-
-
-7. New SQL Queries Developed for MAE – Demonstrating their use within the application tracking UI
-
-
-8. Launching MAE Applications from Salesforce – Mortgage Portal Changes Walkthrough
-
-
-9. BCAG Key Migration Utility – Code Walkthrough
-
-
-10. Update/Replace Node in Case Hive – Code Walkthrough
-
-
-11. Process to Generate Schema
-
-
-12. Explanation of FD and SD XMLs
-
-
-13. How to Read FD/SD XMLs
-
-
-14. Generating Excel Files from XMLs
-
-
-15. Sales Journey Flow
-
-
-16. Originations Journey Flow
-
-
-17. MAE Gateway Service – Code Walkthrough
-
-
-18. SSL Changes Implemented in Load Balancer (LB) for MAE
-
-
-
-
----
-
-Please review the above points and feel free to suggest any additions or modifications.
-
-Looking forward to your feedback.
-
-Thanks & Regards,
-Annaso
-
-
----
-
-Would you like a more casual version too, or this formal one works?
-
+Would you like a slightly more formal or casual version too?
