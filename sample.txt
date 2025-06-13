@@ -3,9 +3,13 @@ Sure — here’s a clear and professional rephrased version of your message:
 
 ---
 
-We have identified the root cause of the issue. Recently, the SIT3 database was migrated, but this update was not communicated to the ETL team. As a result, the ETL jobs continued pointing to the old database instance, which is why no cases were extracted. Ideally, the DB migration team should have informed all impacted teams about this change. Akshay is now updating their jobs to point to the new database instance and will perform a test run.
+We won’t be able to test this scenario as the eChannel setup is not available in the SIT1 environment. Because of this, we cannot modify the certificate name.
+
+If we update it for the enquiry service, the service call would work correctly, but you would no longer be able to log in via IntAuth, as TIAA requires a different certificate for authentication.
+
+In the production environment, the configuration is different — the TIAA certificate is configured in the Max config on the eChannel server, while the internal server uses a separate certificate for the enquiry service.
 
 
 ---
 
-Would you like a subject line for this as well if you're sending it over email?
+Would you like a shorter or more casual version as well?
