@@ -1,30 +1,11 @@
-Sure — here are polished versions with that added:
-
-Option 1 (Formal & Simple)
-
-> My mother is not feeling well as she has been down with cold and fever since last night. I need to take her to the doctor, so I will be taking a day off today.
-
-
+Sure — here’s a clear and professional rephrased version of your message:
 
 
 ---
 
-Option 2 (Crisp & Professional)
-
-> As my mother is unwell with cold and fever since last night, I need to visit the doctor with her. Hence, I will be taking a leave today.
-
-
+We have identified the root cause of the issue. Recently, the SIT3 database was migrated, but this update was not communicated to the ETL team. As a result, the ETL jobs continued pointing to the old database instance, which is why no cases were extracted. Ideally, the DB migration team should have informed all impacted teams about this change. Akshay is now updating their jobs to point to the new database instance and will perform a test run.
 
 
 ---
 
-Option 3 (Casual & Friendly)
-
-> My mother isn’t keeping well since last night with cold and fever. I need to take her to the doctor today, so I’ll be on leave.
-
-
-
-
----
-
-Would you like a mail-ready subject + body version too? I can prepare that if you’d like.
+Would you like a subject line for this as well if you're sending it over email?
