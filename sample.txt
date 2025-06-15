@@ -1,15 +1,167 @@
-Sure — here’s a clear and professional rephrased version of your message:
+1. Autosys Basic
+Autosys, developed by Broadcom (formerly CA Technologies), is a workload automation tool designed to schedule, monitor, and manage jobs across diverse platforms like Windows, UNIX, Linux, and more. It’s particularly useful for automating repetitive tasks, ensuring dependencies are met, and providing visibility into job execution. Here’s a detailed breakdown of its core concepts and components:
 
+Core Components:
+Event Server (Database): This is the backend database (e.g., Oracle, SQL Server, or Sybase) that stores job definitions, schedules, and statuses. Autosys supports dual-event server mode for high availability, ensuring redundancy if one server fails.
+Scheduler (Event Processor): The brain of Autosys, the scheduler continuously monitors the event server for events (e.g., a job’s start time or a dependency being met) and triggers jobs accordingly. It runs as a service (e.g., event_demon on UNIX).
+Agent: Agents are installed on machines where jobs execute. They receive instructions from the scheduler, run the jobs, and report the status back to the event server. Autosys supports cross-platform agents, so jobs can run on different operating systems.
+Key Concepts:
+Jobs: A job in Autosys is a single unit of work, such as running a script, executing a command, or monitoring a file. Jobs can be of various types:
+Command Job: Executes a script or command (e.g., a shell script or batch file).
+File Watcher Job: Monitors for the arrival of a file before triggering dependent jobs.
+Box Job: A container for grouping related jobs, often used to manage workflows.
+Dependencies: Autosys allows you to set conditions for job execution, such as:
+Time-based: Run a job at a specific time (e.g., daily at 3 AM).
+Job-based: Run a job only if another job succeeds (e.g., condition: success(previous_job)).
+File-based: Wait for a file to appear (via File Watcher jobs).
+Scheduling: Jobs can be scheduled using calendars (e.g., run on the 1st of every month) or specific times. Autosys supports custom calendars for holidays or business days.
+Monitoring and Alerts: Autosys provides real-time monitoring through tools like the Autosys GUI or command-line utilities (e.g., autorep to check job status). It can send alerts (via email, SNMP, etc.) if a job fails or exceeds its runtime.
+Workflow Example: Imagine a payroll system. A File Watcher job waits for a payroll data file to arrive. Once the file is detected, a Command Job processes the data, and a final Box Job triggers dependent jobs to generate reports and send notifications—all automated and monitored by Autosys.
+2. How to Create a New Autosys Job
+Creating a new job in Autosys involves defining its properties and submitting it to the system. The most common method is using Job Information Language (JIL), a scripting language for defining jobs. Alternatively, you can use the Autosys Workload Automation GUI, but I’ll focus on the JIL approach since it’s more detailed and widely used.
 
----
+Steps to Create a Job:
+Write a JIL Script: A JIL script specifies the job’s attributes, such as its name, type, command, machine, schedule, and dependencies. Here’s a detailed example of a Command Job:
+text
 
-We won’t be able to test this scenario as the eChannel setup is not available in the SIT1 environment. Because of this, we cannot modify the certificate name.
+Collapse
 
-If we update it for the enquiry service, the service call would work correctly, but you would no longer be able to log in via IntAuth, as TIAA requires a different certificate for authentication.
+Wrap
 
-In the production environment, the configuration is different — the TIAA certificate is configured in the Max config on the eChannel server, while the internal server uses a separate certificate for the enquiry service.
+Copy
+insert_job: payroll_process
+job_type: CMD
+command: /scripts/process_payroll.sh
+machine: server01
+owner: autosys_user@server01
+permission: gx,wx
+start_times: "03:00"
+days_of_week: mon,fri
+description: "Processes payroll data every Monday and Friday at 3 AM"
+condition: success(file_arrival_job)
+max_run_alarm: 600
+alarm_if_fail: 1
+insert_job: Defines the job name (e.g., payroll_process).
+job_type: CMD: Specifies this is a command job.
+command: The script or command to execute.
+machine: The server where the job runs.
+owner: The user account under which the job runs.
+permission: Execution (gx) and write (wx) permissions for the owner.
+start_times and days_of_week: Schedule the job for 3 AM on Mondays and Fridays.
+condition: The job only runs if file_arrival_job succeeds.
+max_run_alarm: Sends an alarm if the job runs longer than 600 seconds.
+alarm_if_fail: 1: Sends an alert if the job fails.
+Submit the Job: Save the JIL script (e.g., as payroll_process.jil) and submit it to Autosys using the jil command:
+text
 
+Collapse
 
----
+Wrap
 
-Would you like a shorter or more casual version as well?
+Copy
+jil < payroll_process.jil
+This adds the job to the Autosys database.
+Verify the Job: Use the autorep command to confirm the job was created:
+text
+
+Collapse
+
+Wrap
+
+Copy
+autorep -J payroll_process
+This displays the job’s definition and status.
+Additional Notes:
+If the job is part of a workflow, you might place it inside a Box Job by adding box_name: payroll_box to the JIL script.
+You can test the job manually using the sendevent command to force-start it:
+text
+
+Collapse
+
+Wrap
+
+Copy
+sendevent -E FORCE_STARTJOB -J payroll_process
+3. How to Insert/Update/Delete a Job
+Autosys allows you to manage jobs (insert, update, or delete) primarily through JIL scripts, though some GUI tools also support these operations. Here’s a detailed look at each action:
+
+Insert a Job: As described in point 2, you insert a new job using the insert_job keyword in a JIL script. The process involves defining the job’s attributes and submitting the script via the jil command. Refer to the example above for a full JIL script.
+Update a Job: To modify an existing job (e.g., change its schedule, command, or dependencies), use the update_job keyword in a JIL script. Only specify the attributes you want to change; other attributes remain unchanged.
+Example: Update the payroll_process job to run at 4 AM instead of 3 AM:
+text
+
+Collapse
+
+Wrap
+
+Copy
+update_job: payroll_process
+start_times: "04:00"
+Submit the update:
+text
+
+Collapse
+
+Wrap
+
+Copy
+jil < update_payroll.jil
+Verify the Update: Use autorep to check the updated job definition:
+text
+
+Collapse
+
+Wrap
+
+Copy
+autorep -J payroll_process
+Note: If the job is running, updates won’t affect the current run but will apply to future runs. You can use sendevent -E KILLJOB -J job_name to stop a running job if needed.
+Delete a Job: To remove a job from Autosys, use the delete_job keyword in a JIL script.
+Example: Delete the payroll_process job:
+text
+
+Collapse
+
+Wrap
+
+Copy
+delete_job: payroll_process
+Submit the deletion:
+text
+
+Collapse
+
+Wrap
+
+Copy
+jil < delete_payroll.jil
+Verify Deletion: Check that the job no longer exists:
+text
+
+Collapse
+
+Wrap
+
+Copy
+autorep -J payroll_process
+If the job is part of a box, deleting the box (delete_box) will also delete all jobs inside it.
+Precaution: If the job is running, you may need to stop it first using:
+text
+
+Collapse
+
+Wrap
+
+Copy
+sendevent -E KILLJOB -J payroll_process
+Additional Tools:
+Autorep: Use autorep -J job_name -q to export a job’s JIL definition before modifying or deleting it, which is helpful for backups.
+Sendevent: Besides stopping jobs, you can use sendevent to change a job’s status (e.g., put it on hold with sendevent -E JOB_ON_HOLD -J job_name).
+Summary
+Autosys Basics: It’s a workload automation tool with components like the Event Server, Scheduler, and Agent, enabling job scheduling, dependency management, and monitoring across platforms.
+Creating a Job: Use a JIL script with insert_job, define attributes like schedule and dependencies, and submit it via the jil command.
+Insert/Update/Delete:
+Insert with insert_job.
+Update with update_job to modify specific attributes.
+Delete with delete_job, ensuring the job isn’t running.
+This should provide a thorough understanding for your KT call. If you’d like to focus on specific aspects or need examples for a particular platform, let me know!
