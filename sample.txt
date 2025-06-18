@@ -1,23 +1,13 @@
-@echo off
-setlocal enabledelayedexpansion
+Sure — here’s a clear and polished rephrasing of your message:
 
-:: Set AUTOSERV environment variable for this session
-set AUTOSERV=PROD_AUTOSYS
 
-:: Set paths
-set AUTOREP_PATH="C:\Program Files (x86)\CA\Workload Automation AE\bin\autorep.exe"
-set JOB_LIST_FILE=C:\autosys_exports\job_list.txt
-set OUTPUT_DIR=C:\autosys_exports
+---
 
-:: Create output directory if it doesn't exist
-if not exist %OUTPUT_DIR% mkdir %OUTPUT_DIR%
+Pallavi has received access to record the session, and to proceed with the recording, she will need to be the host of the meeting.
 
-:: Loop through job list and download each job definition
-for /f "tokens=* delims=" %%A in (%JOB_LIST_FILE%) do (
-    echo Exporting job definition for %%A...
-    %AUTOREP_PATH% -J %%A -q > %OUTPUT_DIR%\%%A.jil
-)
+Hence, I have cancelled all the previous invites, and Pallavi has sent out a new invite separately.
 
-echo.
-echo All job definitions exported successfully.
-pause
+
+---
+
+Would you like a slightly more formal or casual version as well?
