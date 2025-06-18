@@ -1,1 +1,23 @@
-autorep -J ALL -q > C:\autosys_exports\prod_jobs.jil
+@echo off
+setlocal enabledelayedexpansion
+
+:: Set AUTOSERV environment variable for this session
+set AUTOSERV=PROD_AUTOSYS
+
+:: Set paths
+set AUTOREP_PATH="C:\Program Files (x86)\CA\Workload Automation AE\bin\autorep.exe"
+set JOB_LIST_FILE=C:\autosys_exports\job_list.txt
+set OUTPUT_DIR=C:\autosys_exports
+
+:: Create output directory if it doesn't exist
+if not exist %OUTPUT_DIR% mkdir %OUTPUT_DIR%
+
+:: Loop through job list and download each job definition
+for /f "tokens=* delims=" %%A in (%JOB_LIST_FILE%) do (
+    echo Exporting job definition for %%A...
+    %AUTOREP_PATH% -J %%A -q > %OUTPUT_DIR%\%%A.jil
+)
+
+echo.
+echo All job definitions exported successfully.
+pause
