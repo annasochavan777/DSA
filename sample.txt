@@ -1,13 +1,2 @@
-Sure — here’s a clear and polished rephrasing of your message:
-
-
----
-
-Pallavi has received access to record the session, and to proceed with the recording, she will need to be the host of the meeting.
-
-Hence, I have cancelled all the previous invites, and Pallavi has sent out a new invite separately.
-
-
----
-
-Would you like a slightly more formal or casual version as well?
+The customer.1.correspondanceaddress.line3 field is mapped to the 'Street' field on the MSO side. However, currently, the data is being sent inside customer.1.correspondanceaddress.line2, due to which it is not getting displayed on MSO.
+To resolve this, please correct the mapping and ensure the data meant for the 'Street' field is sent inside customer.1.correspondanceaddress.line3
