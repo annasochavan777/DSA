@@ -1,2 +1,7 @@
-The customer.1.correspondanceaddress.line3 field is mapped to the 'Street' field on the MSO side. However, currently, the data is being sent inside customer.1.correspondanceaddress.line2, due to which it is not getting displayed on MSO.
-To resolve this, please correct the mapping and ensure the data meant for the 'Street' field is sent inside customer.1.correspondanceaddress.line3
+Salary Credit Query
+
+Dear [HR's Name],
+
+I noticed that my current month's salary has been put on hold, possibly as my last working day is approaching on 5th July 2025. I would like to check when my salary will be credited in this case. Could you please confirm the process and expected timeline?
+
+Looking forward to your response.
