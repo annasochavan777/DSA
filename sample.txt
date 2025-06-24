@@ -1,7 +1,3 @@
-Salary Credit Query
+There is no regex applied for the receivedfeeschemes field, as this is a dynamic value set on the MSO side. You can follow the same logic that is used for the residential journey.
 
-Dear [HR's Name],
-
-I noticed that my current month's salary has been put on hold, possibly as my last working day is approaching on 5th July 2025. I would like to check when my salary will be credited in this case. Could you please confirm the process and expected timeline?
-
-Looking forward to your response.
+For overseas addresses, the customers.1.correspondenceaddress.line3 is mapped to the Street field on the MSO side.
