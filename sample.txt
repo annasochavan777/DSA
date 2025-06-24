@@ -1,3 +1,1 @@
-There is no regex applied for the receivedfeeschemes field, as this is a dynamic value set on the MSO side. You can follow the same logic that is used for the residential journey.
-
-For overseas addresses, the customers.1.correspondenceaddress.line3 is mapped to the Street field on the MSO side.
+I have reviewed this defect, and the rule appears to be fine. We need to look deeper into the logic to identify the root cause. @Prachi — could you please take this defect forward?
