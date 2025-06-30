@@ -1,16 +1,12 @@
-function Expand-ZipFile {
-    param (
-        [string]$zipPath,
-        [string]$destinationPath
-    )
+$zipPath = "C:\source\filebeat.zip"
+$destinationPath = "C:\target"
 
-    if (-Not (Test-Path $destinationPath)) {
-        New-Item -ItemType Directory -Path $destinationPath | Out-Null
-    }
-
-    # Load the System.IO.Compression assembly if not already loaded
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-
-    # Extract and overwrite if files exist
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $destinationPath, $true)
+# Remove existing files in destination
+if (Test-Path $destinationPath) {
+    Remove-Item "$destinationPath\*" -Recurse -Force
+} else {
+    New-Item -ItemType Directory -Path $destinationPath | Out-Null
 }
+
+# Extract using Expand-Archive
+Expand-Archive -Path $zipPath -DestinationPath $destinationPath
