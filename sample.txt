@@ -1,1 +1,16 @@
-I have reviewed this defect, and the rule appears to be fine. We need to look deeper into the logic to identify the root cause. @Prachi — could you please take this defect forward?
+function Expand-ZipFile {
+    param (
+        [string]$zipPath,
+        [string]$destinationPath
+    )
+
+    if (-Not (Test-Path $destinationPath)) {
+        New-Item -ItemType Directory -Path $destinationPath | Out-Null
+    }
+
+    # Load the System.IO.Compression assembly if not already loaded
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+    # Extract and overwrite if files exist
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $destinationPath, $true)
+}
