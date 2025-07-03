@@ -1,12 +1,11 @@
-$zipPath = "C:\source\filebeat.zip"
-$destinationPath = "C:\target"
+Subject: Request for Relieving Letter Timeline
 
-# Remove existing files in destination
-if (Test-Path $destinationPath) {
-    Remove-Item "$destinationPath\*" -Recurse -Force
-} else {
-    New-Item -ItemType Directory -Path $destinationPath | Out-Null
-}
+Dear [HR's Name],
 
-# Extract using Expand-Archive
-Expand-Archive -Path $zipPath -DestinationPath $destinationPath
+Hope you are doing well.
+
+As tomorrow is my last working day with Barclays, I wanted to check on the timeline for receiving my relieving letter. My next organization has requested this document as part of their onboarding process, so it would be helpful to understand when I can expect to receive it.
+
+Kindly let me know the expected date or process for this.
+
+Thank you in advance for your support.
