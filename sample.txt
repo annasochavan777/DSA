@@ -1,11 +1,22 @@
-# Copy the script to target machine
-cookbook_file 'C:\\temp\\my_script.ps1' do
-  source 'my_script.ps1'
-  action :create
-end
+Sure — here’s a clean and polite draft you can use:
 
-# Execute the PowerShell script
-powershell_script 'Execute My PowerShell Script' do
-  code 'C:\\temp\\my_script.ps1'
-  action :run
-end
+
+---
+
+Subject: IT Equipment Return Confirmation
+
+Dear Team,
+
+I would like to inform you that I will be returning all my allocated IT equipment today as part of my exit formalities.
+
+Please let me know if any further action is required from my end.
+
+Thank you for your support.
+
+Best regards,
+Annaso Chavan
+
+
+---
+
+Would you like a slightly more casual or formal version too?
